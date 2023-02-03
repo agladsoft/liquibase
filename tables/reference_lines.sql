@@ -1,2 +1,9 @@
-CREATE OR REPLACE VIEW default.reference_lines
-AS SELECT * FROM marketing_db.reference_lines;
+CREATE TABLE default.reference_lines
+(
+
+    `line` String,
+
+    `line_unified` Nullable(String)
+)
+ENGINE = MergeTree()
+ORDER BY line;

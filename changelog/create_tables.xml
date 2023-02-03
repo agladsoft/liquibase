@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+	<changeSet id="createTables" author="timur">
+	  <sqlFile path="tables/fts.sql"/>
+	  <sqlFile path="tables/export.sql"/>
+	  <sqlFile path="tables/export_nw.sql"/>
+	  <sqlFile path="tables/export_vsk.sql"/>
+	  <sqlFile path="tables/import.sql"/>
+	  <sqlFile path="tables/import_nw.sql"/>
+	  <sqlFile path="tables/import_vsk.sql"/>
+	  <sqlFile path="tables/reference_container_type.sql"/>
+	  <sqlFile path="tables/reference_geo.sql"/>
+	  <sqlFile path="tables/reference_inn.sql"/>
+	  <sqlFile path="tables/reference_is_empty.sql"/>
+	  <sqlFile path="tables/reference_lines.sql"/>
+	  <sqlFile path="tables/reference_morservice.sql"/>
+	  <sqlFile path="tables/reference_region.sql"/>
+	  <sqlFile path="tables/reference_ship.sql"/>
+	  <sqlFile path="tables/reference_terminal.sql"/>
+	  <sqlFile path="tables/reference_tnved2.sql"/>
+	  <sqlFile path="tables/statistics.sql"/>
+
+
+	  <sqlFile path="tables/reference_tnved2_actual.sql"/>
+	  <sqlFile path="tables/export_nw_enriched.sql"/>
+	  <sqlFile path="tables/export_vsk_enriched.sql"/>
+	  <sqlFile path="tables/import_nw_enriched.sql"/>
+	  <sqlFile path="tables/import_vsk_enriched.sql"/>
+	</changeSet>
+
+</databaseChangeLog>

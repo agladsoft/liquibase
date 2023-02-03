@@ -1,18 +1,29 @@
-CREATE OR REPLACE VIEW default.statistics
-AS SELECT
-    statistics.month AS month,
-    statistics.year AS year,
-    statistics.ship_name AS ship_name,
-    statistics.direction AS direction,
-        CASE
-            WHEN statistics.is_empty = 1 THEN true
-            ELSE false
-        END AS is_empty,
-    statistics.line AS line,
-    statistics.container_size AS container_size,
-    statistics.count AS count,
-    statistics.teu AS teu,
-    statistics.date_arrive AS date_arrive,
-    statistics.date_leave AS date_leave,
-    statistics.id AS id
-FROM marketing_db.statistics;
+CREATE TABLE default.statistics
+(
+
+    `month` Nullable(Int32),
+
+    `year` Nullable(Int32),
+
+    `ship_name` Nullable(String),
+
+    `direction` Nullable(String),
+
+    `is_empty` Nullable(UInt8),
+
+    `line` Nullable(String),
+
+    `container_size` Nullable(Int32),
+
+    `count` Nullable(Int32),
+
+    `teu` Nullable(Int32),
+
+    `date_arrive` Nullable(String),
+
+    `date_leave` Nullable(String),
+
+    `id` Int64
+)
+ENGINE = MergeTree()
+ORDER BY id;

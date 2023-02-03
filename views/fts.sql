@@ -1,2 +1,2 @@
 CREATE OR REPLACE VIEW default.fts
-AS SELECT * FROM marketing_db.fts;
+AS SELECT * FROM default.fts;

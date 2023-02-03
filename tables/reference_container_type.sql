@@ -1,2 +1,9 @@
-CREATE OR REPLACE VIEW default.reference_container_type
-AS SELECT * FROM marketing_db.reference_container_type;
+CREATE TABLE default.reference_container_type
+(
+
+    `container_type` String,
+
+    `container_type_unified` Nullable(String)
+)
+ENGINE = MergeTree()
+ORDER BY container_type;

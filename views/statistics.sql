@@ -15,4 +15,4 @@ AS SELECT
     statistics.date_arrive AS date_arrive,
     statistics.date_leave AS date_leave,
     statistics.id AS id
-FROM marketing_db.statistics;
+FROM default.statistics;
