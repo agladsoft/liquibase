@@ -1,7 +1,6 @@
 CREATE TABLE default.fts
 (
-
-    `id` Int32,
+    `id` Int128,
 
     `stat` Nullable(String),
 
@@ -47,7 +46,7 @@ CREATE TABLE default.fts
 
   	`total_product_names` Nullable(String),
 
-  	`number_of_seats` Nullable(Int32),
+  	`number_of_seats` Nullable(Int128),
 
     `type_of_gtd` Nullable(String),
 
@@ -77,7 +76,7 @@ CREATE TABLE default.fts
 
     `the_total_customs_value_of_the_gtd` Nullable(Decimal128(19)),
 
-    `the_currency_code_is_there_costs` Nullable(Int32),
+    `the_currency_code_is_there_costs` Nullable(Int128),
 
     `declarants_inn` Nullable(String),
 
@@ -143,7 +142,7 @@ CREATE TABLE default.fts
 
     `bank_requisites` Nullable(String),
 
-    `number_of_cargo_spaces` Nullable(Int32),
+    `number_of_cargo_spaces` Nullable(Int128),
 
     `package_availability_code` Nullable(String),
 
@@ -153,7 +152,7 @@ CREATE TABLE default.fts
 
     `g31_41` Nullable(String),
 
-    `number_of_containers` Nullable(Int32),
+    `number_of_containers` Nullable(Int128),
 
     `number_of_goods_in_additional_units` Nullable(Decimal128(19)),
 
@@ -335,8 +334,7 @@ CREATE TABLE default.fts
 
     `original_file_parsed_on` Nullable(String),
 
-    `original_file_index` Nullable(Int64)
-
+    `original_file_index` Nullable(Int128)
 )
 ENGINE = MergeTree()
 ORDER BY id;
