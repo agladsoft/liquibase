@@ -13,15 +13,15 @@ CREATE TABLE default.fts
 
     `customs_code` Nullable(String),
 
-    `date_of_registration` Nullable(String),
+    `date_of_registration` Nullable(Date),
 
-    `g074` Nullable(String),
+  	`g074` Nullable(String),
 
-    `release_date` Nullable(String),
+  	`release_date` Nullable(Date),
 
-    `date_of_the_brokers_certificate` Nullable(String),
+    `date_of_the_brokers_certificate` Nullable(Date),
 
-    `currency_exchange_rate_date` Nullable(String),
+    `currency_exchange_rate_date` Nullable(Date),
 
     `g25` Nullable(String),
 
@@ -45,7 +45,9 @@ CREATE TABLE default.fts
 
     `g05` Nullable(String),
 
-    `total_product_names` Nullable(String),
+  	`total_product_names` Nullable(String),
+
+  	`number_of_seats` Nullable(Int32),
 
     `type_of_gtd` Nullable(String),
 
@@ -75,7 +77,7 @@ CREATE TABLE default.fts
 
     `the_total_customs_value_of_the_gtd` Nullable(Decimal128(19)),
 
-    `the_currency_code_is_there_costs` Nullable(String),
+    `the_currency_code_is_there_costs` Nullable(Int32),
 
     `declarants_inn` Nullable(String),
 
@@ -141,7 +143,7 @@ CREATE TABLE default.fts
 
     `bank_requisites` Nullable(String),
 
-    `number_of_cargo_spaces` Nullable(String),
+    `number_of_cargo_spaces` Nullable(Int32),
 
     `package_availability_code` Nullable(String),
 
@@ -151,7 +153,7 @@ CREATE TABLE default.fts
 
     `g31_41` Nullable(String),
 
-    `number_of_containers` Nullable(String),
+    `number_of_containers` Nullable(Int32),
 
     `number_of_goods_in_additional_units` Nullable(Decimal128(19)),
 
@@ -207,11 +209,11 @@ CREATE TABLE default.fts
 
     `usd_for_kg` Nullable(Decimal128(19)),
 
-    `the_amount_of_the_border_is_47_in_usd` Nullable(String),
+    `the_amount_of_the_border_is_47_in_usd` Nullable(Decimal128(19)),
 
     `g474usd` Nullable(String),
 
-    `the_amount_of_the_border_47_in_rur` Nullable(String),
+    `the_amount_of_the_border_47_in_rur` Nullable(Decimal128(19)),
 
     `brokers_certificate_number` Nullable(String),
 
@@ -309,7 +311,7 @@ CREATE TABLE default.fts
 
     `warehouse_area` Nullable(String),
 
-    `invoice_cost_rub` Nullable(String),
+    `invoice_cost_rub` Nullable(Decimal128(19)),
 
     `type_of_transport_at_the_border` Nullable(String),
 
@@ -333,11 +335,8 @@ CREATE TABLE default.fts
 
     `original_file_parsed_on` Nullable(String),
 
-    `original_file_index` Nullable(Int64),
+    `original_file_index` Nullable(Int64)
 
-    `release_date2` Nullable(Date),
-
-    `number_of_seats2` Nullable(Int32)
 )
 ENGINE = MergeTree()
 ORDER BY id;
