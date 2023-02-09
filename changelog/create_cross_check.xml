@@ -10,7 +10,7 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<changeSet id="createCrossCheck" author="timur">
-    <sqlFile path="cross_check/import_enriched.sql"/>
+    	<sqlFile path="cross_check/import_enriched.sql"/>
 		<sqlFile path="cross_check/export_enriched.sql"/>
 		<sqlFile path="cross_check/statistics_enriched.sql"/>
 		<sqlFile path="cross_check/ship_name_unified_check.sql"/>
@@ -18,7 +18,7 @@
 		<sqlFile path="cross_check/import_nle_total.sql"/>
 		<sqlFile path="cross_check/export_nle_total.sql"/>
 		<sqlFile path="cross_check/import_final.sql"/>
-    <sqlFile path="cross_check/statistics_total.sql"/>
+    	<sqlFile path="cross_check/statistics_total.sql"/>
 		<sqlFile path="cross_check/import_consignment_duplicates_check.sql"/>
 		<sqlFile path="cross_check/export_consignment_duplicates_check.sql"/>
 		<sqlFile path="cross_check/import_combined_cargo_check.sql"/>
@@ -31,6 +31,7 @@
 		<sqlFile path="cross_check/nle_cross_export.sql"/>
 		<sqlFile path="cross_check/nutep_cross.sql"/>
 		<sqlFile path="cross_check/nle_cross.sql"/>
+		<sqlFile path="views/all_enriched.sql"/>
 	</changeSet>
 
 
