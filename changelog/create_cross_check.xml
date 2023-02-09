@@ -10,28 +10,28 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<changeSet id="createCrossCheck" author="timur">
-    	<sqlFile path="cross_check/import_enriched.sql"/>
-		<sqlFile path="cross_check/export_enriched.sql"/>
-		<sqlFile path="cross_check/statistics_enriched.sql"/>
-		<sqlFile path="cross_check/ship_name_unified_check.sql"/>
-		<sqlFile path="cross_check/line_unified_check.sql"/>
-		<sqlFile path="cross_check/import_nle_total.sql"/>
-		<sqlFile path="cross_check/export_nle_total.sql"/>
-		<sqlFile path="cross_check/import_final.sql"/>
-    	<sqlFile path="cross_check/statistics_total.sql"/>
-		<sqlFile path="cross_check/import_consignment_duplicates_check.sql"/>
-		<sqlFile path="cross_check/export_consignment_duplicates_check.sql"/>
-		<sqlFile path="cross_check/import_combined_cargo_check.sql"/>
-		<sqlFile path="cross_check/export_combined_cargo_check.sql"/>
-		<sqlFile path="cross_check/import_nutep_total.sql"/>
-		<sqlFile path="cross_check/export_nutep_total.sql"/>
-		<sqlFile path="cross_check/nutep_cross_import.sql"/>
-		<sqlFile path="cross_check/nle_cross_import.sql"/>
-		<sqlFile path="cross_check/nutep_cross_export.sql"/>
-		<sqlFile path="cross_check/nle_cross_export.sql"/>
-		<sqlFile path="cross_check/nutep_cross.sql"/>
-		<sqlFile path="cross_check/nle_cross.sql"/>
-		<sqlFile path="views/all_enriched.sql"/>
+    	<sqlFile path="cross_check_marketing_db/import_enriched.sql"/>
+		<sqlFile path="cross_check_marketing_db/export_enriched.sql"/>
+		<sqlFile path="cross_check_marketing_db/statistics_enriched.sql"/>
+		<sqlFile path="cross_check_marketing_db/ship_name_unified_check.sql"/>
+		<sqlFile path="cross_check_marketing_db/line_unified_check.sql"/>
+		<sqlFile path="cross_check_marketing_db/import_nle_total.sql"/>
+		<sqlFile path="cross_check_marketing_db/export_nle_total.sql"/>
+		<sqlFile path="cross_check_marketing_db/import_final.sql"/>
+    	<sqlFile path="cross_check_marketing_db/statistics_total.sql"/>
+		<sqlFile path="cross_check_marketing_db/import_consignment_duplicates_check.sql"/>
+		<sqlFile path="cross_check_marketing_db/export_consignment_duplicates_check.sql"/>
+		<sqlFile path="cross_check_marketing_db/import_combined_cargo_check.sql"/>
+		<sqlFile path="cross_check_marketing_db/export_combined_cargo_check.sql"/>
+		<sqlFile path="cross_check_marketing_db/import_nutep_total.sql"/>
+		<sqlFile path="cross_check_marketing_db/export_nutep_total.sql"/>
+		<sqlFile path="cross_check_marketing_db/nutep_cross_import.sql"/>
+		<sqlFile path="cross_check_marketing_db/nle_cross_import.sql"/>
+		<sqlFile path="cross_check_marketing_db/nutep_cross_export.sql"/>
+		<sqlFile path="cross_check_marketing_db/nle_cross_export.sql"/>
+		<sqlFile path="cross_check_marketing_db/nutep_cross.sql"/>
+		<sqlFile path="cross_check_marketing_db/nle_cross.sql"/>
+		<sqlFile path="views_marketing_db/all_enriched.sql"/>
 	</changeSet>
 
 

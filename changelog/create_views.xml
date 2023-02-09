@@ -10,31 +10,31 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<changeSet id="createViews" author="timur">
-	  <sqlFile path="views/fts.sql"/>
-	  <sqlFile path="views/export.sql"/>
-	  <sqlFile path="views/export_nw.sql"/>
-	  <sqlFile path="views/export_vsk.sql"/>
-	  <sqlFile path="views/import.sql"/>
-	  <sqlFile path="views/import_nw.sql"/>
-	  <sqlFile path="views/import_vsk.sql"/>
-	  <sqlFile path="views/reference_container_type.sql"/>
-	  <sqlFile path="views/reference_geo.sql"/>
-	  <sqlFile path="views/reference_inn.sql"/>
-	  <sqlFile path="views/reference_is_empty.sql"/>
-	  <sqlFile path="views/reference_lines.sql"/>
-	  <sqlFile path="views/reference_morservice.sql"/>
-	  <sqlFile path="views/reference_region.sql"/>
-	  <sqlFile path="views/reference_ship.sql"/>
-	  <sqlFile path="views/reference_terminal.sql"/>
-	  <sqlFile path="views/reference_tnved2.sql"/>
-	  <sqlFile path="views/statistics.sql"/>
-	  
-	  
-	  <sqlFile path="views/reference_tnved2_actual.sql"/>
-	  <sqlFile path="views/export_nw_enriched.sql"/>
-	  <sqlFile path="views/export_vsk_enriched.sql"/>
-	  <sqlFile path="views/import_nw_enriched.sql"/>
-	  <sqlFile path="views/import_vsk_enriched.sql"/>
+	  <sqlFile path="views_marketing_db/fts.sql"/>
+	  <sqlFile path="views_marketing_db/export.sql"/>
+	  <sqlFile path="views_marketing_db/export_nw.sql"/>
+	  <sqlFile path="views_marketing_db/export_vsk.sql"/>
+	  <sqlFile path="views_marketing_db/import.sql"/>
+	  <sqlFile path="views_marketing_db/import_nw.sql"/>
+	  <sqlFile path="views_marketing_db/import_vsk.sql"/>
+	  <sqlFile path="views_marketing_db/reference_container_type.sql"/>
+	  <sqlFile path="views_marketing_db/reference_geo.sql"/>
+	  <sqlFile path="views_marketing_db/reference_inn.sql"/>
+	  <sqlFile path="views_marketing_db/reference_is_empty.sql"/>
+	  <sqlFile path="views_marketing_db/reference_lines.sql"/>
+	  <sqlFile path="views_marketing_db/reference_morservice.sql"/>
+	  <sqlFile path="views_marketing_db/reference_region.sql"/>
+	  <sqlFile path="views_marketing_db/reference_ship.sql"/>
+	  <sqlFile path="views_marketing_db/reference_terminal.sql"/>
+	  <sqlFile path="views_marketing_db/reference_tnved2.sql"/>
+	  <sqlFile path="views_marketing_db/statistics.sql"/>
+
+
+	  <sqlFile path="views_marketing_db/reference_tnved2_actual.sql"/>
+	  <sqlFile path="views_marketing_db/export_nw_enriched.sql"/>
+	  <sqlFile path="views_marketing_db/export_vsk_enriched.sql"/>
+	  <sqlFile path="views_marketing_db/import_nw_enriched.sql"/>
+	  <sqlFile path="views_marketing_db/import_vsk_enriched.sql"/>
 	</changeSet>
 
 </databaseChangeLog>
