@@ -34,7 +34,7 @@ AS SELECT
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
    FROM marketing_db.export_vsk
-     LEFT JOIN marketing_db.reference_tnved2_actual rt ON export_vsk.tnved_group_id = rt.group_tnved
+     LEFT JOIN default.reference_tnved2_actual rt ON export_vsk.tnved_group_id = rt.group_tnved
      LEFT JOIN marketing_db.reference_inn ri ON export_vsk.shipper_name = ri.company_name
      LEFT JOIN marketing_db.reference_region rg ON export_vsk.destination_port = rg.seaport
      LEFT JOIN marketing_db.reference_geo rgeo ON export_vsk.destination_port = rgeo.seaport;
