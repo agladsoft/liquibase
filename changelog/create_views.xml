@@ -10,7 +10,7 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<changeSet id="createViews" author="timur">
-	  <sqlFile path="views_marketing_db/fts.sql"/>
+<!--	  <sqlFile path="views_marketing_db/fts.sql"/>-->
 	  <sqlFile path="views_marketing_db/export.sql"/>
 	  <sqlFile path="views_marketing_db/export_nw.sql"/>
 	  <sqlFile path="views_marketing_db/export_vsk.sql"/>
