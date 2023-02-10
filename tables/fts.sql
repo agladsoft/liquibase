@@ -1,4 +1,4 @@
-CREATE TABLE default.fts
+CREATE TABLE IF NOT EXISTS default.fts
 (
     `id` Int128,
 
