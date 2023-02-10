@@ -33,11 +33,11 @@
 		<sqlFile path="cross_check_marketing_db/nle_cross.sql"/>
 
 
-		<sqlFile path="views_marketing_db/all_enriched.sql"/>
 		<sqlFile path="views_marketing_db/import_containers.sql"/>
 	    <sqlFile path="views_marketing_db/import_duplicate_containers.sql"/>
 	    <sqlFile path="views_marketing_db/import_main_containers.sql"/>
 		<sqlFile path="views_marketing_db/import_main_duplicate_containers.sql"/>
+		<sqlFile path="views_marketing_db/all_enriched.sql"/>
 	</changeSet>
 
 
