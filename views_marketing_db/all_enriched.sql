@@ -2,6 +2,7 @@ CREATE OR REPLACE VIEW default.all_enriched
 AS SELECT
     import_main_duplicate_containers.direction AS direction,
     import_main_duplicate_containers.consignee AS company,
+    import_main_duplicate_containers.consignee_name_unified AS company_unified,
     import_main_duplicate_containers.consignee_inn AS inn,
     import_main_duplicate_containers.shipper_seaport AS seaport,
     import_main_duplicate_containers.seaport_unified AS seaport_unified,
@@ -37,6 +38,7 @@ AS SELECT
 UNION ALL
  SELECT import_nw_enriched.direction AS direction,
     import_nw_enriched.consignee_name AS company,
+    import_nw_enriched.consignee_name_unified AS company_unified,
     import_nw_enriched.consignee_inn AS inn,
     import_nw_enriched.seaport AS seaport,
     import_nw_enriched.seaport_unified AS seaport_unified,
@@ -72,6 +74,7 @@ UNION ALL
 UNION ALL
  SELECT import_vsk_enriched.direction AS direction,
     import_vsk_enriched.consignee_name AS company,
+    import_vsk_enriched.consignee_name_unified AS company_unified,
     import_vsk_enriched.consignee_inn AS inn,
     import_vsk_enriched.seaport AS seaport,
     import_vsk_enriched.seaport_unified AS seaport_unified,
@@ -107,6 +110,7 @@ UNION ALL
 UNION ALL
  SELECT export_enriched.direction AS direction,
     export_enriched.shipper AS company,
+    export_enriched.shipper_name_unified AS company_unified,
     export_enriched.shipper_inn AS inn,
     export_enriched.unload_seaport AS seaport,
     export_enriched.seaport_unified AS seaport_unified,
@@ -142,6 +146,7 @@ UNION ALL
 UNION ALL
  SELECT export_nw_enriched.direction AS direction,
     export_nw_enriched.shipper_name AS company,
+    export_nw_enriched.shipper_name_unified AS company_unified,
     export_nw_enriched.shipper_inn AS inn,
     export_nw_enriched.seaport AS seaport,
     export_nw_enriched.seaport_unified AS seaport_unified,
@@ -177,6 +182,7 @@ UNION ALL
 UNION ALL
  SELECT export_vsk_enriched.direction AS direction,
     export_vsk_enriched.shipper_name AS company,
+    export_vsk_enriched.shipper_name_unified AS company_unified,
     export_vsk_enriched.shipper_inn AS inn,
     export_vsk_enriched.seaport AS seaport,
     export_vsk_enriched.seaport_unified AS seaport_unified,
