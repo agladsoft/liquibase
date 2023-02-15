@@ -7,6 +7,7 @@ AS SELECT
     export_vsk.terminal AS terminal,
     'export' AS direction,
     export_vsk.line AS line,
+    rl.line_unified AS line_unified,
     export_vsk.expeditor AS shipping_agent,
     export_vsk.container_number AS container_number,
     export_vsk.destination_port AS destination_port,
@@ -14,6 +15,7 @@ AS SELECT
     export_vsk.teu AS teu,
     export_vsk.container_size AS container_size,
     export_vsk.container_type AS container_type,
+    rct.container_type_unified AS container_type_unified,
     export_vsk.shipper_country AS shipper_country,
     export_vsk.shipper_region AS shipper_region,
     export_vsk.gtd_number AS gtd_number,
@@ -37,4 +39,6 @@ AS SELECT
      LEFT JOIN default.reference_tnved2_actual rt ON export_vsk.tnved_group_id = rt.group_tnved
      LEFT JOIN marketing_db.reference_inn ri ON export_vsk.shipper_name = ri.company_name
      LEFT JOIN marketing_db.reference_region rg ON export_vsk.destination_port = rg.seaport
+     LEFT JOIN marketing_db.reference_lines rl ON export_vsk.line = rl.line
+     LEFT JOIN marketing_db.reference_container_type rct ON export_vsk.container_type = rct.container_type
      LEFT JOIN marketing_db.reference_geo rgeo ON export_vsk.destination_port = rgeo.seaport;

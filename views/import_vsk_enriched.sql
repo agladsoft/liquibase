@@ -5,10 +5,12 @@ AS SELECT
     import_vsk.month AS month,
     import_vsk.period AS period,
     import_vsk.line AS line,
+    rl.line_unified AS line_unified,
     import_vsk.shipper_name AS shipper_name,
     import_vsk.expeditor AS expeditor,
     import_vsk.goods_name AS goods_name,
     import_vsk.container_type AS container_type,
+    rct.container_type_unified AS container_type_unified,
     import_vsk.container_size AS container_size,
     import_vsk.container_count AS container_count,
     import_vsk.terminal AS terminal,
@@ -43,4 +45,6 @@ AS SELECT
      LEFT JOIN default.reference_tnved2_actual rt ON import_vsk.tnved_group_id = rt.group_tnved
      LEFT JOIN default.reference_inn ri ON import_vsk.consignee_name = ri.company_name
      LEFT JOIN default.reference_region rg ON import_vsk.departure_port = rg.seaport
+     LEFT JOIN default.reference_lines rl ON import_vsk.line = rl.line
+     LEFT JOIN default.reference_container_type rct ON import_vsk.container_type = rct.container_type
      LEFT JOIN default.reference_geo rgeo ON import_vsk.departure_port = rgeo.seaport;

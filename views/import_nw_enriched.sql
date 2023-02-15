@@ -5,10 +5,12 @@ AS SELECT
     import_nw.month AS month,
     import_nw.period AS period,
     import_nw.line AS line,
+    rl.line_unified AS line_unified,
     import_nw.shipper_name AS shipper_name,
     import_nw.expeditor AS expeditor,
     import_nw.goods_name AS goods_name,
     import_nw.container_type AS container_type,
+    rct.container_type_unified AS container_type_unified,
     import_nw.container_size AS container_size,
     import_nw.container_count AS container_count,
     import_nw.terminal AS terminal,
@@ -35,4 +37,6 @@ AS SELECT
      LEFT JOIN default.reference_tnved2_actual rt ON import_nw.tnved_group_id = rt.group_tnved
      LEFT JOIN default.reference_inn ri ON import_nw.consignee_name = ri.company_name
      LEFT JOIN default.reference_region rg ON import_nw.departure_port = rg.seaport
+     LEFT JOIN default.reference_lines rl ON import_nw.line = rl.line
+     LEFT JOIN default.reference_container_type rct ON import_nw.container_type = rct.container_type
      LEFT JOIN default.reference_geo rgeo ON import_nw.departure_port = rgeo.seaport;
