@@ -1,14 +1,15 @@
 CREATE OR REPLACE VIEW default.all_enriched
 AS SELECT
-    import_enriched.direction AS direction,
-    import_enriched.consignee AS company,
-    import_enriched.consignee_inn AS inn,
-    import_enriched.shipper_seaport AS seaport,
-    import_enriched.seaport_unified AS seaport_unified,
-    import_enriched.country AS country,
-    import_enriched.region AS region,
-    import_enriched.lat_port AS lat_port,
-    import_enriched.long_port AS long_port,
+    import_main_duplicate_containers.direction AS direction,
+    import_main_duplicate_containers.consignee AS company,
+    import_main_duplicate_containers.consignee_name_unified AS company_unified,
+    import_main_duplicate_containers.consignee_inn AS inn,
+    import_main_duplicate_containers.shipper_seaport AS seaport,
+    import_main_duplicate_containers.seaport_unified AS seaport_unified,
+    import_main_duplicate_containers.country AS country,
+    import_main_duplicate_containers.region AS region,
+    import_main_duplicate_containers.lat_port AS lat_port,
+    import_main_duplicate_containers.long_port AS long_port,
     concat('[[[',
  toString(lat_port),
  ',
@@ -23,20 +24,21 @@ AS SELECT
 ',
  toString(long_port),
  ']') AS geopoint,
-    import_enriched.year_parsed_on AS year,
-    import_enriched.month_parsed_on AS month,
-    import_enriched.line AS line,
-    import_enriched.container_number AS container_number,
-    import_enriched.teu AS teu,
-    import_enriched.terminal AS terminal,
-    import_enriched.goods_tnved AS goods_tnved,
-    import_enriched.tnved_group_name AS tnved_group_name,
-    import_enriched.container_size AS container_size,
-    import_enriched.container_type AS container_type
-   FROM default.import_enriched
-UNION DISTINCT
+    import_main_duplicate_containers.year_parsed_on AS year,
+    import_main_duplicate_containers.month_parsed_on AS month,
+    import_main_duplicate_containers.line AS line,
+    import_main_duplicate_containers.container_number AS container_number,
+    import_main_duplicate_containers.teu_main AS teu,
+    import_main_duplicate_containers.terminal AS terminal,
+    import_main_duplicate_containers.goods_tnved AS goods_tnved,
+    import_main_duplicate_containers.tnved_group_name AS tnved_group_name,
+    import_main_duplicate_containers.container_size AS container_size,
+    import_main_duplicate_containers.container_type AS container_type
+   FROM default.import_main_duplicate_containers
+UNION ALL
  SELECT import_nw_enriched.direction AS direction,
     import_nw_enriched.consignee_name AS company,
+    import_nw_enriched.consignee_name_unified AS company_unified,
     import_nw_enriched.consignee_inn AS inn,
     import_nw_enriched.seaport AS seaport,
     import_nw_enriched.seaport_unified AS seaport_unified,
@@ -69,9 +71,10 @@ UNION DISTINCT
     import_nw_enriched.container_size AS container_size,
     import_nw_enriched.container_type AS container_type
    FROM default.import_nw_enriched
-UNION DISTINCT
+UNION ALL
  SELECT import_vsk_enriched.direction AS direction,
     import_vsk_enriched.consignee_name AS company,
+    import_vsk_enriched.consignee_name_unified AS company_unified,
     import_vsk_enriched.consignee_inn AS inn,
     import_vsk_enriched.seaport AS seaport,
     import_vsk_enriched.seaport_unified AS seaport_unified,
@@ -104,9 +107,10 @@ UNION DISTINCT
     import_vsk_enriched.container_size AS container_size,
     import_vsk_enriched.container_type AS container_type
    FROM default.import_vsk_enriched
-UNION DISTINCT
+UNION ALL
  SELECT export_enriched.direction AS direction,
     export_enriched.shipper AS company,
+    export_enriched.shipper_name_unified AS company_unified,
     export_enriched.shipper_inn AS inn,
     export_enriched.unload_seaport AS seaport,
     export_enriched.seaport_unified AS seaport_unified,
@@ -139,9 +143,10 @@ UNION DISTINCT
     export_enriched.container_size AS container_size,
     export_enriched.container_type AS container_type
    FROM default.export_enriched
-UNION DISTINCT
+UNION ALL
  SELECT export_nw_enriched.direction AS direction,
     export_nw_enriched.shipper_name AS company,
+    export_nw_enriched.shipper_name_unified AS company_unified,
     export_nw_enriched.shipper_inn AS inn,
     export_nw_enriched.seaport AS seaport,
     export_nw_enriched.seaport_unified AS seaport_unified,
@@ -174,9 +179,10 @@ UNION DISTINCT
     export_nw_enriched.container_size AS container_size,
     export_nw_enriched.container_type AS container_type
    FROM default.export_nw_enriched
-UNION DISTINCT
+UNION ALL
  SELECT export_vsk_enriched.direction AS direction,
     export_vsk_enriched.shipper_name AS company,
+    export_vsk_enriched.shipper_name_unified AS company_unified,
     export_vsk_enriched.shipper_inn AS inn,
     export_vsk_enriched.seaport AS seaport,
     export_vsk_enriched.seaport_unified AS seaport_unified,
