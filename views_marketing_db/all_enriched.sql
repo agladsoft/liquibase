@@ -1,5 +1,6 @@
 CREATE OR REPLACE VIEW default.all_enriched
 AS SELECT
+    'import_main_duplicate_containers' AS view_name,
     import_main_duplicate_containers.direction AS direction,
     import_main_duplicate_containers.consignee AS company,
     import_main_duplicate_containers.consignee_name_unified AS company_unified,
@@ -39,7 +40,9 @@ AS SELECT
     import_main_duplicate_containers.container_type_unified AS container_type_unified
    FROM default.import_main_duplicate_containers
 UNION ALL
- SELECT import_nw_enriched.direction AS direction,
+ SELECT
+    'import_nw_enriched' AS view_name,
+    import_nw_enriched.direction AS direction,
     import_nw_enriched.consignee_name AS company,
     import_nw_enriched.consignee_name_unified AS company_unified,
     import_nw_enriched.consignee_inn AS inn,
@@ -78,7 +81,9 @@ UNION ALL
     import_nw_enriched.container_type_unified AS container_type_unified
    FROM default.import_nw_enriched
 UNION ALL
- SELECT import_vsk_enriched.direction AS direction,
+ SELECT
+    'import_vsk_enriched' AS view_name,
+    import_vsk_enriched.direction AS direction,
     import_vsk_enriched.consignee_name AS company,
     import_vsk_enriched.consignee_name_unified AS company_unified,
     import_vsk_enriched.consignee_inn AS inn,
@@ -117,7 +122,9 @@ UNION ALL
     import_vsk_enriched.container_type_unified AS container_type_unified
    FROM default.import_vsk_enriched
 UNION ALL
- SELECT export_enriched.direction AS direction,
+ SELECT
+    'export_enriched' AS view_name,
+    export_enriched.direction AS direction,
     export_enriched.shipper AS company,
     export_enriched.shipper_name_unified AS company_unified,
     export_enriched.shipper_inn AS inn,
@@ -156,7 +163,9 @@ UNION ALL
     export_enriched.container_type_unified AS container_type_unified
    FROM default.export_enriched
 UNION ALL
- SELECT export_nw_enriched.direction AS direction,
+ SELECT
+    'export_nw_enriched' AS view_name,
+    export_nw_enriched.direction AS direction,
     export_nw_enriched.shipper_name AS company,
     export_nw_enriched.shipper_name_unified AS company_unified,
     export_nw_enriched.shipper_inn AS inn,
@@ -195,7 +204,9 @@ UNION ALL
     export_nw_enriched.container_type_unified AS container_type_unified
    FROM default.export_nw_enriched
 UNION ALL
- SELECT export_vsk_enriched.direction AS direction,
+ SELECT
+    'export_vsk_enriched' AS view_name,
+    export_vsk_enriched.direction AS direction,
     export_vsk_enriched.shipper_name AS company,
     export_vsk_enriched.shipper_name_unified AS company_unified,
     export_vsk_enriched.shipper_inn AS inn,
