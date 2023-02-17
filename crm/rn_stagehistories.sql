@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.rn_stagehistories
     (
+    `@odata.etag` Nullable(String),
     `timezoneruleversionnumber` Nullable(Integer),
     `versionnumber` Integer,
     `_owningbusinessunit_value` Nullable(String),
@@ -11,12 +12,12 @@ CREATE TABLE IF NOT EXISTS crm.rn_stagehistories
     `rn_name` Nullable(String),
     `rn_stagehistoryid` Nullable(String),
     `_ownerid_value` Nullable(String),
-    `modifiedon` Nullable(DateTime),
+    `modifiedon` Nullable(Date),
     `_rn_stageid_value` Nullable(String),
     `_modifiedby_value` Nullable(String),
     `_rn_opportunityid_value` Nullable(String),
-    `createdon` Nullable(DateTime),
-    `rn_eventdate` Nullable(DateTime),
+    `createdon` Nullable(Date),
+    `rn_eventdate` Nullable(Date),
     `utcconversiontimezonecode` Nullable(String),
     `overriddencreatedon` Nullable(String),
     `importsequencenumber` Nullable(String),

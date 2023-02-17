@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS crm.leads
     `address2_addresstypecode` Nullable(Integer),
     `kc_convertingemail` Nullable(Bool),
     `versionnumber` Integer,
-    `createdon` Nullable(DateTime),
+    `createdon` Nullable(Date),
     `prioritycode` Nullable(Integer),
     `traversedpath` Nullable(String),
     `address1_shippingmethodcode` Nullable(Integer),
