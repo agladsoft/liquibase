@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.opportunities
     (
-    `@odata.etag` Nullable(String),
+    `odata.etag` Nullable(String),
     `kc_directioncode` Nullable(Integer),
     `prioritycode` Nullable(Integer),
     `completeinternalreview` Nullable(Bool),

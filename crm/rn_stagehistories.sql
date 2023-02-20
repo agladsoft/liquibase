@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.rn_stagehistories
     (
-    `@odata.etag` Nullable(String),
+    `odata.etag` Nullable(String),
     `timezoneruleversionnumber` Nullable(Integer),
     `versionnumber` Integer,
     `_owningbusinessunit_value` Nullable(String),

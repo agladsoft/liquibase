@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.kc_interviews
     (
-    `@odata.etag` Nullable(String),
+    `odata.etag` Nullable(String),
     `kc_customsservices` Nullable(Integer),
     `kc_interviewformcode` Nullable(Integer),
     `kc_question3` Nullable(String),

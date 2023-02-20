@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.leads
     (
-    `@odata.etag` Nullable(String),
+    `odata.etag` Nullable(String),
     `confirminterest` Nullable(Bool),
     `statecode` Nullable(Integer),
     `statuscode` Nullable(Integer),

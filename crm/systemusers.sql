@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.systemusers
     (
-    `@odata.etag` Nullable(String),
+    `odata.etag` Nullable(String),
     `systemuserid` Nullable(String),
     `accessmode` Nullable(Integer),
     `kc_guidisr` Nullable(String),

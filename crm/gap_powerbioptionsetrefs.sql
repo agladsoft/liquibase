@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS crm.gap_powerbioptionsetrefs
     (
-    `@odata.etag` Nullable(String),
+    `odata.etag` Nullable(String),
     `_organizationid_value` Nullable(String),
     `statecode` Nullable(Integer),
     `statuscode` Nullable(Integer),
