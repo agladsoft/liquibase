@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS default.rzhd
     `consignee_okpo` Nullable(String),
     `consignee_according_to_egrpo` Nullable(String),
     `puzt_consignor` Nullable(String),
-    `сargo_group` Nullable(String),
+    `cargo_group` Nullable(String),
     `cargo_group_okved` Nullable(String),
     `group_of_cargo_according_to_go6` Nullable(String),
     `group_of_cargo_according_to_go7` Nullable(String),
