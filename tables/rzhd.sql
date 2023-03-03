@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS default.rzhd
     `cargo_class` Nullable(Bigint),
     `currency_code` Nullable(String),
     `cargo_code_of_the_etsng` Nullable(String),
-    `cargo_code_okved` Nullable(Bigint),
+    `cargo_code_okved` Nullable(String),
     `cargo_code_according_to_the_harmonized_nomenclature_of_goods_gng` Nullable(String),
     `subsidiary_and_affiliate_code_of_rzd` Nullable(String),
     `exceptional_rate_code` Nullable(String),
