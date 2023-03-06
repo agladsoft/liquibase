@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS default.rzhd
+CREATE TABLE IF NOT EXISTS rzhd.rzhd_novorossiysk
 (
     `administration_of_the_cis_destination_station` Nullable(String),
     `administration_of_the_cis_departure_station` Nullable(String),
