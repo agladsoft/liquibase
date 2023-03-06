@@ -35,10 +35,10 @@ AS SELECT
     rg.region AS region,
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
-   FROM default.export_vsk
+   FROM marketing_db.export_vsk
      LEFT JOIN default.reference_tnved2_actual rt ON export_vsk.tnved_group_id = rt.group_tnved
-     LEFT JOIN default.reference_inn ri ON export_vsk.shipper_name = ri.company_name
-     LEFT JOIN default.reference_region rg ON export_vsk.destination_port = rg.seaport
-     LEFT JOIN default.reference_lines rl ON export_vsk.line = rl.line
-     LEFT JOIN default.reference_container_type rct ON export_vsk.container_type = rct.container_type
-     LEFT JOIN default.reference_geo rgeo ON export_vsk.destination_port = rgeo.seaport;
+     LEFT JOIN marketing_db.reference_inn ri ON export_vsk.shipper_name = ri.company_name
+     LEFT JOIN marketing_db.reference_region rg ON export_vsk.destination_port = rg.seaport
+     LEFT JOIN marketing_db.reference_lines rl ON export_vsk.line = rl.line
+     LEFT JOIN marketing_db.reference_container_type rct ON export_vsk.container_type = rct.container_type
+     LEFT JOIN marketing_db.reference_geo rgeo ON export_vsk.destination_port = rgeo.seaport;

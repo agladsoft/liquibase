@@ -68,3 +68,4 @@ AS SELECT
     fts.original_file_parsed_on AS original_file_parsed_on,
     fts.original_file_index AS original_file_index
 FROM default.fts;
+

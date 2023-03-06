@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
 	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,11 +9,14 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-<!--	<include file="changelog/create_tables.xml"/>-->
-<!--	<include file="changelog/create_views.xml"/>-->
-<!--	<include file="changelog/create_cross_check.xml"/>-->
-
-	<include file="changelog/create_crm.xml"/>
-	<include file="changelog/create_rzhd.xml"/>
+	<changeSet id="createCrm" author="timur">
+	  <sqlFile path="crm/create_database.sql"/>
+	  <sqlFile path="crm/gap_powerbioptionsetrefs.sql"/>
+	  <sqlFile path="crm/kc_interviews.sql"/>
+	  <sqlFile path="crm/leads.sql"/>
+	  <sqlFile path="crm/opportunities.sql"/>
+	  <sqlFile path="crm/rn_stagehistories.sql"/>
+	  <sqlFile path="crm/systemusers.sql"/>
+	</changeSet>
 
 </databaseChangeLog>
