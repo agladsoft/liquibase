@@ -124,7 +124,8 @@ CREATE TABLE IF NOT EXISTS crm.opportunities
     `customerpainpoints` Nullable(String),
     `scheduleproposalmeeting` Nullable(String),
     `initialcommunication` Nullable(String),
-    `timeline` Nullable(String)
+    `timeline` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;

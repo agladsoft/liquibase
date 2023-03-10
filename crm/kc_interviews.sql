@@ -93,7 +93,8 @@ CREATE TABLE IF NOT EXISTS crm.kc_interviews
     `kc_comment9` Nullable(String),
     `rn_answer14` Nullable(String),
     `kc_question9` Nullable(String),
-    `_modifiedonbehalfby_value` Nullable(String)
+    `_modifiedonbehalfby_value` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;

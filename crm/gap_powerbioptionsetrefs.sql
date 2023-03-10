@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS crm.gap_powerbioptionsetrefs
     `importsequencenumber` Nullable(String),
     `_createdonbehalfby_value` Nullable(String),
     `timezoneruleversionnumber` Nullable(String),
-    `utcconversiontimezonecode` Nullable(String)
+    `utcconversiontimezonecode` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;

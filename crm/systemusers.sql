@@ -136,7 +136,8 @@ CREATE TABLE IF NOT EXISTS crm.systemusers
     `address1_stateorprovince` Nullable(String),
     `displayinserviceviews` Nullable(Bool),
     `timezoneruleversionnumber` Nullable(String),
-    `applicationid` Nullable(String)
+    `applicationid` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;

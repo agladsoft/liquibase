@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS crm.rn_stagehistories
     `importsequencenumber` Nullable(String),
     `_modifiedonbehalfby_value` Nullable(String),
     `_createdonbehalfby_value` Nullable(String),
-    `_owningteam_value` Nullable(String)
+    `_owningteam_value` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;

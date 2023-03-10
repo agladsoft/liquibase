@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS crm.leads
     `address1_line1` Nullable(String),
     `importsequencenumber` Nullable(String),
     `revenue_base` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;
