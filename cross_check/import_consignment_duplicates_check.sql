@@ -5,7 +5,6 @@ AS SELECT
     rlcc.ship_name_unified AS ship_name_unified,
     rlcc.direction AS direction,
     rlcc.is_empty AS is_empty,
-    rlcc.line AS line,
     rlcc.line_unified AS line_unified,
     rlcc.container_size AS container_size,
     rlcc.container_number AS container_number,
@@ -20,8 +19,10 @@ AS SELECT
     ie.ship_name_unified AS ship_name_unified,
     ie.direction AS direction,
     ie.is_empty AS is_empty,
-    rlcc.line AS line,
-    rlcc.line_unified AS line_unified,
+        CASE
+            WHEN rlcc.line_unified is not null THEN rlcc.line_unified
+            ELSE ie.line_unified
+        END AS line_unified,
     ie.container_size AS container_size,
     ie.container_number AS container_number,
     ie.date AS date,
@@ -32,4 +33,4 @@ AS SELECT
    FROM default.import_enriched ie
    LEFT JOIN default.reference_lines_cross_check AS rlcc ON ie.line = rlcc.line
    ) AS rlcc
-  GROUP BY rlcc.year_parsed_on, rlcc.month_parsed_on, rlcc.ship_name_unified, rlcc.direction, rlcc.is_empty, rlcc.line, rlcc.line_unified, rlcc.container_size, rlcc.container_number, rlcc.date, rlcc.consignment, rlcc.terminal;
+  GROUP BY rlcc.year_parsed_on, rlcc.month_parsed_on, rlcc.ship_name_unified, rlcc.direction, rlcc.is_empty, rlcc.line_unified, rlcc.container_size, rlcc.container_number, rlcc.date, rlcc.consignment, rlcc.terminal;
