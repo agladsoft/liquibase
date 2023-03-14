@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_weekly
     `quantity_of_containers` Nullable(Bigint),
     `quantity_of_wagons` Nullable(Bigint),
     `cargo_turnover` Nullable(Bigint),
-    `transportation_volume_tons` Nullable(Bigint),
+    `transportation_volume_tons` Nullable(Decimal128(19)),
     `tara_weight_of_an_empty_wagon` Nullable(Bigint),
     `wagon_kilometers` Nullable(Bigint),
     `date_of_disbursement` Nullable(Date),

@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_petersburg
     `park_type` Nullable(String),
     `cargo_turnover` Nullable(Bigint),
     `tariff_sign` Nullable(String),
-    `transportation_volume_tons` Nullable(Bigint),
+    `transportation_volume_tons` Nullable(Decimal128(19)),
     `tara_weight_of_an_empty_wagon` Nullable(Bigint),
     `type_of_accounting` Nullable(String),
     `wagon_kilometers` Nullable(Bigint),
