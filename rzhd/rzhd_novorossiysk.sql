@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_novorossiysk
     `leaseholder` Nullable(String),
     `payer_of_the_railway_tariff` Nullable(String),
     `weight` Nullable(Decimal128(19)),
-    `carriage_fee` Nullable(Decimal128(19)),
+    `carriage_fee` Nullable(Bigint),
     `cargo_class` Nullable(Bigint),
     `cis_departure_station` Nullable(String),
     `cis_destination_station` Nullable(String),
