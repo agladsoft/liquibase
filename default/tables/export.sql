@@ -3,8 +3,6 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `ship` Nullable(String),
 
-    `export_id` Int32,
-
     `date` Nullable(Date),
 
     `terminal` Nullable(String),
@@ -43,7 +41,7 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `goods_tnved` Nullable(String),
 
-    `parsed_on` Nullable(Date),
+    `parsed_on` Date,
 
     `month_parsed_on` Nullable(Int32) DEFAULT toMonth(parsed_on),
 
@@ -58,4 +56,4 @@ CREATE TABLE IF NOT EXISTS default.export
     `expeditor` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY export_id;
+ORDER BY parsed_on;

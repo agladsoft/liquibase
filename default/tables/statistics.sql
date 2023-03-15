@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS default.statistics
 (
 
-    `month` Nullable(Int32),
+    `month` Int32,
 
     `year` Nullable(Int32),
 
@@ -21,9 +21,7 @@ CREATE TABLE IF NOT EXISTS default.statistics
 
     `date_arrive` Nullable(String),
 
-    `date_leave` Nullable(String),
-
-    `id` Int64
+    `date_leave` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY id;
+ORDER BY month;

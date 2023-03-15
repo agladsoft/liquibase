@@ -13,9 +13,7 @@ CREATE TABLE IF NOT EXISTS default.reference_morservice
 
     `teu` Nullable(Float32),
 
-    `is_ref` Nullable(Bool) DEFAULT if(upper(container_type) = 'REF', true, false),
-
-    `id` Int64
+    `is_ref` Nullable(Bool) DEFAULT if(upper(container_type) = 'REF', true, false)
 )
 ENGINE = MergeTree()
-ORDER BY id;
+ORDER BY month;

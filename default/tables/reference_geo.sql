@@ -3,13 +3,11 @@ CREATE TABLE IF NOT EXISTS default.reference_geo
 
     `seaport` Nullable(String),
 
-    `country` Nullable(String),
+    `country` String,
 
     `lat_port` Nullable(Float32),
 
-    `long_port` Nullable(Float32),
-
-    `id` Int64
+    `long_port` Nullable(Float32)
 )
 ENGINE = MergeTree()
-ORDER BY id;
+ORDER BY country;

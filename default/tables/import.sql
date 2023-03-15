@@ -3,8 +3,6 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `ship` Nullable(String),
 
-    `import_id` Int32,
-
     `date` Nullable(Date),
 
     `terminal` Nullable(String),
@@ -47,7 +45,7 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `goods_tnved` Nullable(String),
 
-    `parsed_on` Nullable(Date),
+    `parsed_on` Date,
 
     `month_parsed_on` Nullable(Int32) DEFAULT toMonth(parsed_on),
 
@@ -58,4 +56,4 @@ CREATE TABLE IF NOT EXISTS default.import
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY import_id;
+ORDER BY parsed_on;

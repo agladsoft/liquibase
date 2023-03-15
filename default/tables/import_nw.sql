@@ -1,11 +1,9 @@
 CREATE TABLE IF NOT EXISTS default.import_nw
 (
 
-    `import_nw_id` Int32,
-
     `year` Nullable(Int32),
 
-    `month` Nullable(Int32),
+    `month` Int32,
 
     `period` Nullable(String),
 
@@ -50,4 +48,4 @@ CREATE TABLE IF NOT EXISTS default.import_nw
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY import_nw_id;
+ORDER BY month;

@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS default.reference_lines_cross_check
     `line_unified` Nullable(String)
 )
 ENGINE = MergeTree
-ORDER BY tuple(line)
+ORDER BY line;

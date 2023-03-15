@@ -1,11 +1,9 @@
 CREATE TABLE IF NOT EXISTS default.export_vsk
 (
 
-    `export_vsk_id` Int32,
-
     `year` Nullable(Int32),
 
-    `month` Nullable(Int32),
+    `month` Int32,
 
     `shipment_date` Nullable(String),
 
@@ -52,4 +50,4 @@ CREATE TABLE IF NOT EXISTS default.export_vsk
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY export_vsk_id;
+ORDER BY month;

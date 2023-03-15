@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS default.reference_tnved2
 (
 
-    `section_tnved` Nullable(String),
+    `section_tnved` String,
 
     `group_tnved` Nullable(String),
 
@@ -11,9 +11,7 @@ CREATE TABLE IF NOT EXISTS default.reference_tnved2
 
     `start_date_group` Nullable(Date),
 
-    `expire_date_group` Nullable(Date),
-
-    `id` Int64
+    `expire_date_group` Nullable(Date)
 )
 ENGINE = MergeTree()
-ORDER BY id;
+ORDER BY section_tnved;
