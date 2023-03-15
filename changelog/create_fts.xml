@@ -9,14 +9,10 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-	<changeSet id="createCRM" author="timur">
-	  <sqlFile path="crm/tables/create_database.sql"/>
-	  <sqlFile path="crm/tables/gap_powerbioptionsetrefs.sql"/>
-	  <sqlFile path="crm/tables/kc_interviews.sql"/>
-	  <sqlFile path="crm/tables/leads.sql"/>
-	  <sqlFile path="crm/tables/opportunities.sql"/>
-	  <sqlFile path="crm/tables/rn_stagehistories.sql"/>
-	  <sqlFile path="crm/tables/systemusers.sql"/>
+	<changeSet id="createFTS" author="timur">
+        <sqlFile path="fts/tables/create_database.sql"/>
+        <sqlFile path="fts/tables/fts.sql"/>
+        <sqlFile path="fts/views/fts_view.sql"/>
 	</changeSet>
 
 </databaseChangeLog>

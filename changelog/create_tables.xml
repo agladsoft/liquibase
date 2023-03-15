@@ -10,24 +10,24 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<changeSet id="createTables" author="timur">
-	  <sqlFile path="tables/fts.sql"/>
-	  <sqlFile path="tables/export.sql"/>
-	  <sqlFile path="tables/export_nw.sql"/>
-	  <sqlFile path="tables/export_vsk.sql"/>
-	  <sqlFile path="tables/import.sql"/>
-	  <sqlFile path="tables/import_nw.sql"/>
-	  <sqlFile path="tables/import_vsk.sql"/>
-	  <sqlFile path="tables/reference_container_type.sql"/>
-	  <sqlFile path="tables/reference_geo.sql"/>
-	  <sqlFile path="tables/reference_inn.sql"/>
-	  <sqlFile path="tables/reference_is_empty.sql"/>
-	  <sqlFile path="tables/reference_lines.sql"/>
-	  <sqlFile path="tables/reference_morservice.sql"/>
-	  <sqlFile path="tables/reference_region.sql"/>
-	  <sqlFile path="tables/reference_ship.sql"/>
-	  <sqlFile path="tables/reference_terminal.sql"/>
-	  <sqlFile path="tables/reference_tnved2.sql"/>
-	  <sqlFile path="tables/statistics.sql"/>
+	  <sqlFile path="default/tables/export.sql"/>
+	  <sqlFile path="default/tables/export_nw.sql"/>
+	  <sqlFile path="default/tables/export_vsk.sql"/>
+	  <sqlFile path="default/tables/import.sql"/>
+	  <sqlFile path="default/tables/import_nw.sql"/>
+	  <sqlFile path="default/tables/import_vsk.sql"/>
+	  <sqlFile path="default/tables/reference_container_type.sql"/>
+	  <sqlFile path="default/tables/reference_geo.sql"/>
+	  <sqlFile path="default/tables/reference_inn.sql"/>
+	  <sqlFile path="default/tables/reference_is_empty.sql"/>
+	  <sqlFile path="default/tables/reference_lines.sql"/>
+	  <sqlFile path="default/tables/reference_lines_cross_check.sql"/>
+	  <sqlFile path="default/tables/reference_morservice.sql"/>
+	  <sqlFile path="default/tables/reference_region.sql"/>
+	  <sqlFile path="default/tables/reference_ship.sql"/>
+	  <sqlFile path="default/tables/reference_terminal.sql"/>
+	  <sqlFile path="default/tables/reference_tnved2.sql"/>
+	  <sqlFile path="default/tables/statistics.sql"/>
 	</changeSet>
 
 </databaseChangeLog>

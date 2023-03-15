@@ -9,12 +9,12 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-	<changeSet id="createCrm" author="timur">
-	  <sqlFile path="rzhd/create_database.sql"/>
-	  <sqlFile path="rzhd/rzhd_ktk.sql"/>
-	  <sqlFile path="rzhd/rzhd_novorossiysk.sql"/>
-	  <sqlFile path="rzhd/rzhd_petersburg.sql"/>
-	  <sqlFile path="rzhd/rzhd_weekly.sql"/>
+	<changeSet id="createRZHD" author="timur">
+		<sqlFile path="rzhd/tables/create_database.sql"/>
+		<sqlFile path="rzhd/tables/rzhd_ktk.sql"/>
+		<sqlFile path="rzhd/tables/rzhd_novorossiysk.sql"/>
+		<sqlFile path="rzhd/tables/rzhd_petersburg.sql"/>
+		<sqlFile path="rzhd/tables/rzhd_weekly.sql"/>
 	</changeSet>
 
 </databaseChangeLog>

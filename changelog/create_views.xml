@@ -10,31 +10,18 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<changeSet id="createViews" author="timur">
-	  <sqlFile path="views/fts.sql"/>
-	  <sqlFile path="views/export.sql"/>
-	  <sqlFile path="views/export_nw.sql"/>
-	  <sqlFile path="views/export_vsk.sql"/>
-	  <sqlFile path="views/import.sql"/>
-	  <sqlFile path="views/import_nw.sql"/>
-	  <sqlFile path="views/import_vsk.sql"/>
-	  <sqlFile path="views/reference_container_type.sql"/>
-	  <sqlFile path="views/reference_geo.sql"/>
-	  <sqlFile path="views/reference_inn.sql"/>
-	  <sqlFile path="views/reference_is_empty.sql"/>
-	  <sqlFile path="views/reference_lines.sql"/>
-	  <sqlFile path="views/reference_morservice.sql"/>
-	  <sqlFile path="views/reference_region.sql"/>
-	  <sqlFile path="views/reference_ship.sql"/>
-	  <sqlFile path="views/reference_terminal.sql"/>
-	  <sqlFile path="views/reference_tnved2.sql"/>
-	  <sqlFile path="views/statistics.sql"/>
+		<sqlFile path="default/views/reference_tnved2_actual.sql"/>
+		<sqlFile path="default/views/export_nw_enriched.sql"/>
+		<sqlFile path="default/views/export_vsk_enriched.sql"/>
+		<sqlFile path="default/views/import_nw_enriched.sql"/>
+		<sqlFile path="default/views/import_vsk_enriched.sql"/>
+		<sqlFile path="default/views/statistics_view.sql"/>
 
-
-	  <sqlFile path="views/reference_tnved2_actual.sql"/>
-	  <sqlFile path="views/export_nw_enriched.sql"/>
-	  <sqlFile path="views/export_vsk_enriched.sql"/>
-	  <sqlFile path="views/import_nw_enriched.sql"/>
-	  <sqlFile path="views/import_vsk_enriched.sql"/>
+		<sqlFile path="default/views/all_enriched.sql"/>
+		<sqlFile path="default/views/import_containers.sql"/>
+		<sqlFile path="default/views/import_duplicate_containers.sql"/>
+		<sqlFile path="default/views/import_main_containers.sql"/>
+		<sqlFile path="default/views/import_main_duplicate_containers.sql"/>
 	</changeSet>
 
 </databaseChangeLog>
