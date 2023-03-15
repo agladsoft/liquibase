@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `line` Nullable(String),
 
-    `count` Nullable(String),
+    `count` String DEFAULT 1,
 
-    `teu` Nullable(Int32),
+    `teu` Nullable(Int32) DEFAULT (container_size / 2),
 
     `voyage` Nullable(String),
 
@@ -41,17 +41,17 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `shipper_seaport` Nullable(String),
 
-    `year` Nullable(Int32),
+    `year` Nullable(Int32) DEFAULT toYear(date),
 
-    `month` Nullable(Int32),
+    `month` Nullable(Int32) DEFAULT toMonth(date),
 
     `goods_tnved` Nullable(String),
 
     `parsed_on` Nullable(Date),
 
-    `month_parsed_on` Nullable(Int32),
+    `month_parsed_on` Nullable(Int32) DEFAULT toMonth(parsed_on),
 
-    `year_parsed_on` Nullable(Int32),
+    `year_parsed_on` Nullable(Int32) DEFAULT toYear(parsed_on),
 
     `original_file_name` Nullable(String),
 
