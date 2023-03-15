@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `count` String DEFAULT 1,
 
-    `teu` Nullable(Int32) DEFAULT (container_size / 2),
+    `teu` Nullable(Int32) DEFAULT (container_size / 20),
 
     `voyage` Nullable(String),
 

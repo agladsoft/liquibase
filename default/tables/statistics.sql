@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS default.statistics
 
     `count` Nullable(Int32),
 
-    `teu` Nullable(Int32) DEFAULT (container_size / 2),
+    `teu` Nullable(Int32) DEFAULT (container_size / 20),
 
     `date_arrive` Nullable(String),
 
