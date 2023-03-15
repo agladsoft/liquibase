@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS default.reference_morservice
 (
 
-    `month` Nullable(Int32),
+    `month` Int32,
 
     `year` Nullable(Int32),
 

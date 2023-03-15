@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.export_vsk_enriched
 AS SELECT
-    export_vsk.export_vsk_id AS export_vsk_id,
     export_vsk.year AS year,
     export_vsk.month AS month,
     export_vsk.shipment_date AS shipment_date,

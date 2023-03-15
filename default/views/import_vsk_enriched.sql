@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.import_vsk_enriched
 AS SELECT
-    import_vsk.import_vsk_id AS import_vsk_id,
     import_vsk.year AS year,
     import_vsk.month AS month,
     import_vsk.period AS period,

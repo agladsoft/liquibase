@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.export_enriched
 AS SELECT
-    export.export_id AS export_id,
     export.ship AS ship_name,
     rs.ship_name_unified AS ship_name_unified,
     'export' AS direction,

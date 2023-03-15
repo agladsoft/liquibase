@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.import_final
 AS SELECT
-    ie.import_id AS import_id,
     ie.date AS date,
     ie.year_parsed_on AS year_parsed_on,
     ie.month_parsed_on AS month_parsed_on,

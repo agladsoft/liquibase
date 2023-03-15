@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.import_enriched
-AS SELECT 
-    import.import_id AS import_id,
+AS SELECT
     import.ship AS ship_name,
     rs.ship_name_unified AS ship_name_unified,
     'import' AS direction,
