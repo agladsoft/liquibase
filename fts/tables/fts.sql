@@ -1,7 +1,5 @@
 CREATE TABLE IF NOT EXISTS fts.fts
 (
-    `id` Integer,
-
     `stat` Nullable(String),
 
     `declaration_number` Nullable(String),
@@ -12,7 +10,7 @@ CREATE TABLE IF NOT EXISTS fts.fts
 
     `customs_code` Nullable(String),
 
-    `date_of_registration` Nullable(Date),
+    `date_of_registration` Date,
 
   	`g074` Nullable(String),
 
@@ -337,4 +335,4 @@ CREATE TABLE IF NOT EXISTS fts.fts
     `original_file_index` Nullable(Integer)
 )
 ENGINE = MergeTree()
-ORDER BY id;
+ORDER BY date_of_registration;

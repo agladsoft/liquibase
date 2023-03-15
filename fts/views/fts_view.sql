@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW fts.fts_view
 AS SELECT
-    fts.id AS id,
     fts.stat AS stat,
     fts.declaration_number AS declaration_number,
     fts.the_number_of_the_goods_is_the_following AS the_number_of_the_goods_is_the_following,
