@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS default.statistics
 
     `direction` Nullable(String),
 
-    `is_empty` Nullable(UInt8),
+    `is_empty` Nullable(Bool),
 
     `line` Nullable(String),
 
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS default.statistics
 
     `count` Nullable(Int32),
 
-    `teu` Nullable(Int32),
+    `teu` Nullable(Int32) DEFAULT (container_size / 2),
 
     `date_arrive` Nullable(String),
 

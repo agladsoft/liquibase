@@ -5,7 +5,7 @@ AS SELECT
     rs.ship_name_unified AS ship_name_unified,
     'import' AS direction,
         CASE
-            WHEN re.is_empty_unified = import.goods_name_rus THEN true
+            WHEN re.is_empty = import.goods_name_rus THEN true
             ELSE false
         END AS is_empty,
     import.date AS date,

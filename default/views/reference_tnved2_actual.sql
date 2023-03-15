@@ -6,5 +6,5 @@ AS SELECT
     reference_tnved2.notation AS notation,
     reference_tnved2.start_date_group AS start_date_group,
     reference_tnved2.expire_date_group AS expire_date_group
-   FROM marketing_db.reference_tnved2
+   FROM default.reference_tnved2
   WHERE reference_tnved2.expire_date_group IS NULL;

@@ -33,10 +33,10 @@ AS SELECT
     rg.region AS region,
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
-   FROM marketing_db.import_nw
+   FROM default.import_nw
      LEFT JOIN default.reference_tnved2_actual rt ON import_nw.tnved_group_id = rt.group_tnved
-     LEFT JOIN marketing_db.reference_inn ri ON import_nw.consignee_name = ri.company_name
-     LEFT JOIN marketing_db.reference_region rg ON import_nw.departure_port = rg.seaport
-     LEFT JOIN marketing_db.reference_lines rl ON import_nw.line = rl.line
-     LEFT JOIN marketing_db.reference_container_type rct ON import_nw.container_type = rct.container_type
-     LEFT JOIN marketing_db.reference_geo rgeo ON import_nw.departure_port = rgeo.seaport;
+     LEFT JOIN default.reference_inn ri ON import_nw.consignee_name = ri.company_name
+     LEFT JOIN default.reference_region rg ON import_nw.departure_port = rg.seaport
+     LEFT JOIN default.reference_lines rl ON import_nw.line = rl.line
+     LEFT JOIN default.reference_container_type rct ON import_nw.container_type = rct.container_type
+     LEFT JOIN default.reference_geo rgeo ON import_nw.departure_port = rgeo.seaport;
