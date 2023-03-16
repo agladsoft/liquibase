@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS crm.leads
     `address1_composite` Nullable(String),
     `need` Nullable(String),
     `_owninguser_value` Nullable(String),
+    `status_lead` Bool DEFAULT if(_owninguser_value is null, true, false),
     `address1_upszone` Nullable(String),
     `purchaseprocess` Nullable(String),
     `_createdonbehalfby_value` Nullable(String),
