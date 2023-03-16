@@ -171,3 +171,4 @@ AS SELECT
     leads.updates AS updates
    FROM crm.leads
      LEFT JOIN crm.reference_leads AS rl ON leads.statuscode = rl.statuscode;
+
