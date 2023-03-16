@@ -9,11 +9,13 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
 
     `company_name_rus` Nullable(String),
 
-    `confidence_rate` Nullable(Decimal128(19)),
+    `confidence_rate` Nullable(Integer),
 
-    `is_inn_found_auto` Nullable(UInt8),
+    `is_inn_found_auto` Nullable(Bool),
 
-    `is_company_name_international` Nullable(UInt8)
+    `original_file_name` Nullable(String),
+
+    `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
 ORDER BY company_name;
