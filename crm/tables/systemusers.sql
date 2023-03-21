@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS crm.systemusers
     `_queueid_value` Nullable(String),
     `isintegrationuser` Nullable(Bool),
     `createdon` Nullable(Date),
+    `counter` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
     `_calendarid_value` Nullable(String),
     `fullname` Nullable(String),
     `_businessunitid_value` Nullable(String),

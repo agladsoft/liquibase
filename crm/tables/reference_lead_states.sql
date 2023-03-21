@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS crm.lead_states
+CREATE TABLE IF NOT EXISTS crm.reference_lead_states
     (
     `statecode` Bigint,
     `state` Nullable(String),

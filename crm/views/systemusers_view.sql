@@ -15,7 +15,7 @@ AS SELECT
     systemusers._calendarid_value AS _calendarid_value,
     systemusers.fullname AS fullname,
     systemusers._businessunitid_value AS _businessunitid_value,
-    bv.directory_divisions AS directory_divisions,
+    rb.department_segmentation AS department_segmentation,
     systemusers.invitestatuscode AS invitestatuscode,
     systemusers.defaultodbfoldername AS defaultodbfoldername,
     systemusers.caltype AS caltype,
@@ -140,4 +140,4 @@ AS SELECT
     systemusers.applicationid AS applicationid,
     systemusers.updates AS updates
    FROM crm.systemusers
-     LEFT JOIN crm.businessunits_view AS bv ON systemusers._businessunitid_value = bv._parentbusinessunitid_value;
+     LEFT JOIN crm.reference_businessunits AS rb ON systemusers._businessunitid_value = rb.businessunitid;

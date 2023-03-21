@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS crm.reference_businessunits
     (
     `businessunitidname` Nullable(String),
-    `directory_divisions` String
+    `businessunitid` Nullable(String),
+    `department_segmentation` String
     )
 ENGINE = MergeTree()
-ORDER BY directory_divisions;
+ORDER BY department_segmentation;

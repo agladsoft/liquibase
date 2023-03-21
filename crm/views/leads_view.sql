@@ -4,7 +4,8 @@ AS SELECT
     leads.confirminterest AS confirminterest,
     leads.statecode AS statecode,
     leads.statuscode AS statuscode,
-    rl.reason_refusal AS reason_refusal,
+    gp.gap_label AS reason_refusal,
+    rls2.state_one AS statecode1,
     leads.address2_shippingmethodcode AS address2_shippingmethodcode,
     leads.address1_addressid AS address1_addressid,
     leads.leadqualitycode AS leadqualitycode,
@@ -33,6 +34,7 @@ AS SELECT
     leads.address1_shippingmethodcode AS address1_shippingmethodcode,
     leads.description AS description,
     leads.leadsourcecode AS leadsourcecode,
+    rls.source_enlarged AS source_enlarged,
     leads._modifiedby_value AS _modifiedby_value,
     leads.decisionmaker AS decisionmaker,
     leads.preferredcontactmethodcode AS preferredcontactmethodcode,
@@ -170,5 +172,7 @@ AS SELECT
     leads.revenue_base AS revenue_base,
     leads.updates AS updates
    FROM crm.leads
-     LEFT JOIN crm.reference_leads AS rl ON leads.statuscode = rl.statuscode;
-
+      LEFT JOIN crm.gap_powerbioptionsetrefs AS gp
+      ON leads.statuscode = gp.gap_value AND gp.gap_optionsetschemaname = 'StatusCode' AND gp.gap_language = 1049
+      LEFT JOIN crm.reference_lead_sources AS rls ON leads.leadsourcecode = rls.leadsourcecode
+      LEFT JOIN crm.reference_lead_states AS rls2 ON leads.statecode = rls2.statecode;
