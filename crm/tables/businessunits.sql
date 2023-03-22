@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS crm.businessunits
     `address1_country` Nullable(String),
     `description` Nullable(String),
     `disabledreason` Nullable(String),
-    `ftpsiteurl` Nullable(String)
+    `ftpsiteurl` Nullable(String),
+    `updates` Nullable(String)
     )
 ENGINE = MergeTree()
 ORDER BY versionnumber;
