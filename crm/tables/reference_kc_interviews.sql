@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS crm.reference_kc_interviews
     (
-    `statuscode` Nullable(Bigint),
-    `status` String
+    `statuscode` Bigint,
+    `status` Nullable(String)
     )
 ENGINE = MergeTree()
-ORDER BY status;
+ORDER BY statuscode;

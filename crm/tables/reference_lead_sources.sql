@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS crm.reference_lead_sources
     (
     `gap_label` Nullable(String),
-    `source_enlarged` String,
-    `leadsourcecode` Nullable(Bigint)
+    `source_enlarged` Nullable(String),
+    `leadsourcecode` Bigint
     )
 ENGINE = MergeTree()
-ORDER BY source_enlarged;
+ORDER BY leadsourcecode;
