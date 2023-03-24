@@ -5,7 +5,7 @@ AS SELECT
     leads.statecode AS statecode,
     leads.statuscode AS statuscode,
     gp.gap_label AS reason_refusal,
-    rls2.state1 AS statecode1,
+    rls2.state1 AS state1,
     leads.address2_shippingmethodcode AS address2_shippingmethodcode,
     leads.address1_addressid AS address1_addressid,
     leads.leadqualitycode AS leadqualitycode,
