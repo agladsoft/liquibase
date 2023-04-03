@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS crm.opportunities
     `totalamount` Nullable(Decimal128(19)),
     `presentproposal` Nullable(Bool),
     `createdon` Nullable(Date),
-    `counter` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
+    `counter_opportunities` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
     `kc_potencialteu` Nullable(Bigint),
     `_ownerid_value` Nullable(String),
     `sendthankyounote` Nullable(Bool),

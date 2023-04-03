@@ -29,6 +29,7 @@ AS SELECT
     leads.kc_convertingemail AS kc_convertingemail,
     leads.versionnumber AS versionnumber,
     leads.createdon AS createdon,
+    leads.counter_leads AS counter_leads,
     leads.prioritycode AS prioritycode,
     leads.traversedpath AS traversedpath,
     leads.address1_shippingmethodcode AS address1_shippingmethodcode,

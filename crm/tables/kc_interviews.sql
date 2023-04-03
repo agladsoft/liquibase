@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS crm.kc_interviews
     `timezoneruleversionnumber` Nullable(Bigint),
     `statuscode` Nullable(Bigint),
     `createdon` Nullable(Date),
-    `counter` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
+    `counter_kc_interviews` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
     `kc_inn` Nullable(Bigint),
     `versionnumber` Bigint,
     `modifiedon` Nullable(Date),

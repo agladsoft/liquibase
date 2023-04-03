@@ -32,6 +32,7 @@ AS SELECT
     kc_interviews.statuscode AS statuscode,
     rki.status AS status,
     kc_interviews.createdon AS createdon,
+    kc_interviews.counter_kc_interviews AS counter_kc_interviews,
     kc_interviews.kc_inn AS kc_inn,
     kc_interviews.versionnumber AS versionnumber,
     kc_interviews.modifiedon AS modifiedon,

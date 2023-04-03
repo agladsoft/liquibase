@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS crm.leads
     `kc_convertingemail` Nullable(Bool),
     `versionnumber` Integer,
     `createdon` Nullable(Date),
-    `counter` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
+    `counter_leads` Integer DEFAULT if(toYear(createdon) is null, 0, 1),
     `prioritycode` Nullable(Bigint),
     `traversedpath` Nullable(String),
     `address1_shippingmethodcode` Nullable(Bigint),
