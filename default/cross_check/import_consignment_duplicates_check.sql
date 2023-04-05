@@ -25,7 +25,7 @@ AS SELECT
         END AS line_unified,
     ie.container_size AS container_size,
     ie.container_number AS container_number,
-    ie.date AS date,
+    ie.shipment_date AS date,
     ie.consignment AS consignment,
     ie.consignment AS records_count,
     ie.teu AS teu,
