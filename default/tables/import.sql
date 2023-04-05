@@ -1,11 +1,26 @@
 CREATE TABLE IF NOT EXISTS default.import
 (
+    `parsed_on` Date,
 
-    `ship` Nullable(String),
+    `month_parsed_on` Nullable(Int32) DEFAULT toMonth(parsed_on),
 
-    `date` Nullable(Date),
+    `year_parsed_on` Nullable(Int32) DEFAULT toYear(parsed_on),
+
+    `shipment_month` Nullable(Int32) DEFAULT toMonth(shipment_date),
+
+    `shipment_year` Nullable(Int32) DEFAULT toYear(shipment_date),
 
     `terminal` Nullable(String),
+
+    `line` Nullable(String),
+
+    `ship_name` Nullable(String),
+
+    `voyage` Nullable(String),
+
+    `shipment_date` Nullable(Date),
+
+    `consignment` Nullable(String),
 
     `container_number` Nullable(String),
 
@@ -13,47 +28,36 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `container_type` Nullable(String),
 
-    `goods_name_rus` Nullable(String),
-
-    `consignment` Nullable(String),
-
-    `shipper` Nullable(String),
-
-    `consignee` Nullable(String),
-
-    `line` Nullable(String),
-
-    `count` String DEFAULT 1,
-
     `teu` Nullable(Int32) DEFAULT (container_size / 20),
 
-    `voyage` Nullable(String),
+    `count` Int32 DEFAULT 1,
 
-    `shipper_country` Nullable(String),
+    `goods_name` Nullable(String),
 
-    `goods_weight` Nullable(Float32),
+    `tnved` Nullable(String),
 
     `package_number` Nullable(String),
 
+    `goods_weight_netto` Nullable(Float32),
+
+    `goods_weight_brutto` Nullable(Float32),
+
+    `shipper_name` Nullable(String),
+
+    `consignee_name` Nullable(String),
+
     `city` Nullable(String),
 
-    `shipper_seaport` Nullable(String),
+    `expeditor` String DEFAULT "Нет данных",
 
-    `year` Nullable(Int32) DEFAULT toYear(date),
+    `tracking_country` Nullable(String),
 
-    `month` Nullable(Int32) DEFAULT toMonth(date),
-
-    `goods_tnved` Nullable(String),
-
-    `parsed_on` Date,
-
-    `month_parsed_on` Nullable(Int32) DEFAULT toMonth(parsed_on),
-
-    `year_parsed_on` Nullable(Int32) DEFAULT toYear(parsed_on),
+    `tracking_seaport` Nullable(String),
 
     `original_file_name` Nullable(String),
 
     `original_file_parsed_on` Nullable(String)
+
 )
 ENGINE = MergeTree()
 ORDER BY parsed_on;
