@@ -14,7 +14,7 @@ AS SELECT
     rct.container_type_unified AS container_type_unified,
     import_nw.teu AS teu,
     import_nw.container_count AS container_count,
-    import_vsk.is_empty AS is_empty,
+    import_nw.is_empty AS is_empty,
     import_nw.goods_name AS goods_name,
     import_nw.tnved AS tnved,
     import_nw.tnved_group_id AS tnved_group_id,
