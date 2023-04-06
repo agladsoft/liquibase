@@ -42,7 +42,7 @@
 		<sqlFile path="default/views/import_duplicate_containers.sql"/>
 		<sqlFile path="default/views/import_main_containers.sql"/>
 		<sqlFile path="default/views/import_main_duplicate_containers.sql"/>
-        <sqlFile path="default/views/all_enriched.sql"/>
+<!--        <sqlFile path="default/views/all_enriched.sql"/>-->
 	</changeSet>
 
     <changeSet id="createCrossCheck" author="timur">
