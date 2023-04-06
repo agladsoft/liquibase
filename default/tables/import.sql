@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `city` Nullable(String),
 
-    `expeditor` Nullable(String) DEFAULT "Нет данных",
+    `expeditor` Nullable(String) DEFAULT ("Нет данных"),
 
     `tracking_country` Nullable(String),
 
