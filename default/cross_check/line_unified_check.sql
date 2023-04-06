@@ -1,5 +1,5 @@
 CREATE OR REPLACE VIEW default.line_unified_check
-AS SELECT import_enriched.line AS line,
+AS SELECT import_enriched.line_unified AS line,
     import_enriched.line_unified AS line_unified
    FROM default.import_enriched
   WHERE import_enriched.line_unified IS NULL
