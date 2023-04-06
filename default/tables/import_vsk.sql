@@ -1,63 +1,66 @@
 CREATE TABLE IF NOT EXISTS default.import_vsk
 (
-
-    `year` Nullable(Int32),
+    `period` Nullable(String),
 
     `month` Int32,
 
-    `period` Nullable(String),
-
-    `line` Nullable(String),
-
-    `departure_port` Nullable(String),
-
-    `shipper_name` Nullable(String),
-
-    `consignee_name` Nullable(String),
-
-    `expeditor` Nullable(String),
-
-    `goods_name` Nullable(String),
-
-    `container_type` Nullable(String),
-
-    `container_size` Nullable(Int32),
-
-    `container_count` Nullable(Int32),
+    `year` Nullable(Int32),
 
     `terminal` Nullable(String),
 
-    `teu` Nullable(Int32),
-
-    `container_number` Nullable(String),
-
-    `tnved` Nullable(String),
-
-    `tnved_group_id` Nullable(String),
-
-    `shipper_country` Nullable(String),
-
-    `departure_type` Nullable(String),
-
-    `consignment` Nullable(String),
+    `line` Nullable(String),
 
     `ship_name` Nullable(String),
 
     `voyage` Nullable(String),
 
-    `park_type` Nullable(String),
+    `shipment_date` Nullable(Date),
 
-    `agent` Nullable(String),
+    `consignment` Nullable(String),
 
-    `station_ukp` Nullable(String),
+    `container_number` Nullable(String),
 
-    `combined_cargo` Nullable(UInt8),
+    `container_size` Nullable(Int32),
 
-    `destination_station` Nullable(String),
+    `container_type` Nullable(String),
+
+    `teu` Nullable(Int32),
+
+    `container_count` Nullable(Int32),
+
+    `is_empty` Nullable(Bool),
+
+    `goods_name` Nullable(String),
+
+    `tnved` Nullable(String),
+
+    `tnved_group_id` Nullable(String),
 
     `goods_weight_netto` Nullable(Decimal128(19)),
 
     `goods_weight_brutto` Nullable(Decimal128(19)),
+
+    `combined_cargo` Nullable(UInt8),
+
+    `shipper_name` Nullable(String),
+
+    `consignee_name` Nullable(String),
+
+    `consignee_country` Nullable(String),
+
+    `expeditor` Nullable(String),
+
+    `tracking_seaport` Nullable(String),
+
+    `agent` Nullable(String),
+
+    `departure_type` Nullable(String),
+
+    `destination_station` Nullable(String),
+
+    `station_ukp` Nullable(String),
+
+    `gtd_number` Nullable(String),
 
     `original_file_name` Nullable(String),
 
