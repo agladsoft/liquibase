@@ -19,7 +19,7 @@ AS SELECT
         END AS container_size,
     rct.container_type_unified AS container_type_unified,
     import.teu AS teu,
-    import.count AS count,
+    import.container_count AS container_count,
         CASE
             WHEN re.is_empty = import.goods_name THEN true
             ELSE false

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `teu` Nullable(Int32) DEFAULT (container_size / 20),
 
-    `count` Int32 DEFAULT 1,
+    `container_count` Int32 DEFAULT 1,
 
     `goods_name` Nullable(String),
 
