@@ -21,7 +21,7 @@ AS SELECT
     import.teu AS teu,
     import.count AS count,
         CASE
-            WHEN re.is_empty = import.goods_name_rus THEN true
+            WHEN re.is_empty = import.goods_name THEN true
             ELSE false
         END AS is_empty,
     import.goods_name AS goods_name,
