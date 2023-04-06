@@ -41,11 +41,11 @@ AS SELECT
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
    FROM default.import
-     LEFT JOIN default.reference_inn AS ri ON import.consignee = ri.company_name
-     LEFT JOIN default.reference_is_empty AS re ON import.goods_name_rus = re.is_empty
+     LEFT JOIN default.reference_inn AS ri ON import.consignee_name = ri.company_name
+     LEFT JOIN default.reference_is_empty AS re ON import.goods_name = re.is_empty
      LEFT JOIN default.reference_lines AS rl ON import.line = rl.line
-     LEFT JOIN default.reference_ship AS rs ON import.ship = rs.ship_name
+     LEFT JOIN default.reference_ship AS rs ON import.ship_name = rs.ship_name
      LEFT JOIN default.reference_container_type AS rct ON import.container_type = rct.container_type
-     LEFT JOIN default.reference_region AS rg ON import.shipper_seaport = rg.seaport
-     LEFT JOIN default.reference_tnved2_actual AS rt ON import.goods_tnved = rt.group_tnved
-     LEFT JOIN default.reference_geo AS rgeo ON import.shipper_seaport = rgeo.seaport;
+     LEFT JOIN default.reference_region AS rg ON import.tracking_seaport = rg.seaport
+     LEFT JOIN default.reference_tnved2_actual AS rt ON import.tnved = rt.group_tnved
+     LEFT JOIN default.reference_geo AS rgeo ON import.tracking_seaport = rgeo.seaport;
