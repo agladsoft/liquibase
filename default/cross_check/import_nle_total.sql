@@ -6,7 +6,7 @@ AS SELECT
     tmp2.is_empty AS is_empty,
     tmp2.is_ref AS is_ref,
     sum(tmp2.teu) AS teu_total
-   FROM ( SELECT import_enriched.shipment_month,
+   FROM ( SELECT import_enriched.shipment_month AS month,
             import_enriched.shipment_year AS year,
             import_enriched.direction AS direction,
             import_enriched.is_empty AS is_empty,
