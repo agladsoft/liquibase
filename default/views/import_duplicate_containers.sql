@@ -18,4 +18,4 @@ FROM (
 	  WHERE t.count_dupl_cont_num > 1
   ) AS t2
 ) AS t3
-WHERE t3.consignment = t3.min_consignment) AS t4
+WHERE t3.consignment != t3.min_consignment) AS t4
