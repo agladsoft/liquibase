@@ -3,7 +3,7 @@ AS SELECT
     ie.shipment_date AS shipment_date,
     ie.year_parsed_on AS year_parsed_on,
     ie.month_parsed_on AS month_parsed_on,
-    ie.count AS count,
+    ie.container_count AS container_count,
     ie.container_type_unified AS container_type_unified,
     ie.container_number AS container_number,
     ie.container_size AS container_size,
