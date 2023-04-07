@@ -45,5 +45,5 @@ AS SELECT
      LEFT JOIN default.reference_ship rs ON export.ship_name = rs.ship_name
      LEFT JOIN default.reference_container_type rct ON export.container_type = rct.container_type
      LEFT JOIN default.reference_region rg ON export.tracking_seaport = rg.seaport
-     LEFT JOIN default.reference_tnved2_actual rt ON export.goods_tnved = rt.group_tnved
+     LEFT JOIN default.reference_tnved2_actual rt ON export.tnved = rt.group_tnved
      LEFT JOIN default.reference_geo rgeo ON export.tracking_seaport = rgeo.seaport;
