@@ -12,7 +12,7 @@ AS SELECT
     import_main_duplicate_containers.container_size AS container_size,
     import_main_duplicate_containers.container_type_unified AS container_type_unified,
     import_main_duplicate_containers.teu_main AS teu,
-    import_main_duplicate_containers.container_count AS container_count,
+    import_main_duplicate_containers.container_count_main AS container_count,
     import_main_duplicate_containers.is_empty AS is_empty,
     import_main_duplicate_containers.goods_name AS goods_name,
     import_main_duplicate_containers.tnved AS tnved_group_id,
