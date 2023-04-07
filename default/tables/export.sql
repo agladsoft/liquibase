@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `tnved` Nullable(String),
 
-    `goods_weight_netto` Nullable(Float32),
+    `goods_weight_netto` Nullable(Decimal128(19)),
 
     `shipper_name` Nullable(String),
 
