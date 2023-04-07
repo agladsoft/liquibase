@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS default.export_nw
 
     `expeditor` Nullable(String),
 
-    `traсking_seaport` Nullable(String),
+    `tracking_seaport` Nullable(String),
 
     `gtd_number` Nullable(String),
 
