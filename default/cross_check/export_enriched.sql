@@ -9,6 +9,8 @@ AS SELECT
     rl.line_unified AS line_unified,
     rs.ship_name_unified AS ship_name_unified,
     export.voyage AS voyage,
+    export.shipment_date AS shipment_date,
+    export.consignment AS consignment,
     export.container_number AS container_number,
         CASE
             WHEN export.container_size = 45 THEN 40

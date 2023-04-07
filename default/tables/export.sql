@@ -16,6 +16,10 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `voyage` Nullable(String),
 
+    `shipment_date` Nullable(Date),
+
+    `consignment` Nullable(String),
+
     `container_number` Nullable(String),
 
     `container_size` Nullable(Int32),
