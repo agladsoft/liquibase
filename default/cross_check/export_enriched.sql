@@ -19,7 +19,7 @@ AS SELECT
     export.teu AS teu,
     export.container_count AS container_count,
         CASE
-            WHEN re.is_empty = export.goods_name_rus THEN true
+            WHEN re.is_empty = export.goods_name THEN true
             ELSE false
         END AS is_empty,
     export.goods_name AS goods_name,
