@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS default.export_vsk
 
     `tnved` Nullable(String),
 
+    `tnved_group_id` Nullable(String),
+
     `goods_weight_netto` Nullable(Decimal128(19)),
 
     `shipper_name` Nullable(String),
