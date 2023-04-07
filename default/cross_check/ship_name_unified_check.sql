@@ -9,7 +9,7 @@ UNION DISTINCT
    FROM default.statistics_enriched
   WHERE statistics_enriched.ship_name_unified IS NULL
 UNION DISTINCT
- SELECT export_enriched.ship_name AS ship_name,
+ SELECT export_enriched.ship_name_unified AS ship_name,
     export_enriched.ship_name_unified AS ship_name_unified
    FROM default.export_enriched
   WHERE export_enriched.ship_name_unified IS NULL;

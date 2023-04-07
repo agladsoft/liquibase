@@ -9,7 +9,7 @@ UNION DISTINCT
    FROM default.statistics_enriched
   WHERE statistics_enriched.line_unified IS NULL
 UNION DISTINCT
- SELECT export_enriched.line AS line,
+ SELECT export_enriched.line_unified AS line,
     export_enriched.line_unified AS line_unified
    FROM default.export_enriched
   WHERE export_enriched.line_unified IS NULL;

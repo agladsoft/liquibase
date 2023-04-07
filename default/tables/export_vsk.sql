@@ -1,49 +1,50 @@
 CREATE TABLE IF NOT EXISTS default.export_vsk
 (
-
-    `year` Nullable(Int32),
-
     `month` Int32,
 
-    `shipment_date` Nullable(String),
+    `year` Nullable(Int32),
 
     `terminal` Nullable(String),
 
     `line` Nullable(String),
 
-    `expeditor` Nullable(String),
+    `ship_name` Nullable(String),
 
-    `shipper_name` Nullable(String),
+    `voyage` Nullable(String),
+
+    `shipment_date` Nullable(Date),
+
+    `booking` Nullable(String),
 
     `container_number` Nullable(String),
-
-    `destination_port` Nullable(String),
-
-    `goods_name` Nullable(String),
-
-    `teu` Nullable(Int32),
 
     `container_size` Nullable(Int32),
 
     `container_type` Nullable(String),
 
-    `shipper_country` Nullable(String),
+    `teu` Nullable(Int32),
 
-    `shipper_region` Nullable(String),
+    `container_count` Int32 DEFAULT 1
 
-    `gtd_number` Nullable(String),
+    `is_empty` Nullable(Bool),
 
-    `park_type` Nullable(String),
+    `goods_name` Nullable(String),
 
     `tnved` Nullable(String),
 
-    `ship_name` Nullable(String),
+    `goods_weight_netto` Nullable(Decimal128(19)),
+
+    `shipper_name` Nullable(String),
 
     `consignee_name` Nullable(String),
 
-    `booking` Nullable(String),
+    `shipper_country` Nullable(String),
 
-    `tnved_group_id` Nullable(String),
+    `expeditor` Nullable(String),
+
+    `tracking_seaport` Nullable(String),
+
+    `gtd_number` Nullable(String),
 
     `original_file_name` Nullable(String),
 

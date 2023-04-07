@@ -1,45 +1,6 @@
 CREATE TABLE IF NOT EXISTS default.export
 (
-
-    `ship` Nullable(String),
-
-    `date` Nullable(Date),
-
-    `terminal` Nullable(String),
-
-    `container_number` Nullable(String),
-
-    `container_size` Nullable(Int32),
-
-    `container_type` Nullable(String),
-
-    `goods_name_rus` Nullable(String),
-
-    `consignment` Nullable(String),
-
-    `shipper` Nullable(String),
-
-    `consignee` Nullable(String),
-
-    `line` Nullable(String),
-
-    `count` String DEFAULT 1,
-
-    `teu` Nullable(Int32) DEFAULT (container_size / 20),
-
-    `voyage` Nullable(String),
-
-    `unload_country` Nullable(String),
-
-    `city` Nullable(String),
-
-    `unload_seaport` Nullable(String),
-
-    `year` Nullable(Int32) DEFAULT toYear(date),
-
-    `month` Nullable(Int32) DEFAULT toMonth(date),
-
-    `goods_tnved` Nullable(String),
+    `period` Nullable(Date),
 
     `parsed_on` Date,
 
@@ -47,13 +8,45 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `year_parsed_on` Nullable(Int32) DEFAULT toYear(parsed_on),
 
+    `terminal` Nullable(String),
+
+    `line` Nullable(String),
+
+    `ship_name` Nullable(String),
+
+    `voyage` Nullable(String),
+
+    `container_number` Nullable(String),
+
+    `container_size` Nullable(Int32),
+
+    `container_type` Nullable(String),
+
+    `teu` Nullable(Int32) DEFAULT (container_size / 20),
+
+    `container_count` Int32 DEFAULT 1,
+
+    `goods_name` Nullable(String),
+
+    `tnved` Nullable(String),
+
+    `goods_weight_netto` Nullable(Float32),
+
+    `shipper_name` Nullable(String),
+
+    `consignee_name` Nullable(String),
+
+    `expeditor` Nullable(String),
+
+    `tracking_country` Nullable(String),
+
+    `tracking_seaport` Nullable(String),
+
+    `gtd_number` Nullable(String) DEFAULT 'Нет данных',
+
     `original_file_name` Nullable(String),
 
-    `original_file_parsed_on` Nullable(String),
-
-    `shipper_inn` Nullable(String),
-
-    `expeditor` Nullable(String)
+    `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
 ORDER BY parsed_on;
