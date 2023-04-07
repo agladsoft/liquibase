@@ -34,7 +34,7 @@ AS SELECT
     import.consignee_name AS consignee_name,
     ri.company_inn AS consignee_inn,
     ri.company_name_unified AS consignee_name_unified,
-    import.city AS city,
+    import.expeditor AS expeditor,
     rg.country AS tracking_country_unified,
     rg.seaport_unified AS tracking_seaport_unified,
     rg.region AS region,
