@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS default.export_vsk
 
     `teu` Nullable(Int32),
 
-    `container_count` Int32 DEFAULT 1
+    `container_count` Int32 DEFAULT 1,
 
     `is_empty` Nullable(Bool),
 
