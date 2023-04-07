@@ -26,7 +26,7 @@ AS SELECT
     export_nw.consignee_name AS consignee_name,
     export_nw.shipper_country AS shipper_country,
     export_nw.expeditor AS expeditor,
-    rg.country AS traсking_country_unified,
+    rg.country AS tracking_country_unified,
     rg.seaport_unified AS traсking_seaport_unified,
     rg.region AS region,
     rgeo.lat_port AS lat_port,
