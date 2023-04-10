@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS default.import
 (
+    `import_id` UUID,
+
     `parsed_on` Date,
 
     `month_parsed_on` Nullable(Int32) DEFAULT toMonth(parsed_on),
