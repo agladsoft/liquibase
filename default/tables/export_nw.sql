@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS default.export_nw
 
     `line` Nullable(String),
 
-    `ship_name` Nullable(String) DEFAULT 'Нет данных',
+    `ship_name` Nullable(String),
 
-    `voyage` Nullable(String) DEFAULT 'Нет данных',
+    `voyage` Nullable(String),
 
     `shipment_date` Nullable(Date),
 

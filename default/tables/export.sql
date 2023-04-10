@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS default.export
 
     `tracking_seaport` Nullable(String),
 
-    `gtd_number` Nullable(String) DEFAULT 'Нет данных',
+    `gtd_number` Nullable(String),
 
     `original_file_name` Nullable(String),
 
