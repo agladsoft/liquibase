@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW crm.oppotunities_view
+CREATE OR REPLACE VIEW crm.opportunities_view
 AS SELECT
     opportunities.`odata.etag` AS `odata.etag`,
     opportunities.kc_directioncode AS kc_directioncode,
