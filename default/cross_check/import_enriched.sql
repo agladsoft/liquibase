@@ -2,16 +2,16 @@ CREATE OR REPLACE VIEW default.import_enriched
 AS SELECT
     import.month_parsed_on AS month_parsed_on,
     import.year_parsed_on AS year_parsed_on,
-    import.shipment_month AS shipment_month,
-    import.shipment_year AS shipment_year,
+    'import' AS direction,
     import.terminal AS terminal,
     rl.line_unified AS line_unified,
     rs.ship_name_unified AS ship_name_unified,
     import.voyage AS voyage,
     import.shipment_date AS shipment_date,
+    import.shipment_month AS shipment_month,
+    import.shipment_year AS shipment_year,
     import.consignment AS consignment,
     import.container_number AS container_number,
-    'import' AS direction,
         CASE
             WHEN import.container_size = 45 THEN 40
             WHEN import.container_size = 22 THEN 20
