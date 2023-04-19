@@ -8,10 +8,6 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `year_parsed_on` Nullable(Int32) DEFAULT toYear(parsed_on),
 
-    `shipment_month` Nullable(Int32) DEFAULT toMonth(shipment_date),
-
-    `shipment_year` Nullable(Int32) DEFAULT toYear(shipment_date),
-
     `terminal` Nullable(String),
 
     `line` Nullable(String),
@@ -21,6 +17,10 @@ CREATE TABLE IF NOT EXISTS default.import
     `voyage` Nullable(String),
 
     `shipment_date` Nullable(Date),
+
+    `shipment_month` Nullable(Int32) DEFAULT toMonth(shipment_date),
+
+    `shipment_year` Nullable(Int32) DEFAULT toYear(shipment_date),
 
     `consignment` Nullable(String),
 
