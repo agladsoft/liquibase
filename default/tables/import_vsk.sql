@@ -1,6 +1,5 @@
 CREATE TABLE IF NOT EXISTS default.import_vsk
 (
-    `period` Nullable(Date),
 
     `month` Int32,
 

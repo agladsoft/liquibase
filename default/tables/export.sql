@@ -1,6 +1,5 @@
 CREATE TABLE IF NOT EXISTS default.export
 (
-    `period` Nullable(Date),
 
     `parsed_on` Date,
 

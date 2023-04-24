@@ -1,6 +1,5 @@
 CREATE TABLE IF NOT EXISTS default.export_nw
 (
-    `period` Nullable(Date),
 
     `month` Int32,
 
