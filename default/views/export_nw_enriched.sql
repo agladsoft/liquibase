@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.export_nw_enriched
 AS SELECT
-    export_nw.period AS period,
     export_nw.month AS month,
     export_nw.year AS year,
     'export' AS direction,

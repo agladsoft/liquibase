@@ -2,7 +2,7 @@ CREATE OR REPLACE VIEW default.export_vsk_enriched
 AS SELECT
     export_vsk.month AS month,
     export_vsk.year AS year,
-    'export' AS direction,
+    export_vsk.direction AS direction,
     export_vsk.terminal AS terminal,
     rl.line_unified AS line_unified,
     rs.ship_name_unified AS ship_name_unified,

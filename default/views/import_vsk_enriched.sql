@@ -1,9 +1,8 @@
 CREATE OR REPLACE VIEW default.import_vsk_enriched
 AS SELECT
-    import_vsk.period AS period,
     import_vsk.month AS month,
     import_vsk.year AS year,
-    'import' AS direction,
+    import_vsk.direction AS direction,
     import_vsk.terminal AS terminal,
     rl.line_unified AS line_unified,
     rs.ship_name_unified AS ship_name_unified,

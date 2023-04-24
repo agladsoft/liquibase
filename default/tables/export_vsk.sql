@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS default.export_vsk
 
     `year` Nullable(Int32),
 
+    `direction` Nullable(String),
+
     `terminal` Nullable(String),
 
     `line` Nullable(String),
