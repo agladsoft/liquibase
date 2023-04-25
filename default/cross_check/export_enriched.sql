@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.export_enriched
 AS SELECT
-    export.period AS period,
     export.parsed_on AS parsed_on,
     export.month_parsed_on AS month_parsed_on,
     export.year_parsed_on AS year_parsed_on,
