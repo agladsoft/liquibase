@@ -18,7 +18,7 @@ AS SELECT
     import_nw.tnved AS tnved,
     import_nw.tnved_group_id AS tnved_group_id,
     rt.goods_name AS tnved_group_name,
-    import_nw.goods_weight_netto AS goods_weight_netto,
+    import_nw.goods_weight_with_package AS goods_weight_with_package,
     import_nw.shipper_name AS shipper_name,
     import_nw.consignee_name AS consignee_name,
     ri.company_inn AS consignee_inn,

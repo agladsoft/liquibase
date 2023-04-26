@@ -18,7 +18,7 @@ AS SELECT
     import_vsk.tnved AS tnved,
     import_vsk.tnved_group_id AS tnved_group_id,
     rt.goods_name AS tnved_group_name,
-    import_vsk.goods_weight_netto AS goods_weight_netto,
+    import_vsk.goods_weight_with_package AS goods_weight_with_package,
     import_vsk.goods_weight_brutto AS goods_weight_brutto,
     import_vsk.shipper_name AS shipper_name,
     import_vsk.consignee_name AS consignee_name,

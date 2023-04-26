@@ -18,7 +18,7 @@ AS SELECT
     export_vsk.tnved AS tnved,
     export_vsk.tnved_group_id AS tnved_group_id,
     rt.goods_name AS tnved_group_name,
-    export_vsk.goods_weight_netto AS goods_weight_netto,
+    export_vsk.goods_weight_with_package AS goods_weight_with_package,
     export_vsk.shipper_name AS shipper_name,
     ri.company_inn AS shipper_inn,
     ri.company_name_unified AS shipper_name_unified,

@@ -40,9 +40,7 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `package_number` Nullable(String),
 
-    `goods_weight_netto` Nullable(Decimal128(19)),
-
-    `goods_weight_brutto` Nullable(Decimal128(19)),
+    `goods_weight_with_package` Nullable(Decimal128(19)),
 
     `shipper_name` Nullable(String),
 

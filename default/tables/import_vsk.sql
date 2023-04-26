@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS default.import_vsk
 
     `tnved_group_id` Nullable(String),
 
-    `goods_weight_netto` Nullable(Decimal128(19)),
+    `goods_weight_with_package` Nullable(Decimal128(19)),
 
     `goods_weight_brutto` Nullable(Decimal128(19)),
 
