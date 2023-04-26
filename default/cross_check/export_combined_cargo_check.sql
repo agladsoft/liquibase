@@ -13,4 +13,4 @@ AS SELECT
     min(ecdc.teu) AS teu,
     ecdc.terminal AS terminal
    FROM default.export_consignment_duplicates_check ecdc
-  GROUP BY ecdc.year_parsed_on, ecdc.month_parsed_on, ecdc.ship_name_unified, ecdc.direction, ecdc.is_empty, ecdc.line_unified, ecdc.container_size, ecdc.container_number, ecdc.date, ecdc.terminal;
+  GROUP BY ecdc.year_parsed_on, ecdc.month_parsed_on, ecdc.ship_name_unified, ecdc.direction, ecdc.is_empty, ecdc.line_unified, ecdc.container_size, ecdc.container_number, ecdc.terminal;
