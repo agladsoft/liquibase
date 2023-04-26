@@ -8,7 +8,6 @@ AS SELECT
     ecdc.line_unified AS line_unified,
     ecdc.container_size AS container_size,
     ecdc.container_number AS container_number,
-    ecdc.date AS date,
     count(ecdc.container_number) AS cargo_count,
     sum(ecdc.records_count) AS records_count,
     min(ecdc.teu) AS teu,
