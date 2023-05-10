@@ -17,5 +17,5 @@ AS SELECT
                     ELSE false
                 END AS is_ref
            FROM default.import_enriched
-          WHERE import_enriched.terminal = 'nle') tmp2
+          WHERE import_enriched.terminal = 'НЛЭ') tmp2
   GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;

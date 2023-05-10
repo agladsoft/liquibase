@@ -14,5 +14,5 @@ AS SELECT
     count(ic3.container_size) * min(ic3.teu) AS total_teu,
     ic3.terminal AS terminal
    FROM default.import_combined_cargo_check ic3
-  WHERE ic3.terminal = 'nutep'
+  WHERE ic3.terminal = 'НУТЭП'
   GROUP BY ic3.year_parsed_on, ic3.month_parsed_on, ic3.ship_name_unified, ic3.direction, ic3.is_empty, ic3.line_unified, ic3.container_size, ic3.terminal;

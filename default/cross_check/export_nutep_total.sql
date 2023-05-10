@@ -14,5 +14,5 @@ AS SELECT
     count(ec3.container_size) * min(ec3.teu) AS total_teu,
     ec3.terminal AS terminal
    FROM default.export_combined_cargo_check ec3
-  WHERE ec3.terminal = 'nutep'
+  WHERE ec3.terminal = 'НУТЭП'
   GROUP BY ec3.year_parsed_on, ec3.month_parsed_on, ec3.ship_name_unified, ec3.direction, ec3.is_empty, ec3.line_unified, ec3.container_size, ec3.terminal;
