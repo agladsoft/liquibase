@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `licenses` Nullable(String),
 
-    `registration_date` Nullable(Date),
+    `registration_date` Nullable(Date32),
 
     `register_msp` Nullable(String),
 
