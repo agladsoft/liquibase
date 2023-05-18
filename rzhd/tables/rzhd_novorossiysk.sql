@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_novorossiysk
     `departure_road_cis` Nullable(String),
     `destination_road_cis` Nullable(String),
     `shipper_by_puzt` Nullable(String),
-    `puzt_consignor` Nullable(String),
+    `consignee_by_puzt` Nullable(String),
     `departure_station_code_of_cis` Nullable(String),
     `destination_station_code_of_cis` Nullable(String),
     `departure_station_of_the_rf` Nullable(String),

@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_ktk
     `cis_destination_station` Nullable(String),
     `cis_destination_station_affiliation` Nullable(String),
     `consignee_according_to_egrpo` Nullable(String),
-    `puzt_consignor` Nullable(String),
+    `consignee_by_puzt` Nullable(String),
     `consignee_okpo` Nullable(String),
     `container_tonnage` Nullable(String),
     `container_prefix` Nullable(String),

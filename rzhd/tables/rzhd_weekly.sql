@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_weekly
     `shipper_by_puzt` Nullable(String),
     `consignee_okpo` Nullable(String),
     `consignee_according_to_egrpo` Nullable(String),
-    `puzt_consignor` Nullable(String),
+    `consignee_by_puzt` Nullable(String),
     `state_of_departure` Nullable(String),
     `sign_of_the_state_of_departure` Nullable(String),
     `subject_of_departure_of_the_rf` Nullable(String),
