@@ -31,7 +31,7 @@ AS SELECT
     rzhd_novorossiysk.destination_station_code_of_rf AS destination_station_code_of_rf,
     rzhd_novorossiysk.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
     rzhd_novorossiysk.leaseholder AS leaseholder,
-    rzhd_novorossiysk.payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+
     rzhd_novorossiysk.weight AS weight,
     rzhd_novorossiysk.carriage_fee AS carriage_fee,
     rzhd_novorossiysk.cargo_class AS cargo_class,
@@ -57,4 +57,5 @@ AS SELECT
     rzhd_novorossiysk.original_file_index AS original_file_index
    FROM rzhd.rzhd_novorossiysk
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_novorossiysk.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_novorossiysk.type_of_special_container = rct.type_of_special_container;
+     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_novorossiysk.type_of_special_container = rct.type_of_special_container
+     WHERE like(payer_of_the_railway_tariff, '%' || rolf.full_organizational_legal_form || '%');

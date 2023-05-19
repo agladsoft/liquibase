@@ -89,7 +89,19 @@ AS SELECT
     rzhd_weekly.cargo_subgroup_okved AS cargo_subgroup_okved,
     rzhd_weekly.previously_transported_cargo AS previously_transported_cargo,
     rzhd_weekly.previously_transported_cargo_code AS previously_transported_cargo_code,
-    rzhd_weekly.payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+    CASE
+        WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
+            THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
+        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
+        WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
+        WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
+        WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
+            THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
+        ELSE payer_of_the_railway_tariff
+    END AS payer_of_the_railway_tariff,
     rzhd_weekly.type_of_accounting AS type_of_accounting,
     rzhd_weekly.sign_of_the_place_of_settlement AS sign_of_the_place_of_settlement,
     rzhd_weekly.exceptional_rate_code AS exceptional_rate_code,
@@ -121,3 +133,18 @@ AS SELECT
    FROM rzhd.rzhd_weekly
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_weekly.container_tonnage = rt.container_tonnage
      LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_weekly.type_of_special_container = rct.type_of_special_container;
+
+--Как работает
+SELECT *
+FROM db.table1 AS t1
+LEFT JOIN db.table2 AS t2 ON t1.test = t2.test1
+
+--Как нужно, но не работает
+SELECT *
+FROM db.table1 AS t1
+LEFT JOIN db.table2 AS t2 ON LIKE(t1.test, t2.test1)
+
+
+SELECT *
+FROM db.table1 AS t1, db.table2 AS t2
+where LIKE(t1.test, t2.test1) or

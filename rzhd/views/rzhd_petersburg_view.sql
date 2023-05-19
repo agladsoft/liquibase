@@ -37,7 +37,19 @@ AS SELECT
     rzhd_petersburg.sub_group_of_cargo AS sub_group_of_cargo,
     rzhd_petersburg.cargo_group AS cargo_group,
     rzhd_petersburg.cargo_code_of_the_etsng AS cargo_code_of_the_etsng,
-    rzhd_petersburg.payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+    CASE
+        WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
+            THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
+        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
+        WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
+        WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
+        WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
+            THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
+        ELSE payer_of_the_railway_tariff
+    END AS payer_of_the_railway_tariff,
     rzhd_petersburg.cargo_class AS cargo_class,
     rzhd_petersburg.departure_station_code_of_rf AS departure_station_code_of_rf,
     rzhd_petersburg.destination_station_code_of_rf AS destination_station_code_of_rf,
