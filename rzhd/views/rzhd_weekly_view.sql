@@ -133,18 +133,3 @@ AS SELECT
    FROM rzhd.rzhd_weekly
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_weekly.container_tonnage = rt.container_tonnage
      LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_weekly.type_of_special_container = rct.type_of_special_container;
-
---Как работает
-SELECT *
-FROM db.table1 AS t1
-LEFT JOIN db.table2 AS t2 ON t1.test = t2.test1
-
---Как нужно, но не работает
-SELECT *
-FROM db.table1 AS t1
-LEFT JOIN db.table2 AS t2 ON LIKE(t1.test, t2.test1)
-
-
-SELECT *
-FROM db.table1 AS t1, db.table2 AS t2
-where LIKE(t1.test, t2.test1) or

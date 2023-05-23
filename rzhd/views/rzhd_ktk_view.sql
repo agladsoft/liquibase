@@ -75,8 +75,19 @@ AS SELECT
     rzhd_ktk.the_owner_of_the_wagon_according_to_the_internal_directory AS the_owner_of_the_wagon_according_to_the_internal_directory,
     rzhd_ktk.wagon_tenant_according_to_internal_directory AS wagon_tenant_according_to_internal_directory,
     rzhd_ktk.carriage_fee AS carriage_fee,
---    replace(payer_of_the_railway_tariff, rolf.full_organizational_legal_form, rolf.short_organizational_legal_form) AS test1,
-    concat(rolf.short_organizational_legal_form, ' ', payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+    CASE
+        WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
+            THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
+        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
+        WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
+        WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
+        WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
+            THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
+        ELSE payer_of_the_railway_tariff
+    END AS payer_of_the_railway_tariff,
     rzhd_ktk.transportation_volume_kg AS transportation_volume_kg,
     rzhd_ktk.tariff_distance AS tariff_distance,
     rzhd_ktk.quantity_of_containers AS quantity_of_containers,
@@ -134,7 +145,6 @@ AS SELECT
     rzhd_ktk.original_file_name AS original_file_name,
     rzhd_ktk.original_file_parsed_on AS original_file_parsed_on,
     rzhd_ktk.original_file_index AS original_file_index
-   FROM rzhd.rzhd_ktk, rzhd.reference_organizational_legal_form AS rolf
+   FROM rzhd.rzhd_ktk
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_ktk.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_ktk.type_of_special_container = rct.type_of_special_container
-     WHERE like(payer_of_the_railway_tariff, '%' || rolf.full_organizational_legal_form || '%');
+     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_ktk.type_of_special_container = rct.type_of_special_container;
