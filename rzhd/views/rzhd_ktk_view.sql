@@ -78,14 +78,20 @@ AS SELECT
     CASE
         WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
             THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
-        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
         WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
             THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
+        WHEN like(payer_of_the_railway_tariff, '%ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
         WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
             THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
         WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
             THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
+        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
+        WHEN like(payer_of_the_railway_tariff, '%ФЕДЕРАЛЬНОЕ АГЕНТСТВО%')
+            THEN replace(payer_of_the_railway_tariff, 'ФЕДЕРАЛЬНОЕ АГЕНТСТВО', 'ФА')
+        WHEN like(payer_of_the_railway_tariff, '%Центр по перевозке грузов в контейнера%')
+            THEN replace(payer_of_the_railway_tariff, 'Центр по перевозке грузов в контейнера', 'ПАО Трансконтейнер')
         ELSE payer_of_the_railway_tariff
     END AS payer_of_the_railway_tariff,
     rzhd_ktk.transportation_volume_kg AS transportation_volume_kg,
