@@ -27,8 +27,7 @@ AS SELECT
     rzhd_ktk.cis_departure_station AS cis_departure_station,
     rzhd_ktk.shipper_according_to_egrpo AS shipper_according_to_egrpo,
     rzhd_ktk.shipper_by_puzt AS shipper_by_puzt,
-    if(shipper_by_puzt is not null or shipper_by_puzt != 'НЕИЗВЕСТЕН' or shipper_by_puzt != 'неизвестен',
-        shipper_by_puzt, shipper_according_to_egrpo) AS common_shipper,
+    swap_values(shipper_by_puzt, shipper_according_to_egrpo, "неизвестен") AS common_shipper,
     rzhd_ktk.shipper_okpo AS shipper_okpo,
     rzhd_ktk.state_of_destination AS state_of_destination,
     rzhd_ktk.destination_subject_of_the_rf AS destination_subject_of_the_rf,
@@ -40,12 +39,18 @@ AS SELECT
     rzhd_ktk.cis_destination_station AS cis_destination_station,
     rzhd_ktk.consignee_according_to_egrpo AS consignee_according_to_egrpo,
     rzhd_ktk.consignee_by_puzt AS consignee_by_puzt,
-    if(consignee_by_puzt is not null or consignee_by_puzt != 'НЕИЗВЕСТЕН' or consignee_by_puzt != 'неизвестен',
-        consignee_by_puzt, consignee_according_to_egrpo) AS common_consignee,
+    swap_values(consignee_by_puzt, consignee_according_to_egrpo, "неизвестен") AS common_consignee,
     rzhd_ktk.consignee_okpo AS consignee_okpo,
     rzhd_ktk.container_tonnage,
     rt.container_tonnage_unified AS container_tonnage_unified,
-    if(rzhd_ktk.quantity_of_containers = 0, 0, intDiv(rt.container_tonnage_unified, 20)) AS teu,
+    multiIf
+    (
+        quantity_of_containers = 0 or quantity_of_containers = -1,
+        0,
+        rt.container_tonnage_unified is null,
+        0
+        intDiv(rt.container_tonnage_unified, 20)
+    ) AS teu,
     rzhd_ktk.container_prefix AS container_prefix,
     rzhd_ktk.type_of_special_container AS type_of_special_container,
     rct.container_type_unified AS container_type_unified,

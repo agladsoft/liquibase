@@ -1,4 +1,4 @@
-CREATE FUNCTION replace_organization_form AS (payer_of_the_railway_tariff) ->
+CREATE OR REPLACE FUNCTION replace_organization_form AS (payer_of_the_railway_tariff) ->
 multiIf(
     payer_of_the_railway_tariff LIKE '%Обособленное подразделение Общества с ограниченной ответственностью%',
     replaceAll(payer_of_the_railway_tariff,
