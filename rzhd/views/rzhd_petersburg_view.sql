@@ -14,12 +14,14 @@ AS SELECT
     rzhd_petersburg.leaseholder AS leaseholder,
     rzhd_petersburg.exceptional_rate_code AS exceptional_rate_code,
     rzhd_petersburg.departure_date AS departure_date,
+    toMonth(departure_date) AS departure_month,
+    toYear(departure_date) AS departure_year,
     rzhd_petersburg.departure_day_report AS departure_day_report,
     rzhd_petersburg.number_of_cargo_acceptances_for_transportation AS number_of_cargo_acceptances_for_transportation,
     rzhd_petersburg.destination_road AS destination_road,
     rzhd_petersburg.type_of_transportation AS type_of_transportation,
     rzhd_petersburg.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,
-    rzhd_petersburg.dispatch_category AS dispatch_category,
+    if(dispatch_category is not null, dispatch_category, 'нет данных'),
     rzhd_petersburg.quantity_of_containers AS quantity_of_containers,
     rzhd_petersburg.quantity_of_wagons AS quantity_of_wagons,
     rzhd_petersburg.wagon_ownership_sign AS wagon_ownership_sign,
@@ -37,25 +39,7 @@ AS SELECT
     rzhd_petersburg.sub_group_of_cargo AS sub_group_of_cargo,
     rzhd_petersburg.cargo_group AS cargo_group,
     rzhd_petersburg.cargo_code_of_the_etsng AS cargo_code_of_the_etsng,
-    CASE
-        WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
-            THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
-        WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
-        WHEN like(payer_of_the_railway_tariff, '%ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
-        WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
-        WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
-            THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
-        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
-        WHEN like(payer_of_the_railway_tariff, '%ФЕДЕРАЛЬНОЕ АГЕНТСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ФЕДЕРАЛЬНОЕ АГЕНТСТВО', 'ФА')
-        WHEN like(payer_of_the_railway_tariff, '%Центр по перевозке грузов в контейнера%')
-            THEN replace(payer_of_the_railway_tariff, 'Центр по перевозке грузов в контейнера', 'ПАО Трансконтейнер')
-        ELSE payer_of_the_railway_tariff
-    END AS payer_of_the_railway_tariff,
+    replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
     rzhd_petersburg.cargo_class AS cargo_class,
     rzhd_petersburg.departure_station_code_of_rf AS departure_station_code_of_rf,
     rzhd_petersburg.destination_station_code_of_rf AS destination_station_code_of_rf,
@@ -66,8 +50,6 @@ AS SELECT
     rzhd_petersburg.sign_of_a_lease AS sign_of_a_lease,
     rzhd_petersburg.month_of_acceptance_of_cargo_for_transportation AS month_of_acceptance_of_cargo_for_transportation,
     rzhd_petersburg.year_of_acceptance_of_cargo_for_transportation AS year_of_acceptance_of_cargo_for_transportation,
-    rzhd_petersburg.departure_month AS departure_month,
-    rzhd_petersburg.departure_year AS departure_year,
     rzhd_petersburg.departure_region AS departure_region,
     rzhd_petersburg.destination_region AS destination_region,
     rzhd_petersburg.carriage_fee AS carriage_fee,
@@ -88,6 +70,7 @@ AS SELECT
     rzhd_petersburg.sign_of_the_place_of_settlement AS sign_of_the_place_of_settlement,
     rzhd_petersburg.sign_of_non_credited_cargo_at_border_crossings AS sign_of_non_credited_cargo_at_border_crossings,
     rzhd_petersburg.sign_of_the_principal AS sign_of_the_principal,
+    rzhd_petersburg.container_tonnage,
     rt.container_tonnage_unified AS container_tonnage_unified,
     if(rzhd_petersburg.quantity_of_containers = 0, 0, intDiv(rt.container_tonnage_unified, 20)) AS teu,
     rzhd_petersburg.subject_of_departure_of_the_rf AS subject_of_departure_of_the_rf,
@@ -117,6 +100,7 @@ AS SELECT
     rzhd_petersburg.wagon_kilometers AS wagon_kilometers,
     rzhd_petersburg.sign_of_the_exclusive_tariff AS sign_of_the_exclusive_tariff,
     rzhd_petersburg.name_of_cargo_etsng AS name_of_cargo_etsng,
+    rzhd_petersburg.type_of_special_container AS type_of_special_container,
     rct.container_type_unified AS container_type_unified,
     rzhd_petersburg.group_of_cargo_according_to_go6 AS group_of_cargo_according_to_go6,
     rzhd_petersburg.cargo_group_according_to_etsng AS cargo_group_according_to_etsng,

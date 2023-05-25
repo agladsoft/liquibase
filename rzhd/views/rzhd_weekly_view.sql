@@ -23,13 +23,15 @@ AS SELECT
     rzhd_weekly.check_in_station_for_wagon_rental AS check_in_station_for_wagon_rental,
     rzhd_weekly.container_prefix AS container_prefix,
     rzhd_weekly.container_no AS container_no,
+    rzhd_weekly.container_tonnage,
     rt.container_tonnage_unified AS container_tonnage_unified,
     if(rzhd_weekly.quantity_of_containers = 0, 0, intDiv(rt.container_tonnage_unified, 20)) AS teu,
+    rzhd_weekly.type_of_special_container AS type_of_special_container,
     rct.container_type_unified AS container_type_unified,
     rzhd_weekly.document_no AS document_no,
     rzhd_weekly.type_of_transportation AS type_of_transportation,
     rzhd_weekly.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,
-    rzhd_weekly.dispatch_category AS dispatch_category,
+    if(dispatch_category is not null, dispatch_category, 'нет данных'),
     rzhd_weekly.type_of_message AS type_of_message,
     rzhd_weekly.park_type AS park_type,
     rzhd_weekly.distance_zone_of_grouping_by_mileage AS distance_zone_of_grouping_by_mileage,
@@ -89,25 +91,7 @@ AS SELECT
     rzhd_weekly.cargo_subgroup_okved AS cargo_subgroup_okved,
     rzhd_weekly.previously_transported_cargo AS previously_transported_cargo,
     rzhd_weekly.previously_transported_cargo_code AS previously_transported_cargo_code,
-    CASE
-        WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
-            THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
-        WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
-        WHEN like(payer_of_the_railway_tariff, '%ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
-        WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
-        WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
-            THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
-        WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
-        WHEN like(payer_of_the_railway_tariff, '%ФЕДЕРАЛЬНОЕ АГЕНТСТВО%')
-            THEN replace(payer_of_the_railway_tariff, 'ФЕДЕРАЛЬНОЕ АГЕНТСТВО', 'ФА')
-        WHEN like(payer_of_the_railway_tariff, '%Центр по перевозке грузов в контейнера%')
-            THEN replace(payer_of_the_railway_tariff, 'Центр по перевозке грузов в контейнера', 'ПАО Трансконтейнер')
-        ELSE payer_of_the_railway_tariff
-    END AS payer_of_the_railway_tariff,
+    replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
     rzhd_weekly.type_of_accounting AS type_of_accounting,
     rzhd_weekly.sign_of_the_place_of_settlement AS sign_of_the_place_of_settlement,
     rzhd_weekly.exceptional_rate_code AS exceptional_rate_code,
@@ -117,10 +101,10 @@ AS SELECT
     rzhd_weekly.discount_amount AS discount_amount,
     rzhd_weekly.ferry_ust_luga_baltiysk AS ferry_ust_luga_baltiysk,
     rzhd_weekly.departure_date AS departure_date,
+    toMonth(departure_date) AS departure_month,
+    toYear(departure_date) AS departure_year,
     rzhd_weekly.departure_day_report AS departure_day_report,
     rzhd_weekly.number_of_cargo_acceptances_for_transportation AS number_of_cargo_acceptances_for_transportation,
-    rzhd_weekly.departure_month AS departure_month,
-    rzhd_weekly.departure_year AS departure_year,
     rzhd_weekly.quantity_of_containers AS quantity_of_containers,
     rzhd_weekly.quantity_of_wagons AS quantity_of_wagons,
     rzhd_weekly.cargo_turnover AS cargo_turnover,

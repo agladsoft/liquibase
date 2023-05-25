@@ -8,6 +8,8 @@ AS
             rzhd_novorossiysk.wagon_number AS wagon_number,
             rzhd_novorossiysk.document_no AS document_no,
             rzhd_novorossiysk.departure_date AS departure_date,
+            toMonth(departure_date) AS departure_month,
+            toYear(departure_date) AS departure_year,
             rzhd_novorossiysk.type_of_transportation AS type_of_transportation,
             rzhd_novorossiysk.wagon_subgenus AS wagon_subgenus,
             rzhd_novorossiysk.cargo_code_of_the_etsng AS cargo_code_of_the_etsng,
@@ -21,6 +23,7 @@ AS
             if(shipper_by_puzt is not null or shipper_by_puzt != 'НЕИЗВЕСТЕН' or shipper_by_puzt != 'неизвестен',
                 shipper_by_puzt, shipper_according_to_egrpo) AS common_shipper,
             rzhd_novorossiysk.shipper_okpo AS shipper_okpo,
+            rzhd_novorossiysk.type_of_special_container AS type_of_special_container,
             rct.container_type_unified AS container_type_unified,
             rzhd_novorossiysk.departure_station_code_of_rf AS departure_station_code_of_rf,
             rzhd_novorossiysk.state_of_destination AS state_of_destination,
@@ -36,32 +39,15 @@ AS
             rzhd_novorossiysk.destination_station_code_of_rf AS destination_station_code_of_rf,
             rzhd_novorossiysk.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
             rzhd_novorossiysk.leaseholder AS leaseholder,
-            CASE
-                WHEN like(payer_of_the_railway_tariff, '%ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
-                    THEN replace(payer_of_the_railway_tariff, 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ООО')
-                WHEN like(payer_of_the_railway_tariff, '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-                    THEN replace(payer_of_the_railway_tariff, 'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ПАО')
-                WHEN like(payer_of_the_railway_tariff, '%ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-                    THEN replace(payer_of_the_railway_tariff, 'ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
-                WHEN like(payer_of_the_railway_tariff, '%ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-                    THEN replace(payer_of_the_railway_tariff, 'ЗАКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО', 'ЗАО')
-                WHEN like(payer_of_the_railway_tariff, '%ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ%')
-                    THEN replace(payer_of_the_railway_tariff, 'ТОВАРИЩЕНСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ', 'ТОО')
-                WHEN like(payer_of_the_railway_tariff, '%АКЦИОНЕРНОЕ ОБЩЕСТВО%')
-                    THEN replace(payer_of_the_railway_tariff, 'АКЦИОНЕРНОЕ ОБЩЕСТВО', 'АО')
-                WHEN like(payer_of_the_railway_tariff, '%ФЕДЕРАЛЬНОЕ АГЕНТСТВО%')
-                    THEN replace(payer_of_the_railway_tariff, 'ФЕДЕРАЛЬНОЕ АГЕНТСТВО', 'ФА')
-                WHEN like(payer_of_the_railway_tariff, '%Центр по перевозке грузов в контейнера%')
-                    THEN replace(payer_of_the_railway_tariff, 'Центр по перевозке грузов в контейнера', 'ПАО Трансконтейнер')
-                ELSE payer_of_the_railway_tariff
-            END AS payer_of_the_railway_tariff,
+            replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
             rzhd_novorossiysk.weight AS weight,
             rzhd_novorossiysk.carriage_fee AS carriage_fee,
             rzhd_novorossiysk.cargo_class AS cargo_class,
             rzhd_novorossiysk.cis_departure_station AS cis_departure_station,
             rzhd_novorossiysk.cis_destination_station AS cis_destination_station,
             rzhd_novorossiysk.container_no AS container_no,
-            rzhd_novorossiysk.dispatch_category AS dispatch_category,
+            if(dispatch_category is not null, dispatch_category, 'нет данных'),
+            rzhd_novorossiysk.container_tonnage,
             rt.container_tonnage_unified AS container_tonnage_unified,
             intDiv(rt.container_tonnage_unified, 20) AS teu,
             rzhd_novorossiysk.wagon_model AS wagon_model,
