@@ -20,7 +20,7 @@ AS
             rzhd_novorossiysk.sign_of_departure_station_of_the_rf AS sign_of_departure_station_of_the_rf,
             rzhd_novorossiysk.shipper_according_to_egrpo AS shipper_according_to_egrpo,
             rzhd_novorossiysk.shipper_by_puzt AS shipper_by_puzt,
-            swap_values(shipper_by_puzt, shipper_according_to_egrpo, "неизвестен") AS common_shipper,
+            swap_values(shipper_by_puzt, shipper_according_to_egrpo, 'неизвестен') AS common_shipper,
             rzhd_novorossiysk.shipper_okpo AS shipper_okpo,
             rzhd_novorossiysk.type_of_special_container AS type_of_special_container,
             rct.container_type_unified AS container_type_unified,
@@ -31,7 +31,7 @@ AS
             rzhd_novorossiysk.rf_destination_station AS rf_destination_station,
             rzhd_novorossiysk.consignee_according_to_egrpo AS consignee_according_to_egrpo,
             rzhd_novorossiysk.consignee_by_puzt AS consignee_by_puzt,
-            swap_values(consignee_by_puzt, consignee_according_to_egrpo, "неизвестен") AS common_consignee,
+            swap_values(consignee_by_puzt, consignee_according_to_egrpo, 'неизвестен') AS common_consignee,
             rzhd_novorossiysk.consignee_okpo AS consignee_okpo,
             rzhd_novorossiysk.wagon_operator AS wagon_operator,
             rzhd_novorossiysk.destination_station_code_of_rf AS destination_station_code_of_rf,
@@ -47,14 +47,7 @@ AS
             if(dispatch_category is not null, dispatch_category, 'нет данных'),
             rzhd_novorossiysk.container_tonnage,
             rt.container_tonnage_unified AS container_tonnage_unified,
-            multiIf
-            (
-                quantity_of_containers = 0 or quantity_of_containers = -1,
-                0,
-                rt.container_tonnage_unified is null,
-                0
-                intDiv(rt.container_tonnage_unified, 20)
-            ) AS teu,
+            intDiv(rt.container_tonnage_unified, 20) AS teu,
             rzhd_novorossiysk.wagon_model AS wagon_model,
             rzhd_novorossiysk.estimated_date_of_arrival AS estimated_date_of_arrival,
             rzhd_novorossiysk.arrival_date AS arrival_date,
