@@ -30,8 +30,8 @@ AS SELECT
         quantity_of_containers = 0 or quantity_of_containers = -1,
         0,
         rt.container_tonnage_unified is null,
-        0
-        intDiv(rt.container_tonnage_unified, 20)
+        0,
+        floor(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_weekly.type_of_special_container AS type_of_special_container,
     rct.container_type_unified AS container_type_unified,
@@ -47,11 +47,11 @@ AS SELECT
     rzhd_weekly.shipper_okpo AS shipper_okpo,
     rzhd_weekly.shipper_according_to_egrpo AS shipper_according_to_egrpo,
     rzhd_weekly.shipper_by_puzt AS shipper_by_puzt,
-    swap_values(shipper_by_puzt, shipper_according_to_egrpo, "неизвестен") AS common_shipper,
+    swap_values(shipper_by_puzt, shipper_according_to_egrpo, 'неизвестен') AS common_shipper,
     rzhd_weekly.consignee_okpo AS consignee_okpo,
     rzhd_weekly.consignee_according_to_egrpo AS consignee_according_to_egrpo,
     rzhd_weekly.consignee_by_puzt AS consignee_by_puzt,
-    swap_values(consignee_by_puzt, consignee_according_to_egrpo, "неизвестен") AS common_consignee,
+    swap_values(consignee_by_puzt, consignee_according_to_egrpo, 'неизвестен') AS common_consignee,
     rzhd_weekly.state_of_departure AS state_of_departure,
     rzhd_weekly.sign_of_the_state_of_departure AS sign_of_the_state_of_departure,
     rzhd_weekly.subject_of_departure_of_the_rf AS subject_of_departure_of_the_rf,

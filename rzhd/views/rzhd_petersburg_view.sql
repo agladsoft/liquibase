@@ -57,11 +57,11 @@ AS SELECT
     rzhd_petersburg.shipper_okpo AS shipper_okpo,
     rzhd_petersburg.shipper_according_to_egrpo AS shipper_according_to_egrpo,
     rzhd_petersburg.shipper_by_puzt AS shipper_by_puzt,
-    swap_values(shipper_by_puzt, shipper_according_to_egrpo, "неизвестен") AS common_shipper,
+    swap_values(shipper_by_puzt, shipper_according_to_egrpo, 'неизвестен') AS common_shipper,
     rzhd_petersburg.distance_zone_of_grouping_by_mileage AS distance_zone_of_grouping_by_mileage,
     rzhd_petersburg.consignee_according_to_egrpo AS consignee_according_to_egrpo,
     rzhd_petersburg.consignee_by_puzt AS consignee_by_puzt,
-    swap_values(consignee_by_puzt, consignee_according_to_egrpo, "неизвестен") AS common_consignee,
+    swap_values(consignee_by_puzt, consignee_according_to_egrpo, 'неизвестен') AS common_consignee,
     rzhd_petersburg.consignee_okpo AS consignee_okpo,
     rzhd_petersburg.container_prefix AS container_prefix,
     rzhd_petersburg.wagon_subgenus AS wagon_subgenus,
@@ -75,8 +75,8 @@ AS SELECT
         quantity_of_containers = 0 or quantity_of_containers = -1,
         0,
         rt.container_tonnage_unified is null,
-        0
-        intDiv(rt.container_tonnage_unified, 20)
+        0,
+        floor(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_petersburg.subject_of_departure_of_the_rf AS subject_of_departure_of_the_rf,
     rzhd_petersburg.destination_subject_of_the_rf AS destination_subject_of_the_rf,

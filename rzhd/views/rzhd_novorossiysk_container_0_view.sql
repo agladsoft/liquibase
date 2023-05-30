@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW rzhd.rzhd_novorossiysk_view
+CREATE OR REPLACE VIEW rzhd.rzhd_novorossiysk_container_0_view
 AS
     SELECT
         *
@@ -47,7 +47,7 @@ AS
             if(dispatch_category is not null, dispatch_category, 'нет данных'),
             rzhd_novorossiysk.container_tonnage,
             rt.container_tonnage_unified AS container_tonnage_unified,
-            intDiv(rt.container_tonnage_unified, 20) AS teu,
+            floor(divide(rt.container_tonnage_unified, 20), 1),
             rzhd_novorossiysk.wagon_model AS wagon_model,
             rzhd_novorossiysk.estimated_date_of_arrival AS estimated_date_of_arrival,
             rzhd_novorossiysk.arrival_date AS arrival_date,
@@ -62,9 +62,9 @@ AS
             rzhd_novorossiysk.original_file_name AS original_file_name,
             rzhd_novorossiysk.original_file_parsed_on AS original_file_parsed_on,
             rzhd_novorossiysk.original_file_index AS original_file_index,
-            COUNT(*) OVER (PARTITION BY wagon_number, document_no, departure_date) AS group_wagon_doc_date
+            COUNT(*) OVER (PARTITION BY wagon_number, document_no, departure_date, cargo_code_of_the_etsng, destination_station_code_of_rf, consignee_according_to_egrpo) AS group_wagon_doc_date
         FROM rzhd.rzhd_novorossiysk
         LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_novorossiysk.container_tonnage = rt.container_tonnage
         LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_novorossiysk.type_of_special_container = rct.type_of_special_container
-        )
+        WHERE container_no = '0')
     WHERE group_wagon_doc_date = 1 or (group_wagon_doc_date > 1 and arrival_date is not null)
