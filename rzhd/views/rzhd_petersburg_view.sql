@@ -21,7 +21,7 @@ AS SELECT
     rzhd_petersburg.destination_road AS destination_road,
     rzhd_petersburg.type_of_transportation AS type_of_transportation,
     rzhd_petersburg.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,
-    if(dispatch_category is not null, dispatch_category, 'нет данных'),
+    if(dispatch_category is not null, dispatch_category, 'нет данных') AS dispatch_category,
     rzhd_petersburg.quantity_of_containers AS quantity_of_containers,
     rzhd_petersburg.quantity_of_wagons AS quantity_of_wagons,
     rzhd_petersburg.wagon_ownership_sign AS wagon_ownership_sign,
@@ -68,14 +68,14 @@ AS SELECT
     rzhd_petersburg.sign_of_the_place_of_settlement AS sign_of_the_place_of_settlement,
     rzhd_petersburg.sign_of_non_credited_cargo_at_border_crossings AS sign_of_non_credited_cargo_at_border_crossings,
     rzhd_petersburg.sign_of_the_principal AS sign_of_the_principal,
-    rzhd_petersburg.container_tonnage,
+    rzhd_petersburg.container_tonnage AS container_tonnage,
     rt.container_tonnage_unified AS container_tonnage_unified,
     multiIf
     (
         quantity_of_containers = 0 or quantity_of_containers = -1,
         0,
         rt.container_tonnage_unified is null,
-        0,
+        null,
         floor(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_petersburg.subject_of_departure_of_the_rf AS subject_of_departure_of_the_rf,

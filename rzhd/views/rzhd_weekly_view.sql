@@ -23,14 +23,14 @@ AS SELECT
     rzhd_weekly.check_in_station_for_wagon_rental AS check_in_station_for_wagon_rental,
     rzhd_weekly.container_prefix AS container_prefix,
     rzhd_weekly.container_no AS container_no,
-    rzhd_weekly.container_tonnage,
+    rzhd_weekly.container_tonnage AS container_tonnage,
     rt.container_tonnage_unified AS container_tonnage_unified,
     multiIf
     (
-        quantity_of_containers = 0 or quantity_of_containers = -1,
+        quantity_of_containers <= 0,
         0,
         rt.container_tonnage_unified is null,
-        0,
+        null,
         floor(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_weekly.type_of_special_container AS type_of_special_container,
@@ -38,7 +38,7 @@ AS SELECT
     rzhd_weekly.document_no AS document_no,
     rzhd_weekly.type_of_transportation AS type_of_transportation,
     rzhd_weekly.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,
-    if(dispatch_category is not null, dispatch_category, 'нет данных'),
+    if(dispatch_category is not null, dispatch_category, 'нет данных') AS dispatch_category,
     rzhd_weekly.type_of_message AS type_of_message,
     rzhd_weekly.park_type AS park_type,
     rzhd_weekly.distance_zone_of_grouping_by_mileage AS distance_zone_of_grouping_by_mileage,
