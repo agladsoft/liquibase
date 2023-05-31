@@ -45,7 +45,7 @@ AS
             rzhd_novorossiysk.cis_destination_station AS cis_destination_station,
             rzhd_novorossiysk.container_no AS container_no,
             if(dispatch_category is not null, dispatch_category, 'нет данных') AS dispatch_category,
-            rzhd_novorossiysk.container_tonnage,
+            rzhd_novorossiysk.container_tonnage AS container_tonnage,
             rt.container_tonnage_unified AS container_tonnage_unified,
             floor(divide(rt.container_tonnage_unified, 20), 1) AS teu,
             rzhd_novorossiysk.wagon_model AS wagon_model,
