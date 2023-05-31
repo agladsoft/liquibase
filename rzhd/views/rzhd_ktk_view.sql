@@ -45,7 +45,7 @@ AS SELECT
     rt.container_tonnage_unified AS container_tonnage_unified,
     multiIf
     (
-        quantity_of_containers = 0 or quantity_of_containers = -1,
+        quantity_of_containers <= 0,
         0,
         rt.container_tonnage_unified is null,
         null,
