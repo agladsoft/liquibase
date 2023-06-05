@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+	<changeSet id="createCRM" author="timur">
+		<sqlFile path="crm/tables/create_database.sql"/>
+		<sqlFile path="crm/tables/gap_powerbioptionsetrefs.sql"/>
+		<sqlFile path="crm/tables/kc_interviews.sql"/>
+		<sqlFile path="crm/tables/leads.sql"/>
+		<sqlFile path="crm/tables/opportunities.sql"/>
+		<sqlFile path="crm/tables/rn_stagehistories.sql"/>
+		<sqlFile path="crm/tables/systemusers.sql"/>
+		<sqlFile path="crm/tables/businessunits.sql"/>
+
+		<sqlFile path="crm/tables/reference_businessunits.sql"/>
+		<sqlFile path="crm/tables/reference_kc_interviews.sql"/>
+		<sqlFile path="crm/tables/reference_lead_sources.sql"/>
+		<sqlFile path="crm/tables/reference_lead_states.sql"/>
+
+
+		<sqlFile path="crm/views/kc_interviews_view.sql"/>
+		<sqlFile path="crm/views/leads_view.sql"/>
+		<sqlFile path="crm/views/systemusers_view.sql"/>
+	</changeSet>
+
+</databaseChangeLog>
