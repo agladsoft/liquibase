@@ -2,7 +2,7 @@ CREATE OR REPLACE VIEW default.import_nw_enriched
 AS SELECT
     import_nw.month AS month,
     import_nw.year AS year,
-    'import' AS direction,
+    import_nw.direction AS direction,
     import_nw.terminal AS terminal,
     rl.line_unified AS line_unified,
     rs.ship_name_unified AS ship_name_unified,
