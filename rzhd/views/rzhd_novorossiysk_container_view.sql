@@ -103,7 +103,7 @@ AS
                 rzhd_novorossiysk.destination_station_code_of_rf AS destination_station_code_of_rf,
                 rzhd_novorossiysk.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
                 rzhd_novorossiysk.leaseholder AS leaseholder,
-                replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+                upperUTF8(replace_organization_form(payer_of_the_railway_tariff)) AS payer_of_the_railway_tariff,
                 rzhd_novorossiysk.weight AS weight,
                 rzhd_novorossiysk.carriage_fee AS carriage_fee,
                 rzhd_novorossiysk.cargo_class AS cargo_class,

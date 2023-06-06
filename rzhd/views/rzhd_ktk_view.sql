@@ -64,7 +64,7 @@ AS SELECT
     rzhd_ktk.leaseholder AS leaseholder,
     rzhd_ktk.the_owner_of_the_wagon_according_to_the_internal_directory AS the_owner_of_the_wagon_according_to_the_internal_directory,
     rzhd_ktk.carriage_fee AS carriage_fee,
-    replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+    upperUTF8(replace_organization_form(payer_of_the_railway_tariff)) AS payer_of_the_railway_tariff,
     rzhd_ktk.quantity_of_containers AS quantity_of_containers,
     rzhd_ktk.quantity_of_wagons AS quantity_of_wagons,
     rzhd_ktk.name_of_cargo AS name_of_cargo,
