@@ -106,7 +106,7 @@ AS SELECT
     rzhd_petersburg.sign_of_the_exclusive_tariff AS sign_of_the_exclusive_tariff,
     rzhd_petersburg.name_of_cargo_etsng AS name_of_cargo_etsng,
     rzhd_petersburg.type_of_special_container AS type_of_special_container,
-    rct.container_type_unified AS container_type_unified,
+    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
     rzhd_petersburg.group_of_cargo_according_to_go6 AS group_of_cargo_according_to_go6,
     rzhd_petersburg.cargo_group_according_to_etsng AS cargo_group_according_to_etsng,
     rzhd_petersburg.group_of_cargo_co21 AS group_of_cargo_co21,

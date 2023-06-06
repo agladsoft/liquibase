@@ -34,7 +34,7 @@ AS SELECT
         floor(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_weekly.type_of_special_container AS type_of_special_container,
-    rct.container_type_unified AS container_type_unified,
+    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
     rzhd_weekly.document_no AS document_no,
     rzhd_weekly.type_of_transportation AS type_of_transportation,
     rzhd_weekly.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,

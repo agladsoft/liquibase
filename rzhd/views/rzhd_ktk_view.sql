@@ -53,7 +53,7 @@ AS SELECT
     ) AS teu,
     rzhd_ktk.container_prefix AS container_prefix,
     rzhd_ktk.type_of_special_container AS type_of_special_container,
-    rct.container_type_unified AS container_type_unified,
+    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
     rzhd_ktk.wagon_subgenus AS wagon_subgenus,
     rzhd_ktk.load_capacity AS load_capacity,
     rzhd_ktk.code_of_conditional_type_of_wagon AS code_of_conditional_type_of_wagon,

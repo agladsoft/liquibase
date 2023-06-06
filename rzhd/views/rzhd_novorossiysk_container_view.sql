@@ -89,7 +89,7 @@ AS
                 swap_values(shipper_by_puzt, shipper_according_to_egrpo, 'неизвестен') AS common_shipper,
                 rzhd_novorossiysk.shipper_okpo AS shipper_okpo,
                 rzhd_novorossiysk.type_of_special_container AS type_of_special_container,
-                rct.container_type_unified AS container_type_unified,
+                if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
                 rzhd_novorossiysk.departure_station_code_of_rf AS departure_station_code_of_rf,
                 rzhd_novorossiysk.state_of_destination AS state_of_destination,
                 rzhd_novorossiysk.destination_region AS destination_region,
