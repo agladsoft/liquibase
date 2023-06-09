@@ -96,7 +96,7 @@ AS SELECT
     rzhd_weekly.cargo_subgroup_okved AS cargo_subgroup_okved,
     rzhd_weekly.previously_transported_cargo AS previously_transported_cargo,
     rzhd_weekly.previously_transported_cargo_code AS previously_transported_cargo_code,
-    upperUTF8(replace_organization_form(payer_of_the_railway_tariff)) AS payer_of_the_railway_tariff,
+    replace_stock_company(replace_organization_form(replace_symbols_and_spaces(payer_of_the_railway_tariff))) AS payer_of_the_railway_tariff,
     rzhd_weekly.type_of_accounting AS type_of_accounting,
     rzhd_weekly.sign_of_the_place_of_settlement AS sign_of_the_place_of_settlement,
     rzhd_weekly.exceptional_rate_code AS exceptional_rate_code,
