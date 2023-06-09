@@ -1,8 +1,12 @@
 CREATE OR REPLACE FUNCTION replace_stock_company AS (payer_of_the_railway_tariff) ->
-if(
+multiIf(
     payer_of_the_railway_tariff LIKE '%АКЦИОНЕРНАЯ КОМПАНИЯ%',
     replaceAll(payer_of_the_railway_tariff,
     'АКЦИОНЕРНАЯ КОМПАНИЯ',
     'АК'),
+    payer_of_the_railway_tariff LIKE '%ОАО ТРАНСКОНТЕЙНЕР%',
+    replaceAll(payer_of_the_railway_tariff,
+    'ОАО ТРАНСКОНТЕЙНЕР',
+    'ПАО ТРАНСКОНТЕЙНЕР'),
     payer_of_the_railway_tariff
 );
