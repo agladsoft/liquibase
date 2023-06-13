@@ -49,7 +49,7 @@ AS SELECT
         0,
         rt.container_tonnage_unified is null,
         null,
-        floor(divide(rt.container_tonnage_unified, 20), 1)
+        round(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_ktk.container_prefix AS container_prefix,
     rzhd_ktk.type_of_special_container AS type_of_special_container,

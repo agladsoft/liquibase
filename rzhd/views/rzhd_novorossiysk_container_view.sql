@@ -113,7 +113,7 @@ AS
                 if(dispatch_category is not null, dispatch_category, 'нет данных') AS dispatch_category,
                 rzhd_novorossiysk.container_tonnage AS container_tonnage,
                 rt.container_tonnage_unified AS container_tonnage_unified,
-                floor(divide(rt.container_tonnage_unified, 20), 1) AS teu,
+                round(divide(rt.container_tonnage_unified, 20), 1) AS teu,
                 rzhd_novorossiysk.wagon_model AS wagon_model,
                 rzhd_novorossiysk.estimated_date_of_arrival AS estimated_date_of_arrival,
                 rzhd_novorossiysk.arrival_date AS arrival_date,

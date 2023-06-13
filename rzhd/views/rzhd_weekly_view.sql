@@ -31,7 +31,7 @@ AS SELECT
         0,
         rt.container_tonnage_unified is null,
         null,
-        floor(divide(rt.container_tonnage_unified, 20), 1)
+        round(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_weekly.type_of_special_container AS type_of_special_container,
     if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
