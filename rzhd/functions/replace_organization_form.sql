@@ -152,17 +152,5 @@ multiIf(
     replaceAll(payer_of_the_railway_tariff,
     'ОАО',
     'ОАО '),
-    payer_of_the_railway_tariff LIKE '%ПАО%',
-    replaceAll(payer_of_the_railway_tariff,
-    'ПАО',
-    'ПАО '),
-    payer_of_the_railway_tariff LIKE '%ЗАО%',
-    replaceAll(payer_of_the_railway_tariff,
-    'ЗАО',
-    'ЗАО '),
-    payer_of_the_railway_tariff LIKE '%НАО%',
-    replaceAll(payer_of_the_railway_tariff,
-    'НАО',
-    'НАО '),
     payer_of_the_railway_tariff
 );

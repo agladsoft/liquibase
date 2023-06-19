@@ -39,7 +39,8 @@ AS SELECT
     rzhd_petersburg.sub_group_of_cargo AS sub_group_of_cargo,
     rzhd_petersburg.cargo_group AS cargo_group,
     rzhd_petersburg.cargo_code_of_the_etsng AS cargo_code_of_the_etsng,
-    replace_company_name(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+    replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+    if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
     rzhd_petersburg.cargo_class AS cargo_class,
     rzhd_petersburg.departure_station_code_of_rf AS departure_station_code_of_rf,
     rzhd_petersburg.destination_station_code_of_rf AS destination_station_code_of_rf,
@@ -116,4 +117,5 @@ AS SELECT
     rzhd_petersburg.original_file_index AS original_file_index
    FROM rzhd.rzhd_petersburg
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_petersburg.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_petersburg.type_of_special_container = rct.type_of_special_container;
+     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_petersburg.type_of_special_container = rct.type_of_special_container
+     LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name;

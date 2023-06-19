@@ -39,6 +39,7 @@ AS
         view2.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
         view2.leaseholder AS leaseholder,
         view2.payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+        view2.payer_of_the_railway_tariff_unified AS payer_of_the_railway_tariff_unified,
         view2.weight AS weight,
         view2.carriage_fee AS carriage_fee,
         view2.cargo_class AS cargo_class,
@@ -103,7 +104,8 @@ AS
                 rzhd_novorossiysk.destination_station_code_of_rf AS destination_station_code_of_rf,
                 rzhd_novorossiysk.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
                 rzhd_novorossiysk.leaseholder AS leaseholder,
-                replace_company_name(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+                replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+                if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
                 rzhd_novorossiysk.weight AS weight,
                 rzhd_novorossiysk.carriage_fee AS carriage_fee,
                 rzhd_novorossiysk.cargo_class AS cargo_class,
@@ -132,5 +134,6 @@ AS
             FROM rzhd.rzhd_novorossiysk
             LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_novorossiysk.container_tonnage = rt.container_tonnage
             LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_novorossiysk.type_of_special_container = rct.type_of_special_container
+            LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name
             WHERE container_no != '0') AS view1
         WHERE group_wagon_doc_date = 1 or (group_wagon_doc_date > 1 and arrival_date is not null)) AS view2
