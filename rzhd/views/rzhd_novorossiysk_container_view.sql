@@ -5,7 +5,7 @@ AS
         view2.document_no AS document_no,
         view2.departure_date AS departure_date,
         CASE
-            WHEN count_duplicate_containers = 1 THEN 1
+            WHEN count_unique_containers = 1 THEN 1
             ELSE 0
         END AS quantity_of_containers,
         view2.container_no AS container_no,
@@ -67,7 +67,7 @@ AS
         (
         SELECT
             *,
-            ROW_NUMBER() OVER (PARTITION BY wagon_number, document_no, departure_date, container_no) AS count_duplicate_containers
+            ROW_NUMBER() OVER (PARTITION BY wagon_number, document_no, departure_date, container_no) AS count_unique_containers
         FROM
             (
             SELECT
