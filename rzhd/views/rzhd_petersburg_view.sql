@@ -39,7 +39,8 @@ AS SELECT
     rzhd_petersburg.sub_group_of_cargo AS sub_group_of_cargo,
     rzhd_petersburg.cargo_group AS cargo_group,
     rzhd_petersburg.cargo_code_of_the_etsng AS cargo_code_of_the_etsng,
-    replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+    replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+    if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
     rzhd_petersburg.cargo_class AS cargo_class,
     rzhd_petersburg.departure_station_code_of_rf AS departure_station_code_of_rf,
     rzhd_petersburg.destination_station_code_of_rf AS destination_station_code_of_rf,
@@ -76,7 +77,7 @@ AS SELECT
         0,
         rt.container_tonnage_unified is null,
         null,
-        floor(divide(rt.container_tonnage_unified, 20), 1)
+        round(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_petersburg.subject_of_departure_of_the_rf AS subject_of_departure_of_the_rf,
     rzhd_petersburg.destination_subject_of_the_rf AS destination_subject_of_the_rf,
@@ -106,7 +107,7 @@ AS SELECT
     rzhd_petersburg.sign_of_the_exclusive_tariff AS sign_of_the_exclusive_tariff,
     rzhd_petersburg.name_of_cargo_etsng AS name_of_cargo_etsng,
     rzhd_petersburg.type_of_special_container AS type_of_special_container,
-    rct.container_type_unified AS container_type_unified,
+    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
     rzhd_petersburg.group_of_cargo_according_to_go6 AS group_of_cargo_according_to_go6,
     rzhd_petersburg.cargo_group_according_to_etsng AS cargo_group_according_to_etsng,
     rzhd_petersburg.group_of_cargo_co21 AS group_of_cargo_co21,
@@ -116,4 +117,5 @@ AS SELECT
     rzhd_petersburg.original_file_index AS original_file_index
    FROM rzhd.rzhd_petersburg
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_petersburg.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_petersburg.type_of_special_container = rct.type_of_special_container;
+     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_petersburg.type_of_special_container = rct.type_of_special_container
+     LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name;

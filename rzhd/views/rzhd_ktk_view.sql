@@ -49,11 +49,11 @@ AS SELECT
         0,
         rt.container_tonnage_unified is null,
         null,
-        floor(divide(rt.container_tonnage_unified, 20), 1)
+        round(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_ktk.container_prefix AS container_prefix,
     rzhd_ktk.type_of_special_container AS type_of_special_container,
-    rct.container_type_unified AS container_type_unified,
+    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
     rzhd_ktk.wagon_subgenus AS wagon_subgenus,
     rzhd_ktk.load_capacity AS load_capacity,
     rzhd_ktk.code_of_conditional_type_of_wagon AS code_of_conditional_type_of_wagon,
@@ -64,7 +64,8 @@ AS SELECT
     rzhd_ktk.leaseholder AS leaseholder,
     rzhd_ktk.the_owner_of_the_wagon_according_to_the_internal_directory AS the_owner_of_the_wagon_according_to_the_internal_directory,
     rzhd_ktk.carriage_fee AS carriage_fee,
-    replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+    replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+    if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
     rzhd_ktk.quantity_of_containers AS quantity_of_containers,
     rzhd_ktk.quantity_of_wagons AS quantity_of_wagons,
     rzhd_ktk.name_of_cargo AS name_of_cargo,
@@ -106,4 +107,5 @@ AS SELECT
     rzhd_ktk.original_file_index AS original_file_index
    FROM rzhd.rzhd_ktk
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_ktk.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_ktk.type_of_special_container = rct.type_of_special_container;
+     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_ktk.type_of_special_container = rct.type_of_special_container
+     LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name;

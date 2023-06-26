@@ -36,6 +36,7 @@ AS
         wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
         leaseholder AS leaseholder,
         payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+        payer_of_the_railway_tariff_unified AS payer_of_the_railway_tariff_unified,
         weight AS weight,
         carriage_fee AS carriage_fee,
         cargo_class AS cargo_class,
@@ -44,7 +45,14 @@ AS
         dispatch_category AS dispatch_category,
         container_tonnage AS container_tonnage,
         container_tonnage_unified AS container_tonnage_unified,
-        teu AS teu,
+        multiIf
+        (
+            quantity_of_containers <= 0,
+            0,
+            container_tonnage_unified is null,
+            null,
+            teu
+        ) AS teu,
         wagon_model AS wagon_model,
         estimated_date_of_arrival AS estimated_date_of_arrival,
         arrival_date AS arrival_date,
@@ -98,6 +106,7 @@ AS
         wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
         leaseholder AS leaseholder,
         payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+        payer_of_the_railway_tariff_unified AS payer_of_the_railway_tariff_unified,
         weight AS weight,
         carriage_fee AS carriage_fee,
         cargo_class AS cargo_class,
@@ -106,7 +115,14 @@ AS
         dispatch_category AS dispatch_category,
         container_tonnage AS container_tonnage,
         container_tonnage_unified AS container_tonnage_unified,
-        teu AS teu,
+        multiIf
+        (
+            quantity_of_containers <= 0,
+            0,
+            container_tonnage_unified is null,
+            null,
+            teu
+        ) AS teu,
         wagon_model AS wagon_model,
         estimated_date_of_arrival AS estimated_date_of_arrival,
         arrival_date AS arrival_date,

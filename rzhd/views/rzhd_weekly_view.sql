@@ -31,10 +31,10 @@ AS SELECT
         0,
         rt.container_tonnage_unified is null,
         null,
-        floor(divide(rt.container_tonnage_unified, 20), 1)
+        round(divide(rt.container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_weekly.type_of_special_container AS type_of_special_container,
-    rct.container_type_unified AS container_type_unified,
+    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
     rzhd_weekly.document_no AS document_no,
     rzhd_weekly.type_of_transportation AS type_of_transportation,
     rzhd_weekly.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,
@@ -96,7 +96,8 @@ AS SELECT
     rzhd_weekly.cargo_subgroup_okved AS cargo_subgroup_okved,
     rzhd_weekly.previously_transported_cargo AS previously_transported_cargo,
     rzhd_weekly.previously_transported_cargo_code AS previously_transported_cargo_code,
-    replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+    replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+    if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
     rzhd_weekly.type_of_accounting AS type_of_accounting,
     rzhd_weekly.sign_of_the_place_of_settlement AS sign_of_the_place_of_settlement,
     rzhd_weekly.exceptional_rate_code AS exceptional_rate_code,
@@ -127,4 +128,5 @@ AS SELECT
     rzhd_weekly.original_file_index AS original_file_index
    FROM rzhd.rzhd_weekly
      LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_weekly.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_weekly.type_of_special_container = rct.type_of_special_container;
+     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_weekly.type_of_special_container = rct.type_of_special_container
+     LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name;

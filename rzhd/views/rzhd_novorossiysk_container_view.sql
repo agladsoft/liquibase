@@ -5,7 +5,7 @@ AS
         view2.document_no AS document_no,
         view2.departure_date AS departure_date,
         CASE
-            WHEN count_duplicate_containers = 1 THEN 1
+            WHEN count_unique_containers = 1 THEN 1
             ELSE 0
         END AS quantity_of_containers,
         view2.container_no AS container_no,
@@ -39,6 +39,7 @@ AS
         view2.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
         view2.leaseholder AS leaseholder,
         view2.payer_of_the_railway_tariff AS payer_of_the_railway_tariff,
+        view2.payer_of_the_railway_tariff_unified AS payer_of_the_railway_tariff_unified,
         view2.weight AS weight,
         view2.carriage_fee AS carriage_fee,
         view2.cargo_class AS cargo_class,
@@ -67,7 +68,7 @@ AS
         (
         SELECT
             *,
-            ROW_NUMBER() OVER (PARTITION BY wagon_number, document_no, departure_date, container_no) AS count_duplicate_containers
+            ROW_NUMBER() OVER (PARTITION BY wagon_number, document_no, departure_date, container_no) AS count_unique_containers
         FROM
             (
             SELECT
@@ -89,7 +90,7 @@ AS
                 swap_values(shipper_by_puzt, shipper_according_to_egrpo, 'неизвестен') AS common_shipper,
                 rzhd_novorossiysk.shipper_okpo AS shipper_okpo,
                 rzhd_novorossiysk.type_of_special_container AS type_of_special_container,
-                rct.container_type_unified AS container_type_unified,
+                if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
                 rzhd_novorossiysk.departure_station_code_of_rf AS departure_station_code_of_rf,
                 rzhd_novorossiysk.state_of_destination AS state_of_destination,
                 rzhd_novorossiysk.destination_region AS destination_region,
@@ -103,7 +104,8 @@ AS
                 rzhd_novorossiysk.destination_station_code_of_rf AS destination_station_code_of_rf,
                 rzhd_novorossiysk.wagon_owner_according_to_egrpo AS wagon_owner_according_to_egrpo,
                 rzhd_novorossiysk.leaseholder AS leaseholder,
-                replace_organization_form(payer_of_the_railway_tariff) AS payer_of_the_railway_tariff,
+                replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+                if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
                 rzhd_novorossiysk.weight AS weight,
                 rzhd_novorossiysk.carriage_fee AS carriage_fee,
                 rzhd_novorossiysk.cargo_class AS cargo_class,
@@ -113,7 +115,7 @@ AS
                 if(dispatch_category is not null, dispatch_category, 'нет данных') AS dispatch_category,
                 rzhd_novorossiysk.container_tonnage AS container_tonnage,
                 rt.container_tonnage_unified AS container_tonnage_unified,
-                floor(divide(rt.container_tonnage_unified, 20), 1) AS teu,
+                round(divide(rt.container_tonnage_unified, 20), 1) AS teu,
                 rzhd_novorossiysk.wagon_model AS wagon_model,
                 rzhd_novorossiysk.estimated_date_of_arrival AS estimated_date_of_arrival,
                 rzhd_novorossiysk.arrival_date AS arrival_date,
@@ -132,5 +134,6 @@ AS
             FROM rzhd.rzhd_novorossiysk
             LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_novorossiysk.container_tonnage = rt.container_tonnage
             LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_novorossiysk.type_of_special_container = rct.type_of_special_container
+            LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name
             WHERE container_no != '0') AS view1
         WHERE group_wagon_doc_date = 1 or (group_wagon_doc_date > 1 and arrival_date is not null)) AS view2
