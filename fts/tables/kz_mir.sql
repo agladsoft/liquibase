@@ -61,8 +61,7 @@ CREATE TABLE fts.kz_mir
 
     `contract_currency` Nullable(String),
 
-    `currency_exchange_rate` Nullable(Decimal(38,
- 19)),
+    `currency_exchange_rate` Nullable(Decimal(38, 19)),
 
     `commodity_code_according_to_hs` Nullable(String),
 
