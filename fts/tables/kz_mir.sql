@@ -3,7 +3,7 @@ CREATE TABLE fts.kz_mir
 
     `declaration_number` Nullable(String),
 
-    `the_number_of_the_goods_is_the_following` Nullable(String),
+    `the_number_of_the_goods_is_the_following` Nullable(Integer),
 
     `abbreviation_type_of_gtd` Nullable(String),
 
@@ -31,7 +31,7 @@ CREATE TABLE fts.kz_mir
 
     `direction` Nullable(String),
 
-    `customs_regime_code` Nullable(String),
+    `customs_regime_code` Nullable(Integer),
 
     `customs_regime` Nullable(String),
 
@@ -77,7 +77,7 @@ CREATE TABLE fts.kz_mir
 
     `good_brand` Nullable(String),
 
-    `number_of_TOVG_in_additional_unit` Nullable(String),
+    `number_of_TOVG_in_additional_unit` Nullable(Integer),
 
     `the_name_of_the_additional_unit_of_TOVG` Nullable(String),
 
@@ -97,11 +97,11 @@ CREATE TABLE fts.kz_mir
 
     `statistical_cost_usd` Nullable(Decimal(38, 19)),
 
-    `type_of_transport_at_the_border` Nullable(String),
+    `type_of_transport_at_the_border` Nullable(Integer),
 
     `transport_at_the_border` Nullable(String),
 
-    `type_of_transport_within_the_country` Nullable(String),
+    `type_of_transport_within_the_country` Nullable(Integer),
 
     `transport_within_the_country` Nullable(String),
 
@@ -195,7 +195,7 @@ CREATE TABLE fts.kz_mir
 
     `original_file_parsed_on` Nullable(String),
 
-    `original_file_index` Nullable(Int32)
+    `original_file_index` Nullable(Integer)
 )
 ENGINE = MergeTree
 ORDER BY date_of_registration
