@@ -1,4 +1,4 @@
-CREATE TABLE fts.KZ_MIR
+CREATE TABLE fts.kz_mir
 (
 
     `declaration_number` Nullable(String),
