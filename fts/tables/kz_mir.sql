@@ -1,7 +1,7 @@
 CREATE TABLE fts.kz_mir
 (
 
-    `declaration_number` Nullable(String),
+    `declaration_number` String,
 
     `the_number_of_the_goods_is_the_following` Nullable(Integer),
 
@@ -77,7 +77,7 @@ CREATE TABLE fts.kz_mir
 
     `good_brand` Nullable(String),
 
-    `number_of_TOVG_in_additional_unit` Nullable(Integer),
+    `number_of_TOVG_in_additional_unit` Nullable(Int128),
 
     `the_name_of_the_additional_unit_of_TOVG` Nullable(String),
 
@@ -109,7 +109,7 @@ CREATE TABLE fts.kz_mir
 
     `short_name_of_external_economic_activity_member` Nullable(String),
 
-    `date_of_registration` Date,
+    `date_of_registration` Nullable(Date),
 
     `re_registration_date` Nullable(Date),
 
@@ -198,4 +198,4 @@ CREATE TABLE fts.kz_mir
     `original_file_index` Nullable(Integer)
 )
 ENGINE = MergeTree
-ORDER BY date_of_registration
+ORDER BY declaration_number
