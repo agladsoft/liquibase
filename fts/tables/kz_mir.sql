@@ -147,7 +147,7 @@ CREATE TABLE fts.kz_mir
 
     `partner_country` Nullable(String),
 
-    `inn_of_the_contract_holder` Nullable(String),
+    `iin_of_the_contract_holder` Nullable(String),
 
     `contract_holder` Nullable(String),
 
