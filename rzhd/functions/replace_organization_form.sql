@@ -107,7 +107,7 @@ multiIf(
     payer_of_the_railway_tariff LIKE '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО ЦЕНТР ПО ПЕРЕВОЗКЕ ГРУЗОВ В КОНТЕЙНЕРА%',
     replaceAll(payer_of_the_railway_tariff,
     'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО ЦЕНТР ПО ПЕРЕВОЗКЕ ГРУЗОВ В КОНТЕЙНЕРА',
-    'ПАО ТРАНСКОНТЕЙНЕР '),
+    'ПАО ТРАНСКОНТЕЙНЕР'),
     payer_of_the_railway_tariff LIKE '%ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО%',
     replaceAll(payer_of_the_railway_tariff,
     'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО',
