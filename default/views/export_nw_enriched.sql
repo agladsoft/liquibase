@@ -31,10 +31,10 @@ AS SELECT
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
    FROM default.export_nw
-     LEFT JOIN default.reference_tnved2_actual rt ON export_nw.tnved_group_id = rt.group_tnved
-     LEFT JOIN default.reference_inn ri ON export_nw.shipper_name = ri.company_name
-     LEFT JOIN default.reference_region rg ON export_nw.tracking_seaport = rg.seaport
-     LEFT JOIN default.reference_lines rl ON export_nw.line = rl.line
-     LEFT JOIN default.reference_ship AS rs ON export_nw.ship_name = rs.ship_name
-     LEFT JOIN default.reference_container_type rct ON export_nw.container_type = rct.container_type
-     LEFT JOIN default.reference_geo rgeo ON export_nw.tracking_seaport = rgeo.seaport;
+     LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON export_nw.tnved_group_id = rt.group_tnved
+     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON export_nw.shipper_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_region FINAL) rg ON export_nw.tracking_seaport = rg.seaport
+     LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON export_nw.line = rl.line
+     LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON export_nw.ship_name = rs.ship_name
+     LEFT JOIN (SELECT * FROM default.reference_container_type FINAL) rct ON export_nw.container_type = rct.container_type
+     LEFT JOIN (SELECT * FROM default.reference_geo FINAL) rgeo ON export_nw.tracking_seaport = rgeo.seaport;

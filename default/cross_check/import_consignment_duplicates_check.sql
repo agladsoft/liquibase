@@ -31,6 +31,6 @@ AS SELECT
     ie.teu AS teu,
     ie.terminal AS terminal
    FROM default.import_enriched ie
-   LEFT JOIN default.reference_lines_cross_check AS rlcc ON ie.line_unified = rlcc.line
+   LEFT JOIN (SELECT * FROM default.reference_lines_cross_check FINAL) AS rlcc ON ie.line_unified = rlcc.line
    ) AS rlcc
   GROUP BY rlcc.year_parsed_on, rlcc.month_parsed_on, rlcc.ship_name_unified, rlcc.direction, rlcc.is_empty, rlcc.line_unified, rlcc.container_size, rlcc.container_number, rlcc.date, rlcc.consignment, rlcc.terminal;

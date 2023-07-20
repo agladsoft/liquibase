@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS default.reference_region
 
     `region` Nullable(String)
 )
-ENGINE = MergeTree()
+ENGINE = ReplacingMergeTree()
 ORDER BY seaport;

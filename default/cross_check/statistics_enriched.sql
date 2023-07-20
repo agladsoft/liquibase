@@ -13,5 +13,5 @@ AS SELECT DISTINCT statistics.year AS year,
     statistics.date_arrive AS date_arrive,
     statistics.date_leave AS date_leave
    FROM default.statistics
-     LEFT JOIN default.reference_lines rl ON statistics.line = rl.line
-     LEFT JOIN default.reference_ship rs ON statistics.ship_name = rs.ship_name;
+     LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON statistics.line = rl.line
+     LEFT JOIN (SELECT * FROM default.reference_ship FINAL) rs ON statistics.ship_name = rs.ship_name;
