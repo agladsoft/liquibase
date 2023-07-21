@@ -33,6 +33,7 @@ AS SELECT
     opportunities.stageid AS stageid,
     opportunities.traversedpath AS traversedpath,
     opportunities.rn_lastactivitydate_date AS rn_lastactivitydate_date,
+    opportunities.rn_lastorderdate AS rn_lastorderdate,
     opportunities.evaluatefit AS evaluatefit,
     opportunities.totalamountlessfreight AS totalamountlessfreight,
     opportunities.kc_potencialamountwithvat AS kc_potencialamountwithvat,

@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS crm.opportunities
     `stageid` Nullable(String),
     `traversedpath` Nullable(String),
     `rn_lastactivitydate_date` Nullable(Date),
+    `rn_lastorderdate` Nullable(String),
     `evaluatefit` Nullable(Bool),
     `totalamountlessfreight` Nullable(Decimal128(19)),
     `kc_potencialamountwithvat` Nullable(Decimal128(19)),
