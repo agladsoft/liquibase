@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS default.reference_spardeck
     `volume_in_nutep` Nullable(String),
     `volume_out_nutep` Nullable(String),
     `sign_nutep` Nullable(String),
+    `original_file_name` Nullable(String),
+    `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
 ORDER BY vessel;
