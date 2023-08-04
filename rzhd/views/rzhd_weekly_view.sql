@@ -43,7 +43,6 @@ AS SELECT
     rzhd_weekly.park_type AS park_type,
     rzhd_weekly.distance_zone_of_grouping_by_mileage AS distance_zone_of_grouping_by_mileage,
     rzhd_weekly.sign_of_non_credited_cargo_at_border_crossings AS sign_of_non_credited_cargo_at_border_crossings,
-    rzhd_weekly.sign_of_the_exclusive_tariff AS sign_of_the_exclusive_tariff,
     rzhd_weekly.shipper_okpo AS shipper_okpo,
     rzhd_weekly.shipper_according_to_egrpo AS shipper_according_to_egrpo,
     rzhd_weekly.shipper_by_puzt AS shipper_by_puzt,
