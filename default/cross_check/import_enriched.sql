@@ -21,7 +21,8 @@ AS SELECT
     import.teu AS teu,
     import.container_count AS container_count,
         CASE
-            WHEN re.is_empty = import.goods_name and goods_weight_with_package = 0 THEN true
+            WHEN re.is_empty = import.goods_name and
+            (goods_weight_with_package = 0 or goods_weight_with_package is null) THEN true
             ELSE false
         END AS is_empty,
     import.goods_name AS goods_name,
