@@ -117,12 +117,6 @@ AS SELECT
     rzhd_weekly.transportation_volume_tons AS transportation_volume_tons,
     rzhd_weekly.tara_weight_of_an_empty_wagon AS tara_weight_of_an_empty_wagon,
     rzhd_weekly.wagon_kilometers AS wagon_kilometers,
-    rzhd_weekly.date_of_disbursement AS date_of_disbursement,
-    rzhd_weekly.date_csm AS date_csm,
-    rzhd_weekly.crediting_month AS crediting_month,
-    rzhd_weekly.crediting_year AS crediting_year,
-    rzhd_weekly.arrival_day_report AS arrival_day_report,
-    rzhd_weekly.arrival_date AS arrival_date,
     rzhd_weekly.original_file_name AS original_file_name,
     rzhd_weekly.original_file_parsed_on AS original_file_parsed_on,
     rzhd_weekly.original_file_index AS original_file_index
