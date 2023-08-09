@@ -15,9 +15,13 @@
 		<sqlFile path="crm/tables/kc_interviews.sql"/>
 		<sqlFile path="crm/tables/leads.sql"/>
 		<sqlFile path="crm/tables/opportunities.sql"/>
+		<sqlFile path="crm/tables/opportunitysalesprocesses.sql"/>
+		<sqlFile path="crm/tables/overall_evaluation_marketing_opr.sql"/>
+		<sqlFile path="crm/tables/processstages.sql"/>
 		<sqlFile path="crm/tables/rn_stagehistories.sql"/>
 		<sqlFile path="crm/tables/systemusers.sql"/>
 		<sqlFile path="crm/tables/businessunits.sql"/>
+		<sqlFile path="crm/tables/teams.sql"/>
 
 		<sqlFile path="crm/tables/reference_businessunits.sql"/>
 		<sqlFile path="crm/tables/reference_kc_interviews.sql"/>
@@ -27,6 +31,7 @@
 
 		<sqlFile path="crm/views/kc_interviews_view.sql"/>
 		<sqlFile path="crm/views/leads_view.sql"/>
+		<sqlFile path="crm/views/opportunities_view.sql"/>
 		<sqlFile path="crm/views/systemusers_view.sql"/>
 	</changeSet>
 

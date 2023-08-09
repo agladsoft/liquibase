@@ -12,6 +12,7 @@
 	<changeSet id="createFTS" author="timur">
         <sqlFile path="fts/tables/create_database.sql"/>
         <sqlFile path="fts/tables/fts.sql"/>
+		<sqlFile path="fts/tables/kz_mir.sql"/>
         <sqlFile path="fts/views/fts_view.sql"/>
 	</changeSet>
 

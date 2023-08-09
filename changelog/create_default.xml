@@ -23,8 +23,10 @@
         <sqlFile path="default/tables/reference_lines.sql"/>
         <sqlFile path="default/tables/reference_lines_cross_check.sql"/>
         <sqlFile path="default/tables/reference_morservice.sql"/>
+		<sqlFile path="default/tables/reference_morservice_all.sql"/>
         <sqlFile path="default/tables/reference_region.sql"/>
         <sqlFile path="default/tables/reference_ship.sql"/>
+		<sqlFile path="default/tables/reference_spardeck.sql"/>
         <sqlFile path="default/tables/reference_terminal.sql"/>
         <sqlFile path="default/tables/reference_tnved2.sql"/>
         <sqlFile path="default/tables/statistics.sql"/>

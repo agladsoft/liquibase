@@ -10,8 +10,8 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 	<include file="changelog/create_default.xml"/>
-<!--	<include file="changelog/create_rzhd.xml"/>-->
-<!--	<include file="changelog/create_crm.xml"/>-->
-<!--	<include file="changelog/create_fts.xml"/>-->
+	<include file="changelog/create_rzhd.xml"/>
+	<include file="changelog/create_crm.xml"/>
+	<include file="changelog/create_fts.xml"/>
 
 </databaseChangeLog>
