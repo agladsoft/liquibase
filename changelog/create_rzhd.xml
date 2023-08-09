@@ -16,19 +16,19 @@
 		<sqlFile path="rzhd/tables/rzhd_petersburg.sql"/>
 		<sqlFile path="rzhd/tables/rzhd_weekly.sql"/>
 
-		<sqlFile path="rzhd/tables/replace_double_spaces.sql"/>
-		<sqlFile path="rzhd/tables/replace_organization_form.sql"/>
-		<sqlFile path="rzhd/tables/replace_stock_company.sql"/>
-		<sqlFile path="rzhd/tables/replace_symbols.sql"/>
-		<sqlFile path="rzhd/tables/swap_values.sql"/>
+		<sqlFile path="rzhd/functions/replace_double_spaces.sql"/>
+		<sqlFile path="rzhd/functions/replace_organization_form.sql"/>
+		<sqlFile path="rzhd/functions/replace_stock_company.sql"/>
+		<sqlFile path="rzhd/functions/replace_symbols.sql"/>
+		<sqlFile path="rzhd/functions/swap_values.sql"/>
 
-		<sqlFile path="rzhd/tables/rzhd_ktk_view.sql"/>
-		<sqlFile path="rzhd/tables/rzhd_novorossiysk_container_0_view.sql"/>
-		<sqlFile path="rzhd/tables/rzhd_novorossiysk_container_view.sql"/>
-		<sqlFile path="rzhd/tables/rzhd_novorossiysk_view.sql"/>
-		<sqlFile path="rzhd/tables/rzhd_petersburg_view.sql"/>
-		<sqlFile path="rzhd/tables/rzhd_weekly_view.sql"/>
-		<sqlFile path="rzhd/tables/unique_companies.sql"/>
+		<sqlFile path="rzhd/views/rzhd_ktk_view.sql"/>
+		<sqlFile path="rzhd/views/rzhd_novorossiysk_container_0_view.sql"/>
+		<sqlFile path="rzhd/views/rzhd_novorossiysk_container_view.sql"/>
+		<sqlFile path="rzhd/views/rzhd_novorossiysk_view.sql"/>
+		<sqlFile path="rzhd/views/rzhd_petersburg_view.sql"/>
+		<sqlFile path="rzhd/views/rzhd_weekly_view.sql"/>
+		<sqlFile path="rzhd/views/unique_companies.sql"/>
 	</changeSet>
 
 </databaseChangeLog>
