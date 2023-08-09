@@ -21,7 +21,8 @@ AS SELECT
     import.teu AS teu,
     import.container_count AS container_count,
         CASE
-            WHEN re.is_empty = import.goods_name THEN true
+            WHEN re.is_empty = import.goods_name and
+            (goods_weight_with_package = 0 or goods_weight_with_package is null) THEN true
             ELSE false
         END AS is_empty,
     import.goods_name AS goods_name,
@@ -40,11 +41,11 @@ AS SELECT
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
    FROM default.import
-     LEFT JOIN default.reference_inn AS ri ON import.consignee_name = ri.company_name
-     LEFT JOIN default.reference_is_empty AS re ON import.goods_name = re.is_empty
-     LEFT JOIN default.reference_lines AS rl ON import.line = rl.line
-     LEFT JOIN default.reference_ship AS rs ON import.ship_name = rs.ship_name
-     LEFT JOIN default.reference_container_type AS rct ON import.container_type = rct.container_type
-     LEFT JOIN default.reference_region AS rg ON import.tracking_seaport = rg.seaport
-     LEFT JOIN default.reference_tnved2_actual AS rt ON import.tnved = rt.group_tnved
-     LEFT JOIN default.reference_geo AS rgeo ON import.tracking_seaport = rgeo.seaport;
+     LEFT JOIN (SELECT * FROM default.reference_inn) AS ri ON import.consignee_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON import.goods_name = re.is_empty
+     LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON import.line = rl.line
+     LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON import.ship_name = rs.ship_name
+     LEFT JOIN (SELECT * FROM default.reference_container_type FINAL) AS rct ON import.container_type = rct.container_type
+     LEFT JOIN (SELECT * FROM default.reference_region FINAL) AS rg ON import.tracking_seaport = rg.seaport
+     LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) AS rt ON import.tnved = rt.group_tnved
+     LEFT JOIN (SELECT * FROM default.reference_geo FINAL) AS rgeo ON import.tracking_seaport = rgeo.seaport;

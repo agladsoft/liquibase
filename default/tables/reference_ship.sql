@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS default.reference_ship
 
     `ship_imo` Nullable(Int32)
 )
-ENGINE = MergeTree()
+ENGINE = ReplacingMergeTree()
 ORDER BY ship_name;

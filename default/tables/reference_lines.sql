@@ -5,5 +5,5 @@ CREATE TABLE IF NOT EXISTS default.reference_lines
 
     `line_unified` Nullable(String)
 )
-ENGINE = MergeTree()
+ENGINE = ReplacingMergeTree()
 ORDER BY line;

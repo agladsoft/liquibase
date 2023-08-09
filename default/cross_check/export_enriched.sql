@@ -40,11 +40,11 @@ AS SELECT
     rgeo.long_port AS long_port,
     export.gtd_number AS gtd_number
    FROM default.export
-     LEFT JOIN default.reference_inn ri ON export.shipper_name = ri.company_name
-     LEFT JOIN default.reference_is_empty re ON export.goods_name = re.is_empty
-     LEFT JOIN default.reference_lines rl ON export.line = rl.line
-     LEFT JOIN default.reference_ship rs ON export.ship_name = rs.ship_name
-     LEFT JOIN default.reference_container_type rct ON export.container_type = rct.container_type
-     LEFT JOIN default.reference_region rg ON export.tracking_seaport = rg.seaport
-     LEFT JOIN default.reference_tnved2_actual rt ON export.tnved = rt.group_tnved
-     LEFT JOIN default.reference_geo rgeo ON export.tracking_seaport = rgeo.seaport;
+     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON export.shipper_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) re ON export.goods_name = re.is_empty
+     LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON export.line = rl.line
+     LEFT JOIN (SELECT * FROM default.reference_ship FINAL) rs ON export.ship_name = rs.ship_name
+     LEFT JOIN (SELECT * FROM default.reference_container_type FINAL) rct ON export.container_type = rct.container_type
+     LEFT JOIN (SELECT * FROM default.reference_region FINAL) rg ON export.tracking_seaport = rg.seaport
+     LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON export.tnved = rt.group_tnved
+     LEFT JOIN (SELECT * FROM default.reference_geo FINAL) rgeo ON export.tracking_seaport = rgeo.seaport;
