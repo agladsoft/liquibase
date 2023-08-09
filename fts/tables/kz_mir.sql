@@ -1,4 +1,4 @@
-CREATE TABLE fts.kz_mir
+CREATE TABLE IF NOT EXISTS fts.kz_mir
 (
 
     `declaration_number` String,
