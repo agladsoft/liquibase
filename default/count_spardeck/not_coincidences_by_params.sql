@@ -3,6 +3,7 @@ AS SELECT *
 FROM (
     SELECT
         operator,
+        vessel,
         ship_name_unified,
         atb_moor_pier,
         month,
