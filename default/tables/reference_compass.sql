@@ -57,7 +57,25 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `original_file_name` Nullable(String),
 
-    `original_file_parsed_on` Nullable(String)
+    `original_file_parsed_on` Nullable(String),
+
+    `dadata_company_name` Nullable(String),
+
+    `dadata_address` Nullable(String),
+
+    `dadata_region` Nullable(String),
+
+    `dadata_federal_district` Nullable(String),
+
+    `dadata_city` Nullable(String),
+
+    `dadata_okved_activity_main_type` Nullable(String),
+
+    `dadata_branch_name` Nullable(String),
+
+    `dadata_branch_address` Nullable(String),
+
+    `dadata_branch_region` Nullable(String)
 )
 ENGINE = MergeTree()
 ORDER BY inn;
