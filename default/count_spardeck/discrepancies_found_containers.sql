@@ -12,6 +12,5 @@ AS SELECT
 FROM reference_spardeck_unified
 LEFT JOIN import_nle_spardeck AS ins ON
     reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
-    AND operator = ins.line_unified
   WHERE shipment_date BETWEEN atb_moor_pier - 4 and atb_moor_pier + 4
-ORDER BY operator, ins.line_unified
+ORDER BY operator

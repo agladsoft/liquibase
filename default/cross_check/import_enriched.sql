@@ -4,7 +4,9 @@ AS SELECT
     import.year_parsed_on AS year_parsed_on,
     'import' AS direction,
     import.terminal AS terminal,
+    import.line AS line,
     rl.line_unified AS line_unified,
+    import.ship_name AS ship_name,
     rs.ship_name_unified AS ship_name_unified,
     import.voyage AS voyage,
     import.shipment_date AS shipment_date,
@@ -17,6 +19,7 @@ AS SELECT
             WHEN import.container_size = 22 THEN 20
             ELSE import.container_size
         END AS container_size,
+    import.container_type AS container_type,
     rct.container_type_unified AS container_type_unified,
     import.teu AS teu,
     import.container_count AS container_count,

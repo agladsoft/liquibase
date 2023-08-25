@@ -3,6 +3,7 @@ AS SELECT *
 FROM (
     SELECT
         operator,
+        line_unified,
         vessel,
         ship_name_unified,
         atb_moor_pier,
@@ -14,12 +15,11 @@ FROM (
     FROM reference_spardeck_unified
     LEFT JOIN import_nle_spardeck AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
-        AND operator = ins.line_unified
         AND atb_moor_pier = ins.shipment_date
     WHERE ins.count_container = 0
     )
-WHERE NOT (operator, ship_name_unified, atb_moor_pier, total_volume_in) IN (
-    SELECT operator, ship_name_unified, atb_moor_pier, total_volume_in
+WHERE NOT (operator, ship_name_unified, atb_moor_pier) IN (
+    SELECT operator, ship_name_unified, atb_moor_pier
     FROM discrepancies_found_containers
-    GROUP BY operator, ship_name_unified, atb_moor_pier, total_volume_in
+    GROUP BY operator, ship_name_unified, atb_moor_pier
 );
