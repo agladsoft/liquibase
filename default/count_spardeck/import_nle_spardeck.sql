@@ -17,7 +17,7 @@ FROM
         toYear(shipment_date) AS year_parsed_on
     FROM (
          SELECT *, 1 as count_container_custom
-         FROM default.test_table
+         FROM default.extrapolate
          WHERE count_container > arrayJoin(range(0, 1000)))
          )
 GROUP BY ship_name_unified, shipment_date, month_parsed_on, year_parsed_on

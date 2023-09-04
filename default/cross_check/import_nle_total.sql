@@ -32,7 +32,7 @@ AS SELECT
                END AS is_ref
           FROM (
                 SELECT *, 1 as count_container_custom
-                FROM default.test_table
+                FROM default.extrapolate
                 WHERE count_container > arrayJoin(range(0, 1000))
                 )
           ) tmp2
