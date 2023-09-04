@@ -18,18 +18,5 @@ AS SELECT
                 END AS is_ref
            FROM default.export_enriched
           WHERE export_enriched.terminal = 'НЛЭ'
-          UNION ALL
-          SELECT
-              toMonth(date) AS shipment_month,
-              toYear(date) AS shipment_year,
-              'export' AS direction,
-              false AS is_empty,
-              intDiv(container_size, 20) AS teu,
-              container_type AS container_type_unified,
-              CASE
-                  WHEN ilike(upper(container_type), '%REF%') THEN true
-                  ELSE false
-               END AS is_ref
-          FROM default.test_table
           ) tmp2
   GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;

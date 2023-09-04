@@ -30,6 +30,10 @@ AS SELECT
                   WHEN ilike(upper(container_type), '%REF%') THEN true
                   ELSE false
                END AS is_ref
-          FROM default.test_table
+          FROM (
+                SELECT *, 1 as count_container_custom
+                FROM default.test_table
+                WHERE count_container > arrayJoin(range(0, 1000))
+                )
           ) tmp2
   GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;
