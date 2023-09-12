@@ -44,7 +44,7 @@ AS SELECT
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
    FROM default.import
-     LEFT JOIN (SELECT * FROM default.reference_inn) AS ri ON import.consignee_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_inn FINAL) AS ri ON import.consignee_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON import.goods_name = re.is_empty
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON import.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON import.ship_name = rs.ship_name

@@ -32,7 +32,7 @@ AS SELECT
     rgeo.long_port AS long_port
    FROM default.export_vsk
      LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON export_vsk.tnved_group_id = rt.group_tnved
-     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON export_vsk.shipper_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_inn FINAL) ri ON export_vsk.shipper_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_region FINAL) rg ON export_vsk.tracking_seaport = rg.seaport
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON export_vsk.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON export_vsk.ship_name = rs.ship_name

@@ -38,7 +38,7 @@ AS SELECT
     import_vsk.combined_cargo AS combined_cargo
    FROM default.import_vsk
      LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON import_vsk.tnved_group_id = rt.group_tnved
-     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON import_vsk.consignee_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_inn FINAL) ri ON import_vsk.consignee_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_region FINAL) rg ON import_vsk.tracking_seaport = rg.seaport
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON import_vsk.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON import_vsk.ship_name = rs.ship_name

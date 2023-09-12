@@ -43,7 +43,7 @@ AS SELECT
     rgeo.long_port AS long_port,
     export.gtd_number AS gtd_number
    FROM default.export
-     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON export.shipper_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_inn FINAL) ri ON export.shipper_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) re ON export.goods_name = re.is_empty
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON export.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) rs ON export.ship_name = rs.ship_name
