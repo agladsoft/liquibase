@@ -13,9 +13,11 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
 
     `is_inn_found_auto` Nullable(Bool),
 
+    `is_company_name_from_cache` Nullable(Bool),
+
     `original_file_name` Nullable(String),
 
     `original_file_parsed_on` Nullable(String)
 )
-ENGINE = MergeTree()
+ENGINE = ReplacingMergeTree()
 ORDER BY company_name;

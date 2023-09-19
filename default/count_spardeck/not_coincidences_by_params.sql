@@ -15,11 +15,6 @@ FROM (
     FROM reference_spardeck_unified
     LEFT JOIN import_nle_spardeck AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
-        AND atb_moor_pier = ins.shipment_date
+        AND reference_spardeck_unified.month = ins.month_parsed_on
     WHERE ins.count_container = 0
-    )
-WHERE NOT (operator, ship_name_unified, atb_moor_pier) IN (
-    SELECT operator, ship_name_unified, atb_moor_pier
-    FROM discrepancies_found_containers
-    GROUP BY operator, ship_name_unified, atb_moor_pier
-);
+    );

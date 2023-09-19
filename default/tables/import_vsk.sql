@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS default.import_vsk
 (
+    `uuid` UUID DEFAULT generateUUIDv4(),
 
     `month` Int32,
 
@@ -63,9 +64,13 @@ CREATE TABLE IF NOT EXISTS default.import_vsk
 
     `gtd_number` Nullable(String),
 
+    `is_auto_tracking` Nullable(Bool),
+
+    `is_auto_tracking_ok` Nullable(Bool),
+
     `original_file_name` Nullable(String),
 
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY month;
+ORDER BY import_vsk_id;

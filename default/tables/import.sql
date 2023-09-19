@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS default.import
 (
-    `import_id` UUID,
+    `uuid` UUID DEFAULT generateUUIDv4(),
 
     `parsed_on` Date,
 
@@ -54,10 +54,14 @@ CREATE TABLE IF NOT EXISTS default.import
 
     `tracking_seaport` Nullable(String),
 
+    `is_auto_tracking` Nullable(Bool),
+
+    `is_auto_tracking_ok` Nullable(Bool),
+
     `original_file_name` Nullable(String),
 
     `original_file_parsed_on` Nullable(String)
 
 )
 ENGINE = MergeTree()
-ORDER BY parsed_on;
+ORDER BY uuid;
