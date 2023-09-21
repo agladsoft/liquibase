@@ -5,7 +5,6 @@ AS SELECT DISTINCT
     shipper_name,
     tracking_country,
     tracking_seaport,
-    seaport AS seaport,
     seaport_unified AS seaport_unified,
     country AS country,
     region AS region,

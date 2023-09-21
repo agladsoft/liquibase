@@ -13,7 +13,7 @@ CREATE TABLE default.extrapolate
 
     `container_size` Nullable(Int32),
 
-    `count_container` Nullable(Int32),
+    `count_container` UInt64,
 
     `goods_name` Nullable(String),
 

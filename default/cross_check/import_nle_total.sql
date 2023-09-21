@@ -31,9 +31,9 @@ AS SELECT
                   ELSE false
                END AS is_ref
           FROM (
-                SELECT *, 1 as count_container_custom
+                SELECT
+                    *, arrayJoin(range(1, count_container + 1))
                 FROM default.extrapolate
-                WHERE count_container > arrayJoin(range(0, 5000))
                 )
           ) tmp2
   GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;
