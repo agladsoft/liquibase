@@ -18,6 +18,6 @@ FROM
     FROM (
          SELECT *, 1 as count_container_custom
          FROM default.extrapolate
-         WHERE count_container > arrayJoin(range(0, 1000)))
+         WHERE count_container > arrayJoin(range(0, 5000)))
          )
 GROUP BY ship_name_unified, shipment_date, month_parsed_on, year_parsed_on

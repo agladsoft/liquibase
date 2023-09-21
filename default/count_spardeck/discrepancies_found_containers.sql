@@ -50,4 +50,4 @@ AND NOT (vessel, atb_moor_pier) IN (
     SELECT vessel, atb_moor_pier
     FROM not_coincidences_by_params
     GROUP BY vessel, atb_moor_pier
-) and month = 7
+)

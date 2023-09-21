@@ -33,7 +33,7 @@ AS SELECT
           FROM (
                 SELECT *, 1 as count_container_custom
                 FROM default.extrapolate
-                WHERE count_container > arrayJoin(range(0, 1000))
+                WHERE count_container > arrayJoin(range(0, 5000))
                 )
           ) tmp2
   GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;
