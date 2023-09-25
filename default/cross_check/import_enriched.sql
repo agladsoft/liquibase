@@ -1,6 +1,5 @@
 CREATE OR REPLACE VIEW default.import_enriched
 AS SELECT
-    import.uuid AS uuid,
     import.month_parsed_on AS month_parsed_on,
     import.year_parsed_on AS year_parsed_on,
     'import' AS direction,
@@ -39,9 +38,9 @@ AS SELECT
     ri.company_inn AS consignee_inn,
     ri.company_name_unified AS consignee_name_unified,
     import.expeditor AS expeditor,
-    if(empty_containers.seaport_unified is null, rg.seaport_unified, empty_containers.seaport_unified) AS tracking_seaport_unified,
-    if(empty_containers.country is null, rg.country, empty_containers.country) AS tracking_country_unified,
-    if(empty_containers.region is null, rg.region, empty_containers.region) AS region,
+    rg.country AS tracking_country_unified,
+    rg.seaport_unified AS tracking_seaport_unified,
+    rg.region AS region,
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port
    FROM default.import
@@ -50,7 +49,6 @@ AS SELECT
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON import.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON import.ship_name = rs.ship_name
      LEFT JOIN (SELECT * FROM default.reference_container_type FINAL) AS rct ON import.container_type = rct.container_type
-     LEFT JOIN default.import_empty_containers_and_region AS empty_containers ON empty_containers.uuid = import.uuid
      LEFT JOIN (SELECT * FROM default.reference_region FINAL) AS rg ON import.tracking_seaport = rg.seaport
      LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) AS rt ON import.tnved = rt.group_tnved
-     LEFT JOIN (SELECT * FROM default.reference_geo FINAL) AS rgeo ON tracking_country_unified = rgeo.seaport;
+     LEFT JOIN (SELECT * FROM default.reference_geo FINAL) AS rgeo ON import.tracking_seaport = rgeo.seaport;
