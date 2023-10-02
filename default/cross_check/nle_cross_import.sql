@@ -8,6 +8,6 @@ AS SELECT
     ms.teu AS teu_morservice,
     ims.teu_total AS teu,
     ms.teu - ims.teu_total AS teu_delta
-   FROM default.reference_morservice ms
+   FROM default.reference_morservice_all ms
      LEFT JOIN default.import_nle_total ims ON ms.year = ims.year AND ms.month = ims.month AND ms.direction = ims.direction AND ms.is_empty = ims.is_empty AND ms.is_ref = ims.is_ref
-  WHERE ms.direction = 'import';
+  WHERE ms.direction = 'import' AND ms.terminal_operator = 'АО "НЛЭ"';

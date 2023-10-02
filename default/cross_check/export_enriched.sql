@@ -5,7 +5,9 @@ AS SELECT
     export.year_parsed_on AS year_parsed_on,
     'export' AS direction,
     export.terminal AS terminal,
+    export.line AS line,
     rl.line_unified AS line_unified,
+    export.ship_name AS ship_name,
     rs.ship_name_unified AS ship_name_unified,
     export.voyage AS voyage,
     export.shipment_date AS shipment_date,
@@ -16,6 +18,7 @@ AS SELECT
             WHEN export.container_size = 22 THEN 20
             ELSE export.container_size
         END AS container_size,
+    export.container_type AS container_type,
     rct.container_type_unified AS container_type_unified,
     export.teu AS teu,
     export.container_count AS container_count,
@@ -40,7 +43,7 @@ AS SELECT
     rgeo.long_port AS long_port,
     export.gtd_number AS gtd_number
    FROM default.export
-     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON export.shipper_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_inn FINAL) ri ON export.shipper_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) re ON export.goods_name = re.is_empty
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON export.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) rs ON export.ship_name = rs.ship_name

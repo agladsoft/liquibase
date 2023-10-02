@@ -32,7 +32,7 @@ AS SELECT
     rgeo.long_port AS long_port
    FROM default.import_nw
      LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON import_nw.tnved_group_id = rt.group_tnved
-     LEFT JOIN (SELECT * FROM default.reference_inn) ri ON import_nw.consignee_name = ri.company_name
+     LEFT JOIN (SELECT * FROM default.reference_inn FINAL) ri ON import_nw.consignee_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_region FINAL) rg ON import_nw.tracking_seaport = rg.seaport
      LEFT JOIN (SELECT * FROM default.reference_lines FINAL) rl ON import_nw.line = rl.line
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON import_nw.ship_name = rs.ship_name
