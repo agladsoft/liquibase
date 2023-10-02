@@ -1,4 +1,4 @@
-CREATE TABLE default.extrapolate
+CREATE TABLE IF NOT EXISTS default.extrapolate
 (
 
     `line` Nullable(String),
