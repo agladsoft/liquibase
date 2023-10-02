@@ -3,9 +3,17 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `uuid` UUID,
 
+    `invoiceStatus` Nullable(String),
+
+    `invoicePort` Nullable(String),
+
+    `processingTerminal` Nullable(String),
+
     `operationDate` Nullable(Date),
 
     `voyage` Nullable(String),
+
+    `voyageMonth` Nullable(Int32),
 
     `voyageDate` Nullable(Date),
 
@@ -47,7 +55,7 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `containerType` Nullable(String),
 
-    `bl` Nullable(String),
+    `booking_list` Nullable(String),
 
     `destination` Nullable(String),
 
