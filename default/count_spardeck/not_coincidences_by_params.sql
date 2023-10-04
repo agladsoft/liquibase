@@ -13,7 +13,7 @@ FROM (
         count_container,
         toInt32(total_volume_in) - count_container as delta_count
     FROM reference_spardeck_unified
-    LEFT JOIN import_nle_spardeck AS ins ON
+    LEFT JOIN nle_spardeck AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
     WHERE ins.count_container = 0

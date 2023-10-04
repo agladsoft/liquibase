@@ -266,7 +266,7 @@ UNION ALL
  SELECT
   toMonth(date) AS month,
   toYear(date) AS year,
-  'extrapolate_final' AS direction,
+  direction AS direction,
   terminal AS terminal,
   line AS line_unified,
   ship AS ship_unified,

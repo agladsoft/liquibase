@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW default.import_nle_spardeck
+CREATE OR REPLACE VIEW default.nle_spardeck
 AS
 SELECT *, count(*) AS count_container
 FROM
@@ -8,6 +8,14 @@ FROM
         month_parsed_on,
         year_parsed_on
     FROM import_enriched
+    WHERE terminal = 'НЛЭ'
+    UNION ALL
+    SELECT
+        ship_name_unified,
+        shipment_date,
+        month_parsed_on,
+        year_parsed_on
+    FROM export_enriched
     WHERE terminal = 'НЛЭ'
     UNION ALL
     SELECT
