@@ -76,7 +76,7 @@
 		<sqlFile path="default/count_spardeck/reference_spardeck_unified.sql"/>
 		<sqlFile path="default/count_spardeck/reference_spardeck_unified_check.sql"/>
 		<sqlFile path="default/count_spardeck/check_month.sql"/>
-		<sqlFile path="default/count_spardeck/not_coincidences_by_params.sql"/>
+		<sqlFile path="default/count_spardeck/not_found_containers.sql"/>
 		<sqlFile path="default/count_spardeck/discrepancies_found_containers.sql"/>
 		<sqlFile path="default/count_spardeck/all_enriched_line_report.sql"/>
 	</changeSet>

@@ -58,4 +58,4 @@ CREATE TABLE IF NOT EXISTS default.export
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY parsed_on;
+ORDER BY uuid;

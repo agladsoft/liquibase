@@ -63,4 +63,4 @@ CREATE TABLE IF NOT EXISTS default.export_vsk
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY month;
+ORDER BY uuid;

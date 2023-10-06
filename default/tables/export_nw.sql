@@ -62,4 +62,4 @@ CREATE TABLE IF NOT EXISTS default.export_nw
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY month;
+ORDER BY uuid;

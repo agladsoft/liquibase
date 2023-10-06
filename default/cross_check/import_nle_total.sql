@@ -22,7 +22,7 @@ AS SELECT
           SELECT
               toMonth(date) AS shipment_month,
               toYear(date) AS shipment_year,
-              'import' AS direction,
+              direction AS direction,
               false AS is_empty,
               intDiv(container_size, 20) AS teu,
               container_type AS container_type_unified,
@@ -34,6 +34,7 @@ AS SELECT
                 SELECT
                     *, arrayJoin(range(1, count_container + 1))
                 FROM default.extrapolate
+                WHERE direction = 'import'
                 )
           ) tmp2
   GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;
