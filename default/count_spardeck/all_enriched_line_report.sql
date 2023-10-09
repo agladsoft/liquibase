@@ -277,7 +277,10 @@ UNION ALL
   container_type AS container_type_unified,
   intDiv(container_size, 20) AS teu,
   1 AS container_count,
-  false AS is_empty,
+  CASE
+    WHEN re.is_empty = ex_final.goods_name THEN true
+    ELSE false
+  END AS is_empty,
   goods_name AS goods_name,
   null AS tnved_group_id,
   null AS tnved_group_name,
@@ -297,4 +300,5 @@ UNION ALL
     SELECT
         *, arrayJoin(range(1, count_container + 1))
     FROM default.extrapolate_final
-    )
+    ) as ex_final
+ LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON ex_final.goods_name = re.is_empty
