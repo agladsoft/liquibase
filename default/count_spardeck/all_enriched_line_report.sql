@@ -264,8 +264,8 @@ UNION ALL
    FROM default.export_vsk_enriched
 UNION ALL
  SELECT
-  toMonth(date) AS month,
-  toYear(date) AS year,
+  month AS month,
+  year AS year,
   direction AS direction,
   terminal AS terminal,
   line AS line_unified,
