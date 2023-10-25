@@ -9,7 +9,21 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
 
     `company_name_rus` Nullable(String),
 
-    `confidence_rate` Nullable(Integer),
+    `request_to_yandex` Nullable(String),
+
+    `sum_count_inn` Nullable(Int32),
+
+    `company_inn_max_rank` Nullable(Int32),
+
+    `count_inn_in_fts` Nullable(Int32),
+
+    `is_fts_found` Nullable(Bool),
+
+    `fts_company_name` Nullable(String),
+
+    `company_inn_count` Nullable(Int32),
+
+    `confidence_rate` Nullable(Int32),
 
     `is_inn_found_auto` Nullable(Bool),
 
@@ -19,5 +33,5 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
 
     `original_file_parsed_on` Nullable(String)
 )
-ENGINE = ReplacingMergeTree()
-ORDER BY company_name;
+ENGINE = ReplacingMergeTree
+ORDER BY company_name
