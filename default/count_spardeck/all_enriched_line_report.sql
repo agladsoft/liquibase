@@ -294,7 +294,7 @@ UNION ALL
     ELSE false
   END AS is_empty,
   if(category_im is not null, category_im, 'other') AS ref,
-  goods_name AS goods_name,
+  ex_final.goods_name AS goods_name,
   null AS tnved_group_id,
   null AS tnved_group_name,
   null AS goods_weight_with_package,
