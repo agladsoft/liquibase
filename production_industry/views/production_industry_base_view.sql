@@ -1,0 +1,37 @@
+CREATE OR REPLACE VIEW production_industry.production_industry_base_view
+AS SELECT
+    uuid AS uuid,
+    production_industry_sector AS production_industry_sector,
+    custom_code AS custom_code,
+    registration_date AS registration_date,
+    sender_tin AS sender_tin,
+    sender_name AS sender_name,
+    recipient_name AS recipient_name,
+    declarant_tin AS declarant_tin,
+    declarant_name AS declarant_name,
+    declarant_country_code AS declarant_country_code,
+    destination_country AS destination_country,
+    container_transportation_sign AS container_transportation_sign,
+    delivery_condition AS delivery_condition,
+    goods_delivery_point AS goods_delivery_point,
+    svh_certificate AS svh_certificate,
+    station_warehouse_name AS station_warehouse_name,
+    warehouse_area AS warehouse_area,
+    warehouse_street AS warehouse_street,
+    warehouse_city AS warehouse_city,
+    goods_description AS goods_description,
+    origin_country AS origin_country,
+    container_count AS container_count,
+    tnved_code AS tnved_code,
+    gross_weight_kg AS gross_weight_kg,
+    net_weight_kg AS net_weight_kg,
+    manufacturer_tin AS manufacturer_tin,
+    holding_founder_company AS holding_founder_company,
+    goods_comment AS goods_comment,
+    rc.dadata_geo_lat AS dadata_geo_lat,
+    rc.dadata_geo_lon AS dadata_geo_lon,
+    original_file_name AS original_file_name,
+    original_file_parsed_on AS original_file_parsed_on
+FROM production_industry.production_industry_base
+LEFT JOIN reference_compass AS rc ON production_industry_base.sender_tin = rc.inn
+

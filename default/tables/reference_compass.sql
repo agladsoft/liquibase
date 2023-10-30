@@ -3,8 +3,8 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `inn` String,
 
-    `company_name` Nullable(String),
-
+    `comptelephone_numberany_name` Nullable(String),
+telephone_number
     `kpp` Nullable(String),
 
     `ogrn` Nullable(String),
