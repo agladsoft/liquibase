@@ -61,6 +61,12 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `dadata_company_name` Nullable(String),
 
+    `dadata_status` Nullable(String),
+
+    `dadata_registration_date` Nullable(Date),
+
+    `dadata_liquidation_date` Nullable(Date),
+
     `dadata_address` Nullable(String),
 
     `dadata_region` Nullable(String),
@@ -75,7 +81,13 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `dadata_branch_address` Nullable(String),
 
-    `dadata_branch_region` Nullable(String)
+    `dadata_branch_region` Nullable(String),
+
+    `dadata_geo_lat` Nullable(Decimal(38, 19)),
+
+    `dadata_geo_lon` Nullable(Decimal(38, 19)),
+
+    `is_company_name_from_cache` Nullable(Bool)
 )
 ENGINE = MergeTree()
 ORDER BY inn;
