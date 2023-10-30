@@ -56,10 +56,6 @@ CREATE TABLE IF NOT EXISTS production_industry.production_industry_base
 
     `goods_comment` Nullable(String),
 
-    `lat_manufacturer` Nullable(Decimal128(19)),
-
-    `long_manufacturer` Nullable(Decimal128(19)),
-
     `original_file_name` Nullable(String),
 
     `original_file_parsed_on` Nullable(String)
