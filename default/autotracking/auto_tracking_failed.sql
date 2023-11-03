@@ -60,7 +60,7 @@ AS SELECT
         is_auto_tracking_ok as is_auto_tracking_ok,
         original_file_name as original_file_name,
         original_file_parsed_on as original_file_parsed_on
-    FROM import_vsk WHERE (is_auto_tracking = true) AND (is_auto_tracking_ok = false)
+    FROM import_vsk WHERE (is_auto_tracking = true) AND (is_auto_tracking_ok = false) AND direction != 'cabotage'
     UNION ALL
    SELECT
         uuid as uuid,
@@ -122,5 +122,5 @@ AS SELECT
         is_auto_tracking_ok as is_auto_tracking_ok,
         original_file_name as original_file_name,
         original_file_parsed_on as original_file_parsed_on
-    FROM export_vsk WHERE (is_auto_tracking = true) AND (is_auto_tracking_ok = false)
+    FROM export_vsk WHERE (is_auto_tracking = true) AND (is_auto_tracking_ok = false) AND direction != 'cabotage'
     ORDER BY consignment
