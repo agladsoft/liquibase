@@ -23,13 +23,10 @@ AS SELECT
               toMonth(date) AS shipment_month,
               toYear(date) AS shipment_year,
               direction AS direction,
-              false AS is_empty,
+              is_empty AS is_empty,
               intDiv(container_size, 20) AS teu,
               container_type AS container_type_unified,
-              CASE
-                  WHEN ilike(upper(container_type), '%REF%') THEN true
-                  ELSE false
-               END AS is_ref
+              multiIf(is_ref = true and is_empty = true, false, is_ref = true and is_empty = false, true, false) AS is_ref
           FROM (
                 SELECT
                     *, arrayJoin(range(1, count_container + 1))
