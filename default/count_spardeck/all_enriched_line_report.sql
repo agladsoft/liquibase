@@ -280,8 +280,8 @@ UNION ALL
   year AS year,
   direction AS direction,
   terminal AS terminal,
-  line AS line_unified,
-  ship AS ship_unified,
+  rl.line_unified AS line_unified,
+  rs.ship_name_unified AS ship_name_unified,
   null AS voyage,
   date AS shipment_date,
   null AS container_number,
@@ -316,3 +316,5 @@ UNION ALL
     ) as ex_final
  LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON ex_final.goods_name = re.is_empty
  LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON ex_final.goods_name = rr.goods_name
+ LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON ex_final.line = rl.line
+ LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON ex_final.ship = rs.ship_name
