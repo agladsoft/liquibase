@@ -12,10 +12,7 @@ AS SELECT
             export_enriched.is_empty AS is_empty,
             export_enriched.teu AS teu,
             export_enriched.container_type_unified AS container_type_unified,
-                CASE
-                    WHEN ilike(upper(export_enriched.container_type_unified), '%REF%') THEN true
-                    ELSE false
-                END AS is_ref
+            multiIf(ilike(upper(export_enriched.container_type_unified), '%REF%') = true and is_empty = true, false, ilike(upper(export_enriched.container_type_unified), '%REF%') = true and is_empty = false, true, false) AS is_ref
            FROM default.export_enriched
           WHERE export_enriched.terminal = 'НЛЭ'
           UNION ALL

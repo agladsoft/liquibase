@@ -302,9 +302,9 @@ UNION ALL
   null AS company_inn,
   null AS company_unified,
   null AS expeditor,
-  tracking_country AS tracking_country_unified,
-  tracking_seaport AS tracking_seaport_unified,
-  null AS region,
+  rg.country AS tracking_country_unified,
+  rg.seaport_unified AS tracking_seaport_unified,
+  rg.region AS region,
   null AS lat_port,
   null AS long_port,
   null AS geopolygon,
@@ -316,5 +316,6 @@ UNION ALL
     ) as ex_final
  LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON ex_final.goods_name = re.is_empty
  LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON ex_final.goods_name = rr.goods_name
+ LEFT JOIN (SELECT * FROM default.reference_region FINAL) AS rg ON ex_final.tracking_seaport = rg.seaport
  LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON ex_final.line = rl.line
  LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON ex_final.ship = rs.ship_name
