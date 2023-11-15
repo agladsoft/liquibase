@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 (
 
-    `uuid` UUID,
+    `uuid` DEFAULT generateUUIDv4(),
 
     `invoiceStatus` Nullable(String),
 
