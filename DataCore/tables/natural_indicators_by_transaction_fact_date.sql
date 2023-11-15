@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 
     direction Nullable(String),
 
-    client Nullable(Bool),
+    client Nullable(String),
 
     orderDate Nullable(Date),
 
-    clientUID Nullable(Bool),
+    clientUID Nullable(String),
 
     department Nullable(String),
 
