@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_contracts_segments
 
     `Segment` Nullable(String),
 
-    `Date` Nullable(Date),
+    `Date` Nullable(Date32),
 
     `orderNumber` Nullable(String),
 

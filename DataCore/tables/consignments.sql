@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS DataCore.consignments
 
     `year` Nullable(Int32),
 
-    `voyageDate` Nullable(Date),
+    `voyageDate` Nullable(Date32),
 
     `voyage` Nullable(String),
 

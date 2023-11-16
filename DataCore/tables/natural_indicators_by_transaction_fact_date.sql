@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 
     uuid UUID DEFAULT generateUUIDv4(),
 
-    operationDate Nullable(Date),
+    operationDate Nullable(Date32),
 
     containerCount_20 Nullable(Int32),
 
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 
     client Nullable(String),
 
-    orderDate Nullable(Date),
+    orderDate Nullable(Date32),
 
     clientUID Nullable(String),
 
