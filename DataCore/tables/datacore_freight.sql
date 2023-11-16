@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `operationDate` Nullable(Date32),
 
+    `originalDate` Nullable(String),
+
     `voyage` Nullable(String),
 
     `voyageMonth` Nullable(Int32),

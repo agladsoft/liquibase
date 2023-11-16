@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 
     operationDate Nullable(Date32),
 
+    originalDate Nullable(String),
+
     containerCount_20 Nullable(Int32),
 
     operationMonth Nullable(Int32),

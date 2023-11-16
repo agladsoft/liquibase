@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_contracts_segments
 
     `Date` Nullable(Date32),
 
+    `originalDate` Nullable(String),
+
     `orderNumber` Nullable(String),
 
     `container` Nullable(String),
