@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS default.extrapolate
 
     `ship` Nullable(String),
 
+    `direction` Nullable(String),
+
     `terminal` Nullable(String),
 
     `date` Nullable(Date),

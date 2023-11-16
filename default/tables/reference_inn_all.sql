@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS default.reference_inn
+CREATE TABLE default.reference_inn_all
 (
 
     `company_name` String,
@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
     `company_inn` Nullable(String),
 
     `company_name_unified` Nullable(String),
+
+    `company_name_unified_en` Nullable(String),
 
     `company_name_rus` Nullable(String),
 
@@ -33,5 +35,5 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
 
     `original_file_parsed_on` Nullable(String)
 )
-ENGINE = ReplacingMergeTree
+ENGINE = MergeTree
 ORDER BY company_name

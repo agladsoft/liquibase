@@ -73,4 +73,4 @@ CREATE TABLE IF NOT EXISTS default.import_vsk
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY import_vsk_id;
+ORDER BY uuid;

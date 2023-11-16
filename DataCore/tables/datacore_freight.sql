@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 (
 
-    `uuid` UUID,
+    `uuid` DEFAULT generateUUIDv4(),
 
     `invoiceStatus` Nullable(String),
 
@@ -9,13 +9,13 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `processingTerminal` Nullable(String),
 
-    `operationDate` Nullable(Date),
+    `operationDate` Nullable(Date32),
 
     `voyage` Nullable(String),
 
     `voyageMonth` Nullable(Int32),
 
-    `voyageDate` Nullable(Date),
+    `voyageDate` Nullable(Date32),
 
     `isFreight` Nullable(String),
 

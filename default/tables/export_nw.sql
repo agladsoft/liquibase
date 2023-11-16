@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS default.export_nw
 
     `year` Nullable(Int32),
 
+    `uuid` UUID DEFAULT generateUUIDv4(),
+
     `direction` Nullable(String),
 
     `terminal` Nullable(String),
@@ -51,9 +53,13 @@ CREATE TABLE IF NOT EXISTS default.export_nw
 
     `gtd_number` Nullable(String),
 
+    `is_auto_tracking` Nullable(Bool),
+
+    `is_auto_tracking_ok` Nullable(Bool),
+
     `original_file_name` Nullable(String),
 
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree()
-ORDER BY month;
+ORDER BY uuid;

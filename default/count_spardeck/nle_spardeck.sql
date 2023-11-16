@@ -1,8 +1,9 @@
-CREATE OR REPLACE VIEW default.import_nle_spardeck
+CREATE OR REPLACE VIEW default.nle_spardeck
 AS
 SELECT *, count(*) AS count_container
 FROM
     (SELECT
+        direction,
         ship_name_unified,
         shipment_date,
         month_parsed_on,
@@ -11,12 +12,23 @@ FROM
     WHERE terminal = 'НЛЭ'
     UNION ALL
     SELECT
+        direction,
+        ship_name_unified,
+        shipment_date,
+        month_parsed_on,
+        year_parsed_on
+    FROM export_enriched
+    WHERE terminal = 'НЛЭ'
+    UNION ALL
+    SELECT
+        direction,
         ship_name_unified AS ship_name_unified,
         shipment_date AS shipment_date,
         month_parsed_on AS month_parsed_on,
         year_parsed_on AS year_parsed_on
     FROM (
         SELECT
+            direction AS direction,
             ship AS ship_name_unified,
             date AS shipment_date,
             toMonth(shipment_date) AS month_parsed_on,
@@ -25,4 +37,4 @@ FROM
         FROM default.extrapolate
         )
     )
-GROUP BY ship_name_unified, shipment_date, month_parsed_on, year_parsed_on
+GROUP BY direction, ship_name_unified, shipment_date, month_parsed_on, year_parsed_on

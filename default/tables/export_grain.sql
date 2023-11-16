@@ -27,7 +27,11 @@ CREATE TABLE default.export_grain
 
     `shipper_country` Nullable(String),
 
-    `consignee_country` Nullable(String)
+    `consignee_country` Nullable(String),
+
+    `original_file_name` Nullable(String),
+
+    `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree
 ORDER BY date

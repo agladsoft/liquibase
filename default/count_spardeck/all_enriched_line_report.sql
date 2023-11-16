@@ -14,6 +14,7 @@ AS SELECT
     import_main_duplicate_containers.teu_main AS teu,
     import_main_duplicate_containers.container_count_main AS container_count,
     import_main_duplicate_containers.is_empty AS is_empty,
+    if(category_im is not null, category_im, 'other') AS ref,
     import_main_duplicate_containers.goods_name AS goods_name,
     import_main_duplicate_containers.tnved AS tnved_group_id,
     import_main_duplicate_containers.tnved_group_name AS tnved_group_name,
@@ -42,6 +43,7 @@ AS SELECT
  toString(long_port),
  ']') AS geopoint
    FROM default.import_main_duplicate_containers
+   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
 UNION ALL
  SELECT
     import_nw_enriched.month AS month,
@@ -58,6 +60,7 @@ UNION ALL
     import_nw_enriched.teu AS teu,
     import_nw_enriched.container_count AS container_count,
     import_nw_enriched.is_empty AS is_empty,
+    if(category_im is not null, category_im, 'other') AS ref,
     import_nw_enriched.goods_name AS goods_name,
     import_nw_enriched.tnved_group_id AS tnved_group_id,
     import_nw_enriched.tnved_group_name AS tnved_group_name,
@@ -86,6 +89,7 @@ UNION ALL
  toString(long_port),
  ']') AS geopoint
    FROM default.import_nw_enriched
+   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
 UNION ALL
  SELECT
     import_vsk_enriched.month AS month,
@@ -102,6 +106,7 @@ UNION ALL
     import_vsk_enriched.teu AS teu,
     import_vsk_enriched.container_count AS container_count,
     import_vsk_enriched.is_empty AS is_empty,
+    if(category_im is not null, category_im, 'other') AS ref,
     import_vsk_enriched.goods_name AS goods_name,
     import_vsk_enriched.tnved_group_id AS tnved_group_id,
     import_vsk_enriched.tnved_group_name AS tnved_group_name,
@@ -130,6 +135,7 @@ UNION ALL
  toString(long_port),
  ']') AS geopoint
    FROM default.import_vsk_enriched
+   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
 UNION ALL
  SELECT
     export_enriched.month_parsed_on AS month,
@@ -146,6 +152,7 @@ UNION ALL
     export_enriched.teu AS teu,
     export_enriched.container_count AS container_count,
     export_enriched.is_empty AS is_empty,
+    if(category_im is not null, category_im, 'other') AS ref,
     export_enriched.goods_name AS goods_name,
     export_enriched.tnved AS tnved_group_id,
     export_enriched.tnved_group_name AS tnved_group_name,
@@ -174,6 +181,7 @@ UNION ALL
  toString(long_port),
  ']') AS geopoint
    FROM default.export_enriched
+   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
 UNION ALL
  SELECT
     export_nw_enriched.month AS month,
@@ -190,6 +198,7 @@ UNION ALL
     export_nw_enriched.teu AS teu,
     export_nw_enriched.container_count AS container_count,
     export_nw_enriched.is_empty AS is_empty,
+    if(category_im is not null, category_im, 'other') AS ref,
     export_nw_enriched.goods_name AS goods_name,
     export_nw_enriched.tnved_group_id AS tnved_group_id,
     export_nw_enriched.tnved_group_name AS tnved_group_name,
@@ -218,6 +227,7 @@ UNION ALL
  toString(long_port),
  ']') AS geopoint
    FROM default.export_nw_enriched
+   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
 UNION ALL
  SELECT
     export_vsk_enriched.month AS month,
@@ -234,6 +244,7 @@ UNION ALL
     export_vsk_enriched.teu AS teu,
     export_vsk_enriched.container_count AS container_count,
     export_vsk_enriched.is_empty AS is_empty,
+    if(category_im is not null, category_im, 'other') AS ref,
     export_vsk_enriched.goods_name AS goods_name,
     export_vsk_enriched.tnved_group_id AS tnved_group_id,
     export_vsk_enriched.tnved_group_name AS tnved_group_name,
@@ -262,14 +273,15 @@ UNION ALL
  toString(long_port),
  ']') AS geopoint
    FROM default.export_vsk_enriched
+   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
 UNION ALL
  SELECT
-  toMonth(date) AS month,
-  toYear(date) AS year,
-  'extrapolate_final' AS direction,
+  month AS month,
+  year AS year,
+  direction AS direction,
   terminal AS terminal,
-  line AS line_unified,
-  ship AS ship_unified,
+  rl.line_unified AS line_unified,
+  rs.ship_name_unified AS ship_name_unified,
   null AS voyage,
   date AS shipment_date,
   null AS container_number,
@@ -277,8 +289,12 @@ UNION ALL
   container_type AS container_type_unified,
   intDiv(container_size, 20) AS teu,
   1 AS container_count,
-  false AS is_empty,
-  goods_name AS goods_name,
+  CASE
+    WHEN re.is_empty = ex_final.goods_name THEN true
+    ELSE false
+  END AS is_empty,
+  if(category_im is not null, category_im, 'other') AS ref,
+  ex_final.goods_name AS goods_name,
   null AS tnved_group_id,
   null AS tnved_group_name,
   null AS goods_weight_with_package,
@@ -286,9 +302,9 @@ UNION ALL
   null AS company_inn,
   null AS company_unified,
   null AS expeditor,
-  tracking_country AS tracking_country_unified,
-  tracking_seaport AS tracking_seaport_unified,
-  null AS region,
+  rg.country AS tracking_country_unified,
+  rg.seaport_unified AS tracking_seaport_unified,
+  rg.region AS region,
   null AS lat_port,
   null AS long_port,
   null AS geopolygon,
@@ -297,4 +313,9 @@ UNION ALL
     SELECT
         *, arrayJoin(range(1, count_container + 1))
     FROM default.extrapolate_final
-    )
+    ) as ex_final
+ LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON ex_final.goods_name = re.is_empty
+ LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON ex_final.goods_name = rr.goods_name
+ LEFT JOIN (SELECT * FROM default.reference_region FINAL) AS rg ON ex_final.tracking_seaport = rg.seaport
+ LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON ex_final.line = rl.line
+ LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON ex_final.ship = rs.ship_name
