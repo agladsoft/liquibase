@@ -17,15 +17,17 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `carrier` Nullable(String),
 
-    `dateEmptyDelivery_fact` Nullable(String),
+    `dateEmptyDelivery_fact` Nullable(Date32),
 
-    `dateEmptyDelivery_plan` Nullable(Date),
+    `OriginalDateEmptyDelivery_fact` Nullable(String),
 
-    `dateLoading_fact` Nullable(Date),
+    `dateEmptyDelivery_plan` Nullable(Date32),
+
+    `dateLoading_fact` Nullable(Date32),
 
     `mode` Nullable(String),
 
-    `dateDelivery_fact` Nullable(Date),
+    `dateDelivery_fact` Nullable(Date32),
 
     `containerSize` Nullable(Int32),
 
@@ -37,11 +39,11 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `clientUID` Nullable(String),
 
-    `dateReceiptEmpty_fact` Nullable(Date),
+    `dateReceiptEmpty_fact` Nullable(Date32),
 
     `department` Nullable(String),
 
-    `dateDelivery_plan` Nullable(Date),
+    `dateDelivery_plan` Nullable(Date32),
 
     `pointDestination` Nullable(String),
 
@@ -57,7 +59,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `terminalDeliveryEmpty` Nullable(String),
 
-    `dateLoading_plan` Nullable(Date),
+    `dateLoading_plan` Nullable(Date32),
 
     `orderDirection` Nullable(String),
 
@@ -73,7 +75,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `service` Nullable(String),
 
-    `dateReceiptEmpty_plan` Nullable(Date),
+    `dateReceiptEmpty_plan` Nullable(Date32),
 
     `amountAddExpense` Nullable(Int32),
 
