@@ -61,6 +61,8 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `dadata_company_name` Nullable(String),
 
+    `dadata_okpo` Nullable(String),
+
     `dadata_status` Nullable(String),
 
     `dadata_registration_date` Nullable(Date),
