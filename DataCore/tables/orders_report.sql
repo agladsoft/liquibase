@@ -19,11 +19,15 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_report
 
     `vessel` Nullable(String),
 
+    `voyageDateout` Nullable(Date32),
+
     `voyage` Nullable(String),
 
     `booking_list` Nullable(String),
 
     `orderNumber` Nullable(String),
+
+    `originalDateString` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

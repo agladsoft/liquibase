@@ -3,6 +3,8 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `debitStatus` Nullable(String),
+
     `invoiceStatus` Nullable(String),
 
     `invoicePort` Nullable(String),
@@ -11,7 +13,7 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `operationDate` Nullable(Date32),
 
-    `originalDate` Nullable(String),
+    `originalDateString` Nullable(String),
 
     `voyage` Nullable(String),
 
@@ -27,7 +29,11 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `portDischargeLoading` Nullable(String),
 
-    `HSСode` Nullable(String),
+    `bookingPOD` Nullable(String),
+
+    `bookingPOL` Nullable(String),
+
+    `HSCode` Nullable(String),
 
     `containerSize` Nullable(Int32),
 

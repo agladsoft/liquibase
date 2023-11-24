@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS DataCore.accounting_documents_requests
 
     `requestDate` Nullable(DateTime64),
 
+    `originalDateString` Nullable(String),
+
     `subjectNumber` Nullable(String),
 
     `type` Nullable(String),

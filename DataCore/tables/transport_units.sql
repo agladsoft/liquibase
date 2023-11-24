@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS DataCore.transport_units
 
     `container` Nullable(String),
 
+    `originalDateString` Nullable(String),
+
     `original_file_parsed_on` Nullable(String),
 
     `is_obsolete` Nullable(Bool),

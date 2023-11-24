@@ -3,11 +3,13 @@ CREATE TABLE IF NOT EXISTS DataCore.consignments
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `direction` Nullable(String),
+
     `year` Nullable(Int32),
 
     `voyageDate` Nullable(Date32),
 
-    `originalDate` Nullable(String),
+    `originalDateString` Nullable(String),
 
     `voyage` Nullable(String),
 

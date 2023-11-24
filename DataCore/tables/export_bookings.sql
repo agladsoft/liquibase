@@ -1,11 +1,16 @@
 CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 (
-
     `uuid` DEFAULT generateUUIDv4(),
+
+    `bookingStatus` Nullable(String),
+
+    `basinPOD` Nullable(String),
 
     `clientUID` Nullable(String),
 
     `client` Nullable(String),
+
+    `basinPOL` Nullable(String),
 
     `cargoReadiness` Nullable(String),
 
@@ -13,9 +18,11 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 
     `OF_LIFO` Nullable(String),
 
+    `containerSize` Nullable(Int32),
+
     `ETA` Nullable(Date32),
 
-    `originalDate` Nullable(String),
+    `originalDateString` Nullable(String),
 
     `voyage` Nullable(String),
 
@@ -44,6 +51,8 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
     `bookingDate` Nullable(Date32),
 
     `manager` Nullable(String),
+
+    `booking` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

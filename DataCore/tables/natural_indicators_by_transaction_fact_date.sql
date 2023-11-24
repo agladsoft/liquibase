@@ -1,43 +1,45 @@
 CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 (
 
-    uuid UUID DEFAULT generateUUIDv4(),
+    `uuid` UUID DEFAULT generateUUIDv4(),
 
-    operationDate Nullable(Date32),
+    `containerSize` Nullable(Int32),
 
-    originalDate Nullable(String),
+    `operationDate` Nullable(Date32),
 
-    containerCount_20 Nullable(Int32),
+    `isFull` Nullable(Bool),
 
-    operationMonth Nullable(Int32),
+    `originalDateString` Nullable(String),
 
-    containerCount Nullable(Int32),
+    `operationMonth` Nullable(Int32),
 
-    containerTEU Nullable(Int32),
+    `containerCount` Nullable(Int32),
 
-    manager Nullable(String),
+    `containerTEU` Nullable(Int32),
 
-    operationYear Nullable(Int32),
+    `manager` Nullable(String),
 
-    containerCount_40 Nullable(Int32),
+    `containerType` Nullable(String),
 
-    orderNumber Nullable(String),
+    `operationYear` Nullable(Int32),
 
-    direction Nullable(String),
+    `orderNumber` Nullable(String),
 
-    client Nullable(String),
+    `direction` Nullable(String),
 
-    orderDate Nullable(Date32),
+    `client` Nullable(String),
 
-    clientUID Nullable(String),
+    `orderDate` Nullable(Date32),
 
-    department Nullable(String),
+    `clientUID` Nullable(String),
 
-    original_file_parsed_on Nullable(String),
+    `department` Nullable(String),
 
-    is_obsolete Nullable(Bool),
+    `original_file_parsed_on` Nullable(String),
 
-    is_obsolete_date Nullable(String)
+    `is_obsolete` Nullable(Bool),
+
+    `is_obsolete_date` Nullable(String)
 )
 ENGINE = MergeTree
 ORDER BY uuid

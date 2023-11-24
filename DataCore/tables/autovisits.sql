@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS DataCore.autovisits
 
     `entryDate` Nullable(DateTime64),
 
+    `originalDateString` Nullable(String),
+
     `result` Nullable(String),
 
     `waitingTime` Nullable(Int32),

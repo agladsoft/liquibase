@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS DataCore.completed_repackages_report
 
     `repackingDate` Nullable(Date32),
 
+    `originalDateString` Nullable(String),
+
     `original_file_parsed_on` Nullable(String),
 
     `is_obsolete` Nullable(Bool),
