@@ -59,34 +59,3 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 )
 ENGINE = MergeTree
 ORDER BY uuid
-
-
-
-
-
-
-
-
-"cargoOrder": null,
-"cargoOperation": null,
-"borderCrossing": false,
-"clientUID": "a24ab84b-699c-11ed-804d-00505688b7b7",
-"client": "ЛЕНПЛАСТ ООО",
-"ETSNGname": null,
-"containerSize": "40",
-"operationMonth": 5,
-"operationDate": "2023-05-29T09:57:10",
-"direction": "IMPORT",
-"department": "ДКП Азия",
-"container": "WNGU5056344",
-"ETSNGcode": null,
-"pointDepartureCode": null,
-"pointDestination": "ОТРАДНЫЙ (Населенный пункт)",
-"manager": "Гайдукевич Марина Сергеевна",
-"clientINN": "7805794831",
-"pointDeparture": "НОВОРОССИЙСК (Ж.Д. станция)",
-"orderNumber": "ЦАЗ-0000065",
-"operationNumber": "KZ-000075",
-"containerType": "HC",
-"pointDestinationCode": null,
-"operationYear": 2023
