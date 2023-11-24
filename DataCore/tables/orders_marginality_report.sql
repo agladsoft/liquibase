@@ -3,15 +3,15 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_marginality_report
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `expenses_rental_without_vat_fact` Nullable(String),
+    `expenses_rental_without_vat_fact` Nullable(Decimal128(19)),
 
-    `income_without_vat_fact` Nullable(String),
+    `income_without_vat_fact` Nullable(Decimal128(19)),
 
-    `profit_plan` Nullable(String),
+    `profit_plan` Nullable(Decimal128(19)),
 
-    `income_without_vat_plan` Nullable(String),
+    `income_without_vat_plan` Nullable(Decimal128(19)),
 
-    `expenses_without_vat_plan` Nullable(String),
+    `expenses_without_vat_plan` Nullable(Decimal128(19)),
 
     `manager` Nullable(String),
 
