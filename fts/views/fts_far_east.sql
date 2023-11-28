@@ -6,6 +6,7 @@ AS SELECT
     if(c.company_name is null, name_of_the_recipient, c.company_name) AS company_name,
     f.country_of_departure AS country_of_departure,
     substring((trim(f.commodity_code_according_to_hs)), 1, 6) AS code_gng,
+    f.name_and_characteristics_of_the_goods as goods_name,
     multiIf(f.warehouse_street ilike '%БЕРЕЗОВ%' AND f.warehouse_street ilike '%25%' , 'ВМРП',
             f.warehouse_street ilike '%42%' AND f.warehouse_street ilike '%причал%', 'ВМПП',
             f.warehouse_street ilike '%СТРЕЛЬНИКОВ%' AND f.warehouse_street ilike '%9%'
@@ -34,6 +35,6 @@ LEFT JOIN crm.managers_clients_view AS m ON m.kc_inn = f.recipients_tin
 WHERE f.warehouse_area ILIKE '%ПРИМОРСК%' AND fts_year = 2023 AND fts_month >= 7 
     AND f.direction_of_movement = 'ИМ' AND f.recipients_tin IS NOT NULL and recipients_tin <> ''
 	AND f.customs_regime = '40' AND f.stat = '1'
-GROUP BY fts_month, fts_year, inn, company_name, f.country_of_departure, code_gng, 
+GROUP BY fts_month, fts_year, inn, company_name, f.country_of_departure, code_gng, goods_name,
     port_terminal, telephone_number_compass, email_compass, region, department, 
     sign_client, phone_number_crm, email_crm;
