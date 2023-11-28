@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS DataCore.completed_repackages_report
 
     `import_teu` Nullable(Int32),
 
-    `consignment` Nullable(String),
+    `booking_list` Nullable(String),
 
     `import_container_count` Nullable(Int32),
 
