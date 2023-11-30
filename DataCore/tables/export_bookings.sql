@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 
     `basinPOL` Nullable(String),
 
-    `cargoReadiness` Nullable(String),
+    `cargoReadiness` Nullable(Date32),
 
     `ETD` Nullable(Date32),
 
