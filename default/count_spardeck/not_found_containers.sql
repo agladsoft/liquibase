@@ -14,7 +14,7 @@ FROM (
         count_container,
         toInt32(total_volume) - count_container as delta_count
     FROM reference_spardeck_unified
-    LEFT JOIN nle_spardeck AS ins ON
+    LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'import') AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
     WHERE ins.count_container = 0
@@ -32,7 +32,7 @@ FROM (
         count_container,
         toInt32(total_volume) - count_container as delta_count
     FROM reference_spardeck_unified
-    LEFT JOIN nle_spardeck AS ins ON
+    LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'export') AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
     WHERE ins.count_container = 0
