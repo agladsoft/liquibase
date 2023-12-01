@@ -3,53 +3,53 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `cargoOrder` Nullable(String),
+    `etsng_order_cargo` Nullable(String),
 
-    `cargoOperation` Nullable(String),
+    `etsng_operation_cargo` Nullable(String),
 
-    `borderCrossing` Nullable(String),
+    `is_border_crossing_point` Nullable(String),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `client` Nullable(String),
 
-    `ETSNGname` Nullable(String),
+    `etsng_name` Nullable(String),
 
-    `containerSize` Nullable(Int32),
+    `container_size` Nullable(Int32),
 
-    `operationMonth` Nullable(Int32),
+    `operation_month` Nullable(Int32),
 
-    `operationDate` Nullable(Date32),
+    `operation_date` Nullable(Date32),
 
-    `originalDateString` Nullable(String),
+    `original_operation_date_string` Nullable(String),
 
     `direction` Nullable(String),
 
     `department` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
-    `ETSNGcode` Nullable(String),
+    `etsng_code` Nullable(String),
 
-    `pointDepartureCode` Nullable(String),
+    `destination_point` Nullable(String),
 
-    `pointDestination` Nullable(String),
+    `destination_point_code` Nullable(String),
 
     `manager` Nullable(String),
 
-    `clientINN` Nullable(String),
+    `client_inn` Nullable(String),
 
-    `pointDeparture` Nullable(String),
+    `departure_point` Nullable(String),
 
-    `orderNumber` Nullable(String),
+    `departure_point_code` Nullable(String),
 
-    `operationNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `containerType` Nullable(String),
+    `operation_number` Nullable(String),
 
-    `pointDestinationCode` Nullable(String),
+    `container_type` Nullable(String),
 
-    `operationYear` Nullable(Int32),
+    `operation_year` Nullable(Int32),
 
     `original_file_parsed_on` Nullable(String),
 

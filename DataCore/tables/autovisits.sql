@@ -3,39 +3,39 @@ CREATE TABLE IF NOT EXISTS DataCore.autovisits
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `manualSelect` Nullable(Bool),
+    `is_manual_select` Nullable(Bool),
 
-    `rejectionReason` Nullable(String),
+    `rejection_reason` Nullable(String),
 
     `comment` Nullable(String),
 
-    `processingTime` Nullable(Int32),
+    `processing_time` Nullable(Int32),
 
-    `exitDate` Nullable(DateTime64),
+    `exit_datetime` Nullable(DateTime64),
 
-    `entryDate` Nullable(DateTime64),
+    `entry_datetime` Nullable(DateTime64),
 
-    `originalDateString` Nullable(String),
+    `original_entry_datetime_string` Nullable(String),
 
     `result` Nullable(String),
 
-    `waitingTime` Nullable(Int32),
+    `waiting_time` Nullable(Int32),
 
     `status` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
     `purpose` Nullable(String),
 
-    `registrationDate` Nullable(DateTime64),
+    `registration_datetime` Nullable(DateTime64),
 
     `terminal` Nullable(String),
 
-    `carNumber` Nullable(String),
+    `car_number` Nullable(String),
 
-    `request` Nullable(String),
+    `request_number` Nullable(String),
 
-    `queueID` Nullable(String),
+    `queue_id` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

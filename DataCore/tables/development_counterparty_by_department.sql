@@ -9,11 +9,9 @@ CREATE TABLE IF NOT EXISTS DataCore.development_counterparty_by_department
 
     `direction` Nullable(String),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `department` Nullable(String),
-
-    `originalDateString` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

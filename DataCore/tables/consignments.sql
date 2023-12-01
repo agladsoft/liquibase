@@ -7,33 +7,33 @@ CREATE TABLE IF NOT EXISTS DataCore.consignments
 
     `year` Nullable(Int32),
 
-    `voyageDate` Nullable(Date32),
+    `voyage_date` Nullable(Date32),
 
-    `originalDateString` Nullable(String),
+    `original_voyage_date_string` Nullable(String),
 
     `voyage` Nullable(String),
 
     `cargo` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
-    `containerSize` Nullable(Int32),
+    `container_size` Nullable(Int32),
 
-    `agentLine` Nullable(String),
+    `agent_line` Nullable(String),
 
     `line` Nullable(String),
 
-    `teus` Nullable(Int32),
+    `teu` Nullable(Int32),
 
     `consignee` Nullable(String),
 
     `shipper` Nullable(String),
 
-    `orderNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `containerType` Nullable(String),
+    `container_type` Nullable(String),
 
-    `booking_list` Nullable(String),
+    `consignment` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

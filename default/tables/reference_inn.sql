@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS default.reference_inn
 
     `is_inn_found_auto` Nullable(Bool),
 
+    `is_checked_inn` Nullable(Bool),
+
     `is_company_name_from_cache` Nullable(Bool),
 
     `original_file_name` Nullable(String),

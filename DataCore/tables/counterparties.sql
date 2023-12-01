@@ -41,8 +41,6 @@ CREATE TABLE IF NOT EXISTS DataCore.counterparties
 
     `counterparty_type` Nullable(String),
 
-    `originalDateString` Nullable(String),
-
     `original_file_parsed_on` Nullable(String),
 
     `is_obsolete` Nullable(Bool),

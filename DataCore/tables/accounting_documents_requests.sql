@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS DataCore.accounting_documents_requests
 
     `comment` Nullable(String),
 
-    `startDate` Nullable(DateTime64),
+    `start_date` Nullable(DateTime64),
 
     `manager` Nullable(String),
 
@@ -19,21 +19,21 @@ CREATE TABLE IF NOT EXISTS DataCore.accounting_documents_requests
 
     `department` Nullable(String),
 
-    `urgency` Nullable(Bool),
+    `is_urgency` Nullable(Bool),
 
-    `addresseePEO` Nullable(String),
+    `addressee_peo` Nullable(String),
 
-    `endDate` Nullable(DateTime64),
+    `end_date` Nullable(DateTime64),
 
-    `requestDate` Nullable(DateTime64),
+    `request_date` Nullable(DateTime64),
 
-    `originalDateString` Nullable(String),
+    `original_request_date_string` Nullable(String),
 
-    `subjectNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `type` Nullable(String),
+    `request_type` Nullable(String),
 
-    `requestNumber` Nullable(String),
+    `request_number` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

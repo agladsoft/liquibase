@@ -3,69 +3,71 @@ CREATE TABLE IF NOT EXISTS DataCore.daily_summary
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `organizationUID` Nullable(String),
+    `organization_uid` Nullable(String),
 
     `comment` Nullable(String),
 
-    `weightCargo` Nullable(Int32),
+    `direction` Nullable(String),
 
-    `blIMP` Nullable(String),
+    `cargo_weight` Nullable(Int32),
 
-    `VTT_GTD` Nullable(String),
+    `consignment_imp` Nullable(String),
+
+    `vtt_gtd` Nullable(String),
 
     `cargo` Nullable(String),
 
-    `pointDestination` Nullable(String),
+    `destination_point` Nullable(String),
 
-    `transportType` Nullable(String),
+    `transport_type` Nullable(String),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `terminal` Nullable(String),
 
-    `motionType` Nullable(String),
+    `motion_type` Nullable(String),
 
     `seal` Nullable(String),
 
     `manager` Nullable(String),
 
-    `pointDeparture` Nullable(String),
+    `departure_point` Nullable(String),
 
-    `transportNumber` Nullable(String),
+    `transport_number` Nullable(String),
 
-    `weightTare` Nullable(Int32),
+    `tare_weight` Nullable(Int32),
 
     `organization` Nullable(String),
 
     `tonnage` Nullable(Int32),
 
-    `SO` Nullable(String),
+    `is_so` Nullable(String),
 
     `client` Nullable(String),
 
     `line` Nullable(String),
 
-    `orderNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `containerType` Nullable(String),
+    `container_type` Nullable(String),
 
-    `containerSize` Nullable(Int32),
+    `container_size` Nullable(Int32),
 
-    `blEXP` Nullable(String),
+    `consignment_exp` Nullable(String),
 
-    `containerState` Nullable(String),
+    `container_state` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
     `forwarder` Nullable(String),
 
-    `damagesNote` Nullable(String),
+    `damages_note` Nullable(String),
 
-    `motionDate` Nullable(Date32),
+    `motion_date` Nullable(Date32),
 
-    `originalDateString` Nullable(String),
+    `original_motion_date_string` Nullable(String),
 
-    `isRequestLine` Nullable(Bool),
+    `is_request_line` Nullable(Bool),
 
     `original_file_parsed_on` Nullable(String),
 

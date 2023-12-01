@@ -3,19 +3,19 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_contracts_segments
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `Month` Nullable(Int32),
+    `month` Nullable(Int32),
 
-    `Year` Nullable(Int32),
+    `year` Nullable(Int32),
 
-    `Segment` Nullable(String),
+    `segment` Nullable(String),
 
-    `Date` Nullable(Date32),
+    `date` Nullable(Date32),
 
-    `originalDateString` Nullable(String),
+    `original_date_string` Nullable(String),
 
-    `orderNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

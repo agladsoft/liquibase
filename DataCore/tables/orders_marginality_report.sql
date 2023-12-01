@@ -15,13 +15,13 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_marginality_report
 
     `manager` Nullable(String),
 
-    `organizationUID` Nullable(String),
+    `organization_uid` Nullable(String),
 
     `segment_decryption` Nullable(String),
 
     `organization` Nullable(String),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `expenses_without_vat_fact` Nullable(Decimal128(19)),
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_marginality_report
 
     `order_creation_date` Nullable(Date32),
 
-    `originalDateString` Nullable(String),
+    `original_order_creation_date_string` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

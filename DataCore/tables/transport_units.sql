@@ -3,11 +3,13 @@ CREATE TABLE IF NOT EXISTS DataCore.transport_units
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `line` Nullable(String),
+    `owner` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
-    `originalDateString` Nullable(String),
+    `container_type` Nullable(String),
+
+    `container_size` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

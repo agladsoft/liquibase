@@ -2,53 +2,53 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 (
     `uuid` DEFAULT generateUUIDv4(),
 
-    `bookingStatus` Nullable(String),
+    `booking_status` Nullable(String),
 
-    `basinPOD` Nullable(String),
+    `discharge_port_bay` Nullable(String),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `client` Nullable(String),
 
-    `basinPOL` Nullable(String),
+    `load_port_bay` Nullable(String),
 
-    `cargoReadiness` Nullable(Date32),
+    `cargo_readiness` Nullable(Date32),
 
-    `ETD` Nullable(Date32),
+    `etd` Nullable(Date32),
 
-    `OF_LIFO` Nullable(String),
+    `freight_terms` Nullable(String),
 
-    `containerSize` Nullable(Int32),
+    `container_size` Nullable(Int32),
 
-    `ETA` Nullable(Date32),
+    `container_type` Nullable(String),
 
-    `originalDateString` Nullable(String),
+    `eta` Nullable(Date32),
+
+    `original_booking_date_string` Nullable(String),
 
     `voyage` Nullable(String),
 
-    `containerCount` Nullable(Int32),
+    `container_count` Nullable(Int32),
 
-    `POD` Nullable(String),
+    `discharge_port` Nullable(String),
 
-    `POL` Nullable(String),
+    `load_port` Nullable(String),
 
     `direction` Nullable(String),
 
-    `FreightRate` Nullable(Int32),
+    `freight_rate` Nullable(Int32),
 
     `line` Nullable(String),
 
-    `serviceNumber` Nullable(String),
+    `service_number` Nullable(String),
 
     `department` Nullable(String),
 
     `vessel` Nullable(String),
 
-    `orderNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `containerType` Nullable(String),
-
-    `bookingDate` Nullable(Date32),
+    `booking_date` Nullable(Date32),
 
     `manager` Nullable(String),
 

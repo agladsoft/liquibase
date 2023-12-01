@@ -3,35 +3,35 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 
     `uuid` UUID DEFAULT generateUUIDv4(),
 
-    `containerSize` Nullable(Int32),
+    `container_size` Nullable(Int32),
 
-    `operationDate` Nullable(Date32),
+    `operation_date` Nullable(Date32),
 
-    `isFull` Nullable(Bool),
+    `is_full` Nullable(Bool),
 
-    `originalDateString` Nullable(String),
+    `original_operation_date_string` Nullable(String),
 
-    `operationMonth` Nullable(Int32),
+    `operation_month` Nullable(Int32),
 
-    `containerCount` Nullable(Int32),
+    `container_count` Nullable(Int32),
 
-    `containerTEU` Nullable(Int32),
+    `teu` Nullable(Int32),
 
     `manager` Nullable(String),
 
-    `containerType` Nullable(String),
+    `container_type` Nullable(String),
 
-    `operationYear` Nullable(Int32),
+    `operation_year` Nullable(Int32),
 
-    `orderNumber` Nullable(String),
+    `order_number` Nullable(String),
 
     `direction` Nullable(String),
 
     `client` Nullable(String),
 
-    `orderDate` Nullable(Date32),
+    `order_date` Nullable(Date32),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `department` Nullable(String),
 

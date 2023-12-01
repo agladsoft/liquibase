@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS DataCore.sales_plan
 
     `uuid` UUID DEFAULT generateUUIDv4(),
 
-    `containerTEU` Nullable(Int32),
+    `teu` Nullable(Int32),
 
-    `containerCount` Nullable(Int32),
+    `container_count` Nullable(Int32),
 
-    `section` Nullable(Int32),
+    `container_size` Nullable(Int32),
 
     `direction` Nullable(String),
 
@@ -17,11 +17,9 @@ CREATE TABLE IF NOT EXISTS DataCore.sales_plan
 
     `month` Nullable(Int32),
 
-    `clientUID` Nullable(String),
+    `client_uid` Nullable(String),
 
     `department` Nullable(String),
-
-    `originalDateString` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 

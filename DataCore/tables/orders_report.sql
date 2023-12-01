@@ -3,31 +3,31 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_report
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `HScode` Nullable(String),
+    `tnved` Nullable(String),
 
     `line` Nullable(String),
 
-    `POL` Nullable(String),
+    `load_port` Nullable(String),
 
-    `shipperINN` Nullable(String),
+    `shipper_inn` Nullable(String),
 
     `consignee` Nullable(String),
 
     `shipper` Nullable(String),
 
-    `container` Nullable(String),
+    `container_number` Nullable(String),
 
     `vessel` Nullable(String),
 
-    `voyageDateout` Nullable(Date32),
+    `voyage_date` Nullable(Date32),
 
     `voyage` Nullable(String),
 
-    `booking_list` Nullable(String),
+    `consignment` Nullable(String),
 
-    `orderNumber` Nullable(String),
+    `order_number` Nullable(String),
 
-    `originalDateString` Nullable(String),
+    `original_voyage_date_string` Nullable(String),
 
     `original_file_parsed_on` Nullable(String),
 
