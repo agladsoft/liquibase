@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS DataCore.accounting_documents_requests
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `rejectionReason` Nullable(String),
+    `rejection_reason` Nullable(String),
 
     `status` Nullable(String),
 
