@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 
     `freight_terms` Nullable(String),
 
+    `container_number` Nullable(String),
+
     `container_size` Nullable(Int32),
 
     `container_type` Nullable(String),
