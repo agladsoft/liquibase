@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `etsng_order_cargo` Nullable(String),
+    `etsng_order_base_cargo` Nullable(String),
 
     `etsng_operation_cargo` Nullable(String),
 
@@ -33,7 +33,9 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `destination_point` Nullable(String),
 
-    `destination_point_code` Nullable(String),
+    `destination_station_code` Nullable(String),
+
+    `destination_point_type` Nullable(String),
 
     `manager` Nullable(String),
 
@@ -41,11 +43,13 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `departure_point` Nullable(String),
 
-    `departure_point_code` Nullable(String),
+    `departure_station_code` Nullable(String),
+
+    `departure_point_type` Nullable(String),
 
     `order_number` Nullable(String),
 
-    `operation_number` Nullable(String),
+    `operation_name` Nullable(String),
 
     `container_type` Nullable(String),
 
