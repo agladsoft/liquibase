@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `etsng_operation_cargo` Nullable(String),
 
-    `is_border_crossing_point` Nullable(String),
+    `is_border_crossing_point` Nullable(Bool),
 
     `client_uid` Nullable(String),
 

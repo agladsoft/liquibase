@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS DataCore.daily_summary
 
     `tonnage` Nullable(Int32),
 
-    `is_so` Nullable(String),
+    `is_so` Nullable(Bool),
 
     `client` Nullable(String),
 
