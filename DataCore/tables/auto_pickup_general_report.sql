@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `date_delivery_empty_fact` Nullable(Date32),
 
-    `original_date_delivery_empty_fact_string` Nullable(String),
+    `original_date_delivery_plan_string` Nullable(String),
 
     `date_delivery_empty_plan` Nullable(Date32),
 
