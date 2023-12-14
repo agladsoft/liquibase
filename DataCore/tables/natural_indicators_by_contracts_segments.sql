@@ -3,6 +3,8 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_contracts_segments
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `direction` Nullable(String),
+
     `month` Nullable(Int32),
 
     `year` Nullable(Int32),
