@@ -3,15 +3,15 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_marginality_report
 
     `uuid` DEFAULT generateUUIDv4(),
 
-    `expenses_rental_without_vat_fact` Nullable(Decimal128(19)),
+    `expenses_rental_without_vat_fact` Nullable(Decimal128(12)),
 
-    `income_without_vat_fact` Nullable(Decimal128(19)),
+    `income_without_vat_fact` Nullable(Decimal128(12)),
 
-    `profit_plan` Nullable(Decimal128(19)),
+    `profit_plan` Nullable(Decimal128(12)),
 
-    `income_without_vat_plan` Nullable(Decimal128(19)),
+    `income_without_vat_plan` Nullable(Decimal128(12)),
 
-    `expenses_without_vat_plan` Nullable(Decimal128(19)),
+    `expenses_without_vat_plan` Nullable(Decimal128(12)),
 
     `manager` Nullable(String),
 
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_marginality_report
 
     `client_uid` Nullable(String),
 
-    `expenses_without_vat_fact` Nullable(Decimal128(19)),
+    `expenses_without_vat_fact` Nullable(Decimal128(12)),
 
     `department` Nullable(String),
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS DataCore.orders_marginality_report
 
     `order_number` Nullable(String),
 
-    `profit_fact` Nullable(Decimal128(19)),
+    `profit_fact` Nullable(Decimal128(12)),
 
     `order_creation_date` Nullable(Date32),
 
