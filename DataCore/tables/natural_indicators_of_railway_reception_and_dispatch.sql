@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_of_railway_reception_and_
 
     `date` Nullable(Date32),
 
+    `original_date_string` Nullable(String),
+
     `organization` Nullable(String),
 
     `client_uid` Nullable(String),
