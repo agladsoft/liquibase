@@ -64,7 +64,11 @@ AS SELECT
     rzhd_ktk.leaseholder AS leaseholder,
     rzhd_ktk.the_owner_of_the_wagon_according_to_the_internal_directory AS the_owner_of_the_wagon_according_to_the_internal_directory,
     rzhd_ktk.carriage_fee AS carriage_fee,
-    replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
+    if(
+        payer_of_the_railway_tariff is not null,
+        replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))),
+        '0'
+    ) AS payer_of_the_railway_tariff,
     if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
     rzhd_ktk.quantity_of_containers AS quantity_of_containers,
     rzhd_ktk.quantity_of_wagons AS quantity_of_wagons,
