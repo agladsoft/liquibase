@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.development_counterparty_by_department
 (
+    `key_id` String,
 
     `uuid` UUID DEFAULT generateUUIDv4(),
 

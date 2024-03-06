@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 (
+    `key_id` String,
+
     `uuid` DEFAULT generateUUIDv4(),
 
     `booking_status` Nullable(String),

@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.accounting_documents_requests
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

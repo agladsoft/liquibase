@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.counterparties
 (
+    `key_id` String,
 
     `uuid` UUID DEFAULT generateUUIDv4(),
 

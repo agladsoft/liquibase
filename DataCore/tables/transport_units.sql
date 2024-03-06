@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.transport_units
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

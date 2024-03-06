@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_of_railway_reception_and_dispatch
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

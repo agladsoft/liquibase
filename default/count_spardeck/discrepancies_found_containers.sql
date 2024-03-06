@@ -3,6 +3,7 @@ AS
 WITH exist_data_by_date AS
 (
     SELECT
+        stividor,
         direction,
         operator,
         line_unified,
@@ -24,6 +25,7 @@ WITH exist_data_by_date AS
 no_data_by_date_but_in_month AS
 (
     SELECT
+        stividor,
         'import' AS direction,
         operator,
         line_unified,
@@ -43,6 +45,7 @@ no_data_by_date_but_in_month AS
         AND atb_moor_pier = ins.shipment_date
     UNION ALL
     SELECT
+        stividor,
         'export' AS direction,
         operator,
         line_unified,

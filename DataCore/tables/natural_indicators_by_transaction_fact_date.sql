@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 (
+    `key_id` String,
 
     `uuid` UUID DEFAULT generateUUIDv4(),
 

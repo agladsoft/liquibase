@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.orders_report
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

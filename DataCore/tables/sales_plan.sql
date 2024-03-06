@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.sales_plan
 (
+    `key_id` String,
 
     `uuid` UUID DEFAULT generateUUIDv4(),
 

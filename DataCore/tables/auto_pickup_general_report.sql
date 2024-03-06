@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

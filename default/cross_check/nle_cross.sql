@@ -2,6 +2,7 @@ CREATE OR REPLACE VIEW default.nle_cross
 AS SELECT
     nle_cross_export.year AS year,
     nle_cross_export.month AS month,
+    nle_cross_export.terminal AS terminal,
     nle_cross_export.direction AS direction,
     nle_cross_export.is_ref AS is_ref,
     nle_cross_export.is_empty AS is_empty,
@@ -13,6 +14,7 @@ UNION ALL
  SELECT
     nle_cross_import.year AS year,
     nle_cross_import.month AS month,
+    nle_cross_import.terminal AS terminal,
     nle_cross_import.direction AS direction,
     nle_cross_import.is_ref AS is_ref,
     nle_cross_import.is_empty AS is_empty,

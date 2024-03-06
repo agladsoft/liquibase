@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.import_bookings
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

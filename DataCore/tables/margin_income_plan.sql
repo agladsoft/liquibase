@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.margin_income_plan
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

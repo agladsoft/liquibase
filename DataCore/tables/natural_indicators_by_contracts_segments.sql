@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_contracts_segments
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 

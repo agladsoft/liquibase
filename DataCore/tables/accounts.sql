@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS DataCore.accounts
 (
+    `key_id` String,
 
     `uuid` DEFAULT generateUUIDv4(),
 
