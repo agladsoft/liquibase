@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS DataCore.accounts
 
     `currency` Nullable(String),
 
-    `profit_account_rub` Nullable(Int32),
+    `profit_account_rub` Nullable(Decimal128(12)),
 
-    `profit_account` Nullable(Int32),
+    `profit_account` Nullable(Decimal128(12)),
 
     `client_inn` Nullable(String),
 
