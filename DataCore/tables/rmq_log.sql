@@ -2,6 +2,8 @@ CREATE TABLE IF NOT EXISTS DataCore.rmq_log
 (
     `uuid` DEFAULT generateUUIDv4(),
 
+    `database` String,
+
     `table` String,
 
     `queue` String,
