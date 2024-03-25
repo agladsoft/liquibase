@@ -18,7 +18,7 @@ AS SELECT
     email_crm,
     count_containers_fts,
     ktk.name_of_cargo AS name_of_cargo,
-    tnved.TextEx AS name_of_cargo_gng,
+    tnved.TextEx2 AS name_of_cargo_gng,
     ktk.destination_region AS destination_region,
     ktk.rf_destination_station AS rf_destination_station,
     ktk.count_containers_ktk AS count_containers_ktk,
@@ -73,7 +73,7 @@ LEFT JOIN
     SELECT
         Code AS code,
         gng AS tnved_gng,
-        TextEx
+        TextEx2
     FROM default.reference_tnved3 AS rt
-    WHERE TextEx IS NOT NULL
+    WHERE TextEx2 IS NOT NULL
 ) AS tnved ON f.code_gng = tnved.tnved_gng
