@@ -8,6 +8,7 @@ AS SELECT
     rlcc.line_unified AS line_unified,
     rlcc.container_size AS container_size,
     rlcc.container_number AS container_number,
+    rlcc.date AS date,
     rlcc.consignment AS consignment,
     count(rlcc.consignment) AS records_count,
     min(rlcc.teu) AS teu,
@@ -24,6 +25,7 @@ AS SELECT
         END AS line_unified,
     ee.container_size AS container_size,
     ee.container_number AS container_number,
+    ee.shipment_date AS date,
     ee.consignment AS consignment,
     ee.consignment AS records_count,
     ee.teu AS teu,
@@ -31,4 +33,4 @@ AS SELECT
    FROM default.export_enriched ee
    LEFT JOIN (SELECT * FROM default.reference_lines_cross_check FINAL) AS rlcc ON ee.line_unified = rlcc.line
    ) AS rlcc
-  GROUP BY rlcc.year_parsed_on, rlcc.month_parsed_on, rlcc.ship_name_unified, rlcc.direction, rlcc.is_empty, rlcc.line_unified, rlcc.container_size, rlcc.container_number, rlcc.consignment, rlcc.terminal;
+  GROUP BY rlcc.year_parsed_on, rlcc.month_parsed_on, rlcc.ship_name_unified, rlcc.direction, rlcc.is_empty, rlcc.line_unified, rlcc.container_size, rlcc.container_number, rlcc.date, rlcc.consignment, rlcc.terminal;
