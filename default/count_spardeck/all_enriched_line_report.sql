@@ -14,7 +14,10 @@ AS SELECT
     import_main_duplicate_containers.teu_main AS teu,
     import_main_duplicate_containers.container_count_main AS container_count,
     import_main_duplicate_containers.is_empty AS is_empty,
-    if(category_im is not null, category_im, 'other') AS ref,
+    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
     import_main_duplicate_containers.goods_name AS goods_name,
     import_main_duplicate_containers.tnved AS tnved_group_id,
     import_main_duplicate_containers.tnved_group_name AS tnved_group_name,
@@ -60,7 +63,10 @@ UNION ALL
     import_nw_enriched.teu AS teu,
     import_nw_enriched.container_count AS container_count,
     import_nw_enriched.is_empty AS is_empty,
-    if(category_im is not null, category_im, 'other') AS ref,
+    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
     import_nw_enriched.goods_name AS goods_name,
     import_nw_enriched.tnved_group_id AS tnved_group_id,
     import_nw_enriched.tnved_group_name AS tnved_group_name,
@@ -106,7 +112,10 @@ UNION ALL
     import_vsk_enriched.teu AS teu,
     import_vsk_enriched.container_count AS container_count,
     import_vsk_enriched.is_empty AS is_empty,
-    if(category_im is not null, category_im, 'other') AS ref,
+    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
     import_vsk_enriched.goods_name AS goods_name,
     import_vsk_enriched.tnved_group_id AS tnved_group_id,
     import_vsk_enriched.tnved_group_name AS tnved_group_name,
@@ -152,7 +161,10 @@ UNION ALL
     export_enriched.teu AS teu,
     export_enriched.container_count AS container_count,
     export_enriched.is_empty AS is_empty,
-    if(category_im is not null, category_im, 'other') AS ref,
+    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
     export_enriched.goods_name AS goods_name,
     export_enriched.tnved AS tnved_group_id,
     export_enriched.tnved_group_name AS tnved_group_name,
@@ -198,7 +210,10 @@ UNION ALL
     export_nw_enriched.teu AS teu,
     export_nw_enriched.container_count AS container_count,
     export_nw_enriched.is_empty AS is_empty,
-    if(category_im is not null, category_im, 'other') AS ref,
+    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
     export_nw_enriched.goods_name AS goods_name,
     export_nw_enriched.tnved_group_id AS tnved_group_id,
     export_nw_enriched.tnved_group_name AS tnved_group_name,
@@ -244,7 +259,10 @@ UNION ALL
     export_vsk_enriched.teu AS teu,
     export_vsk_enriched.container_count AS container_count,
     export_vsk_enriched.is_empty AS is_empty,
-    if(category_im is not null, category_im, 'other') AS ref,
+    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
     export_vsk_enriched.goods_name AS goods_name,
     export_vsk_enriched.tnved_group_id AS tnved_group_id,
     export_vsk_enriched.tnved_group_name AS tnved_group_name,
@@ -293,7 +311,10 @@ UNION ALL
     WHEN re.is_empty = ex_final.goods_name THEN true
     ELSE false
   END AS is_empty,
-  if(category_im is not null, category_im, 'other') AS ref,
+  multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
+        rr.category_im IS NOT NULL, rr.category_im,
+        'other'
+    ) AS ref,
   ex_final.goods_name AS goods_name,
   null AS tnved_group_id,
   null AS tnved_group_name,

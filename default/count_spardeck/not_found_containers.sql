@@ -2,7 +2,7 @@ CREATE OR REPLACE VIEW default.not_found_containers
 AS SELECT *
 FROM (
     SELECT
-        stividor,
+        if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
         'import' AS direction,
         operator,
         line_unified,
@@ -21,7 +21,7 @@ FROM (
     WHERE ins.count_container = 0
         UNION ALL
     SELECT
-        stividor,
+        if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
         'export' AS direction,
         operator,
         line_unified,
@@ -40,7 +40,7 @@ FROM (
     WHERE ins.count_container = 0
         UNION ALL
     SELECT
-        stividor,
+        if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
         'import' AS direction,
         operator,
         line_unified,
@@ -53,10 +53,10 @@ FROM (
         0 AS count_container,
         total_volume as delta_count
     FROM reference_spardeck_unified
-    WHERE stividor = 'NMTP'
+    WHERE stividor = 'NMTP' or stividor = 'NCSP'
         UNION ALL
     SELECT
-        stividor,
+        if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
         'export' AS direction,
         operator,
         line_unified,
@@ -69,5 +69,5 @@ FROM (
         0 AS count_container,
         total_volume as delta_count
     FROM reference_spardeck_unified
-    WHERE stividor = 'NMTP'
+    WHERE stividor = 'NMTP' or stividor = 'NCSP'
     );
