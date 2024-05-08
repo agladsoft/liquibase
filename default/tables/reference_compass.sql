@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS default.reference_compass
 (
+    `uuid` UUID DEFAULT generateUUIDv4(),
 
     `inn` String,
 
@@ -89,7 +90,9 @@ CREATE TABLE IF NOT EXISTS default.reference_compass
 
     `dadata_geo_lon` Nullable(Decimal(38, 19)),
 
-    `is_company_name_from_cache` Nullable(Bool)
+    `is_company_name_from_cache` Nullable(Bool),
+
+    `last_updated` Nullable(DateTime64)
 )
 ENGINE = MergeTree()
-ORDER BY inn;
+ORDER BY uuid;
