@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `overpayment` Nullable(Int32),
 
-    `total_rate` Nullable(Int32),
+    `total_rate` Nullable(Decimal128(12)),
 
     `downtime_amount` Nullable(Int32),
 
-    `agreed_rate` Nullable(Int32),
+    `agreed_rate` Nullable(Decimal128(12)),
 
     `carrier` Nullable(String),
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `manager` Nullable(String),
 
-    `carrier_rate` Nullable(Int32),
+    `carrier_rate` Nullable(Decimal128(12)),
 
     `departure_point` Nullable(String),
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `transportation_type` Nullable(String),
 
-    `economy` Nullable(Int32),
+    `economy` Nullable(Decimal128(12)),
 
     `order_number` Nullable(String),
 
