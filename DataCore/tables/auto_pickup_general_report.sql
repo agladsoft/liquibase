@@ -8,11 +8,11 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `performer` Nullable(String),
 
-    `overpayment` Nullable(Int32),
+    `overpayment` Nullable(Decimal128(12)),
 
     `total_rate` Nullable(Decimal128(12)),
 
-    `downtime_amount` Nullable(Int32),
+    `downtime_amount` Nullable(Decimal128(12)),
 
     `agreed_rate` Nullable(Decimal128(12)),
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `container_size` Nullable(Int32),
 
-    `overload_amount` Nullable(Int32),
+    `overload_amount` Nullable(Decimal128(12)),
 
     `line` Nullable(String),
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS DataCore.auto_pickup_general_report
 
     `date_receiving_empty_plan` Nullable(Date32),
 
-    `add_expense_amount` Nullable(Int32),
+    `add_expense_amount` Nullable(Decimal128(12)),
 
     `original_file_parsed_on` Nullable(String),
 
