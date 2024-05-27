@@ -45,3 +45,5 @@ SELECT
 FROM fts.fts_view fv
 WHERE port_terminal_fts is not null and `year` = 2023
 GROUP BY 1, 2, 3, 4, 5
+SETTINGS
+allow_experimental_live_view = 1

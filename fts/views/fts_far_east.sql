@@ -36,4 +36,6 @@ WHERE f.warehouse_area ILIKE '%ПРИМОРСК%' AND fts_year = 2023 AND fts_mo
 	AND f.customs_regime = '40' AND f.stat = '1'
 GROUP BY fts_month, fts_year, inn, company_name, f.country_of_departure, code_gng,
     port_terminal, telephone_number_compass, email_compass, region, department, 
-    sign_client, phone_number_crm, email_crm;
+    sign_client, phone_number_crm, email_crm
+SETTINGS
+allow_experimental_live_view = 1

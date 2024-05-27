@@ -77,3 +77,5 @@ LEFT JOIN
     FROM default.reference_tnved3 AS rt
     WHERE TextEx2 IS NOT NULL
 ) AS tnved ON f.code_gng = tnved.tnved_gng
+SETTINGS
+allow_experimental_live_view = 1

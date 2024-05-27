@@ -1,5 +1,6 @@
-CREATE OR REPLACE VIEW default.all_enriched_line_report
-AS SELECT
+CREATE OR REPLACE VIEW default.all_enriched_interim
+AS
+SELECT
     import_main_duplicate_containers.month_parsed_on AS month,
     import_main_duplicate_containers.year_parsed_on AS year,
     import_main_duplicate_containers.direction AS direction,
@@ -14,10 +15,6 @@ AS SELECT
     import_main_duplicate_containers.teu_main AS teu,
     import_main_duplicate_containers.container_count_main AS container_count,
     import_main_duplicate_containers.is_empty AS is_empty,
-    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
     import_main_duplicate_containers.goods_name AS goods_name,
     import_main_duplicate_containers.tnved AS tnved_group_id,
     import_main_duplicate_containers.tnved_group_name AS tnved_group_name,
@@ -32,23 +29,22 @@ AS SELECT
     import_main_duplicate_containers.lat_port AS lat_port,
     import_main_duplicate_containers.long_port AS long_port,
     concat('[[[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- '],
-[44.7244,
-		   37.7675]]]') AS geopolygon,
-	concat('[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- ']') AS geopoint
-   FROM default.import_main_duplicate_containers
-   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     '],
+    \n[44.7244,
+    \n37.7675]]]') AS geopolygon,
+    concat('[',
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     ']') AS geopoint
+FROM default.import_main_duplicate_containers
 UNION ALL
- SELECT
+SELECT
     import_nw_enriched.month AS month,
     import_nw_enriched.year AS year,
     import_nw_enriched.direction AS direction,
@@ -63,10 +59,6 @@ UNION ALL
     import_nw_enriched.teu AS teu,
     import_nw_enriched.container_count AS container_count,
     import_nw_enriched.is_empty AS is_empty,
-    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
     import_nw_enriched.goods_name AS goods_name,
     import_nw_enriched.tnved_group_id AS tnved_group_id,
     import_nw_enriched.tnved_group_name AS tnved_group_name,
@@ -81,23 +73,22 @@ UNION ALL
     import_nw_enriched.lat_port AS lat_port,
     import_nw_enriched.long_port AS long_port,
     concat('[[[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- '],
-[44.7244,
-		   37.7675]]]') AS geopolygon,
-	concat('[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- ']') AS geopoint
-   FROM default.import_nw_enriched
-   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     '],
+    \n[44.7244,
+    \n37.7675]]]') AS geopolygon,
+    concat('[',
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     ']') AS geopoint
+FROM default.import_nw_enriched
 UNION ALL
- SELECT
+SELECT
     import_vsk_enriched.month AS month,
     import_vsk_enriched.year AS year,
     import_vsk_enriched.direction AS direction,
@@ -112,10 +103,6 @@ UNION ALL
     import_vsk_enriched.teu AS teu,
     import_vsk_enriched.container_count AS container_count,
     import_vsk_enriched.is_empty AS is_empty,
-    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
     import_vsk_enriched.goods_name AS goods_name,
     import_vsk_enriched.tnved_group_id AS tnved_group_id,
     import_vsk_enriched.tnved_group_name AS tnved_group_name,
@@ -130,23 +117,22 @@ UNION ALL
     import_vsk_enriched.lat_port AS lat_port,
     import_vsk_enriched.long_port AS long_port,
     concat('[[[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- '],
-[44.7244,
-		   37.7675]]]') AS geopolygon,
-	concat('[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- ']') AS geopoint
-   FROM default.import_vsk_enriched
-   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     '],
+    \n[44.7244,
+    \n37.7675]]]') AS geopolygon,
+    concat('[',
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     ']') AS geopoint
+FROM default.import_vsk_enriched
 UNION ALL
- SELECT
+SELECT
     export_enriched.month_parsed_on AS month,
     export_enriched.year_parsed_on AS year,
     export_enriched.direction AS direction,
@@ -161,10 +147,6 @@ UNION ALL
     export_enriched.teu AS teu,
     export_enriched.container_count AS container_count,
     export_enriched.is_empty AS is_empty,
-    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
     export_enriched.goods_name AS goods_name,
     export_enriched.tnved AS tnved_group_id,
     export_enriched.tnved_group_name AS tnved_group_name,
@@ -179,24 +161,23 @@ UNION ALL
     export_enriched.lat_port AS lat_port,
     export_enriched.long_port AS long_port,
     concat('[[[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- '],
-[44.7244,
-		   37.7675]]]') AS geopolygon,
-	concat('[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- ']') AS geopoint
-   FROM default.export_enriched
-   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
-   WHERE export_enriched.order_status = 'Выпущен' or export_enriched.order_status is NULL
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     '],
+    \n[44.7244,
+    \n37.7675]]]') AS geopolygon,
+    concat('[',
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     ']') AS geopoint
+FROM default.export_enriched
+WHERE export_enriched.order_status = 'Выпущен' or export_enriched.order_status is NULL
 UNION ALL
- SELECT
+SELECT
     export_nw_enriched.month AS month,
     export_nw_enriched.year AS year,
     export_nw_enriched.direction AS direction,
@@ -211,10 +192,6 @@ UNION ALL
     export_nw_enriched.teu AS teu,
     export_nw_enriched.container_count AS container_count,
     export_nw_enriched.is_empty AS is_empty,
-    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
     export_nw_enriched.goods_name AS goods_name,
     export_nw_enriched.tnved_group_id AS tnved_group_id,
     export_nw_enriched.tnved_group_name AS tnved_group_name,
@@ -229,23 +206,22 @@ UNION ALL
     export_nw_enriched.lat_port AS lat_port,
     export_nw_enriched.long_port AS long_port,
     concat('[[[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- '],
-[44.7244,
-		   37.7675]]]') AS geopolygon,
-	concat('[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- ']') AS geopoint
-   FROM default.export_nw_enriched
-   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     '],
+    \n[44.7244,
+    \n37.7675]]]') AS geopolygon,
+    concat('[',
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     ']') AS geopoint
+FROM default.export_nw_enriched
 UNION ALL
- SELECT
+SELECT
     export_vsk_enriched.month AS month,
     export_vsk_enriched.year AS year,
     export_vsk_enriched.direction AS direction,
@@ -260,10 +236,6 @@ UNION ALL
     export_vsk_enriched.teu AS teu,
     export_vsk_enriched.container_count AS container_count,
     export_vsk_enriched.is_empty AS is_empty,
-    multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
     export_vsk_enriched.goods_name AS goods_name,
     export_vsk_enriched.tnved_group_id AS tnved_group_id,
     export_vsk_enriched.tnved_group_name AS tnved_group_name,
@@ -278,66 +250,17 @@ UNION ALL
     export_vsk_enriched.lat_port AS lat_port,
     export_vsk_enriched.long_port AS long_port,
     concat('[[[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- '],
-[44.7244,
-		   37.7675]]]') AS geopolygon,
-	concat('[',
- toString(lat_port),
- ',
-',
- toString(long_port),
- ']') AS geopoint
-   FROM default.export_vsk_enriched
-   LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON goods_name = rr.goods_name
-UNION ALL
- SELECT
-  month AS month,
-  year AS year,
-  direction AS direction,
-  terminal AS terminal,
-  rl.line_unified AS line_unified,
-  rs.ship_name_unified AS ship_name_unified,
-  null AS voyage,
-  date AS shipment_date,
-  null AS container_number,
-  container_size AS container_size,
-  container_type AS container_type_unified,
-  intDiv(container_size, 20) AS teu,
-  1 AS container_count,
-  CASE
-    WHEN re.is_empty = ex_final.goods_name THEN true
-    ELSE false
-  END AS is_empty,
-  multiIf(rr.goods_name ILIKE '%МОРОЖ%', 'frozen',
-        rr.category_im IS NOT NULL, rr.category_im,
-        'other'
-    ) AS ref,
-  ex_final.goods_name AS goods_name,
-  null AS tnved_group_id,
-  null AS tnved_group_name,
-  null AS goods_weight_with_package,
-  null AS company,
-  null AS company_inn,
-  null AS company_unified,
-  null AS expeditor,
-  rg.country AS tracking_country_unified,
-  rg.seaport_unified AS tracking_seaport_unified,
-  rg.region AS region,
-  null AS lat_port,
-  null AS long_port,
-  null AS geopolygon,
-  null AS geopoint
- FROM (
-    SELECT
-        *, arrayJoin(range(1, count_container + 1))
-    FROM default.extrapolate_final
-    ) as ex_final
- LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) AS re ON ex_final.goods_name = re.is_empty
- LEFT JOIN (SELECT * FROM default.reference_ref FINAL) AS rr ON ex_final.goods_name = rr.goods_name
- LEFT JOIN (SELECT * FROM default.reference_region FINAL) AS rg ON ex_final.tracking_seaport = rg.seaport
- LEFT JOIN (SELECT * FROM default.reference_lines FINAL) AS rl ON ex_final.line = rl.line
- LEFT JOIN (SELECT * FROM default.reference_ship FINAL) AS rs ON ex_final.ship = rs.ship_name
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     '],
+    \n[44.7244,
+    \n37.7675]]]') AS geopolygon,
+    concat('[',
+     toString(lat_port),
+     ',
+    \n',
+     toString(long_port),
+     ']') AS geopoint
+FROM default.export_vsk_enriched;

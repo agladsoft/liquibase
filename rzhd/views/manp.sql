@@ -29,4 +29,6 @@ AS SELECT
     departure_year,
 
     concat(CAST(departure_month, 'text'), '-', CAST(departure_year, 'text')) AS departure_month_year
-FROM rzhd.rzhd_ktk_view;
+FROM rzhd.rzhd_ktk_view
+SETTINGS
+allow_experimental_live_view = 1
