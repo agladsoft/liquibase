@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS DataCore.datacore_freight
 
     `original_file_parsed_on` Nullable(String),
 
-    `is_obsolete` Nullable(Bool),
+    `sign` Int8,
 
     `is_obsolete_date` Nullable(String)
 )
-ENGINE = MergeTree
-ORDER BY uuid
+ENGINE = CollapsingMergeTree(sign)
+ORDER BY (key_id, uuid)

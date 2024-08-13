@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS DataCore.freight_rates
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `freight_rate_uid` Nullable(String),
+
     `priority` Nullable(Bool),
 
     `oversized_width` Nullable(Int32),
@@ -32,6 +34,8 @@ CREATE TABLE IF NOT EXISTS DataCore.freight_rates
 
     `start_date` Nullable(Date32),
 
+    `original_date_string` Nullable(String),
+
     `forwarder` Nullable(String),
 
     `through_service` Nullable(String),
@@ -56,9 +60,9 @@ CREATE TABLE IF NOT EXISTS DataCore.freight_rates
 
     `original_file_parsed_on` Nullable(String),
 
-    `is_obsolete` Nullable(Bool),
+    `sign` Int8,
 
     `is_obsolete_date` Nullable(String)
 )
-ENGINE = MergeTree
-ORDER BY uuid
+ENGINE = CollapsingMergeTree(sign)
+ORDER BY (key_id, uuid)

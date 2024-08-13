@@ -21,4 +21,4 @@ CREATE TABLE IF NOT EXISTS DataCore.margin_income_plan
     `original_file_parsed_on` Nullable(String)
 )
 ENGINE = MergeTree
-ORDER BY uuid
+ORDER BY key_id

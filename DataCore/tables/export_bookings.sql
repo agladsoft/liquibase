@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `freight_rate_uid` Nullable(String),
+
     `booking_status` Nullable(String),
 
     `discharge_port_bay` Nullable(String),
@@ -60,9 +62,9 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 
     `original_file_parsed_on` Nullable(String),
 
-    `is_obsolete` Nullable(Bool),
+    `sign` Int8,
 
     `is_obsolete_date` Nullable(String)
 )
-ENGINE = MergeTree
-ORDER BY uuid
+ENGINE = CollapsingMergeTree(sign)
+ORDER BY (key_id, uuid)
