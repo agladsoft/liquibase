@@ -38,36 +38,4 @@ FROM (
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
     WHERE ins.count_container = 0
-        UNION ALL
-    SELECT
-        if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
-        'import' AS direction,
-        operator,
-        line_unified,
-        vessel,
-        ship_name_unified,
-        atb_moor_pier,
-        month,
-        year,
-        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume,
-        0 AS count_container,
-        total_volume as delta_count
-    FROM reference_spardeck_unified
-    WHERE stividor = 'NMTP' or stividor = 'NCSP'
-        UNION ALL
-    SELECT
-        if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
-        'export' AS direction,
-        operator,
-        line_unified,
-        vessel,
-        ship_name_unified,
-        atb_moor_pier,
-        month,
-        year,
-        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume,
-        0 AS count_container,
-        total_volume as delta_count
-    FROM reference_spardeck_unified
-    WHERE stividor = 'NMTP' or stividor = 'NCSP'
     );
