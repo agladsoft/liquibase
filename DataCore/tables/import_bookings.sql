@@ -28,7 +28,11 @@ CREATE TABLE IF NOT EXISTS DataCore.import_bookings
 
     `eta` Nullable(Date32),
 
+    `sob` Nullable(Date32),
+
     `original_booking_date_string` Nullable(String),
+
+    `teu` Nullable(Int32),
 
     `freight_terms` Nullable(String),
 

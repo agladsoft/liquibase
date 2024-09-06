@@ -13,8 +13,8 @@ WITH exist_data_by_date AS
         shipment_date,
         month,
         year,
-        total_volume_in,
-        total_volume_out,
+        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume_in,
+        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume_out,
         count_container,
         if(direction = 'import', toInt32(total_volume_in) - count_container, toInt32(total_volume_out) - count_container) as delta_count
     FROM reference_spardeck_unified
@@ -35,8 +35,8 @@ no_data_by_date_but_in_month AS
         shipment_date,
         month,
         year,
-        total_volume_in,
-        total_volume_out,
+        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume_in,
+        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume_out,
         count_container,
         toInt32(total_volume_in) - count_container as delta_count
     FROM reference_spardeck_unified
@@ -55,8 +55,8 @@ no_data_by_date_but_in_month AS
         shipment_date,
         month,
         year,
-        total_volume_in,
-        total_volume_out,
+        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume_in,
+        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume_out,
         count_container,
         toInt32(total_volume_out) - count_container as delta_count
     FROM reference_spardeck_unified
@@ -78,3 +78,4 @@ AND NOT (direction, vessel, atb_moor_pier) IN (
     FROM not_found_containers
     GROUP BY direction, vessel, atb_moor_pier
 )
+AND (total_volume_in != 0 OR total_volume_out != 0)

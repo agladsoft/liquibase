@@ -1,41 +1,10 @@
 CREATE OR REPLACE VIEW DO.reference_counterparties_view
-AS SELECT
-    uuid AS uuid,
-    name AS name,
-    do_uid AS do_uid,
-    status AS status,
-    head_counterparty AS head_counterparty,
-    included_in_group AS included_in_group,
-    legal_physical_entity AS legal_physical_entity,
-    full_name AS full_name,
-    inn AS inn,
-    kpp AS kpp,
-    okpo AS okpo,
-    ogrn AS ogrn,
-    is_foreign_company AS is_foreign_company,
-    deletion_flag AS deletion_flag,
-    registration_country AS registration_country,
-    registration_number AS registration_number,
-    tax_number AS tax_number,
-    counterparty_type AS counterparty_type,
-    supplier_customer_type AS supplier_customer_type,
-    classification AS classification,
-    contract_type AS contract_type,
-    relationship_type AS relationship_type,
-    planned_turnover AS planned_turnover,
-    manager AS manager,
-    legal_address AS legal_address,
-    actual_address AS actual_address,
-    postal_address AS postal_address,
-    telephone_number AS telephone_number,
-    email AS email,
-    website AS website,
-    organization_uid AS organization_uid,
-    organization AS organization,
-    ro.organization AS organization_unified,
-    is_control AS is_control,
-    original_file_parsed_on AS original_file_parsed_on,
-    is_obsolete AS is_obsolete,
-    is_obsolete_date AS is_obsolete_date
-   FROM reference_counterparties
-     LEFT JOIN reference_organizations AS ro ON reference_counterparties.organization_uid = ro.organization_uid;
+AS
+    SELECT *
+    FROM DO.reference_counterparties
+    WHERE uuid IN (
+        SELECT uuid
+        FROM DO.reference_counterparties
+        GROUP BY uuid
+        HAVING SUM(sign) > 0
+    );

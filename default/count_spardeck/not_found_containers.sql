@@ -19,7 +19,7 @@ FROM (
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
         AND reference_spardeck_unified.year = ins.year_parsed_on
-    WHERE ins.count_container = 0
+    WHERE ins.count_container = 0 AND total_volume != 0
         UNION ALL
     SELECT
         if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
@@ -39,5 +39,5 @@ FROM (
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
         AND reference_spardeck_unified.year = ins.year_parsed_on
-    WHERE ins.count_container = 0
+    WHERE ins.count_container = 0 AND total_volume != 0
     );

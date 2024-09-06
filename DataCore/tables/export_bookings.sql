@@ -20,6 +20,10 @@ CREATE TABLE IF NOT EXISTS DataCore.export_bookings
 
     `etd` Nullable(Date32),
 
+    `sob` Nullable(Date32),
+
+    `teu` Nullable(Int32),
+
     `freight_terms` Nullable(String),
 
     `container_number` Nullable(String),
