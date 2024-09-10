@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `direction` Nullable(String),
 
+    `type_of_relation` Nullable(String),
+
     `department` Nullable(String),
 
     `container_number` Nullable(String),
