@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS DataCore.ruscon_products
 
     `product` Nullable(String),
 
-    `container_size` Nullable(Int32),
+    `container_count_40` Nullable(Int32),
 
-    `container_count` Nullable(Int32),
+    `container_count_20` Nullable(Int32),
 
     `cargo` Nullable(String),
 

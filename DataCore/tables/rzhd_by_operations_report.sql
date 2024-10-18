@@ -4,11 +4,17 @@ CREATE TABLE IF NOT EXISTS DataCore.rzhd_by_operations_report
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `document_number` Nullable(String),
+
+    `etsng_code_ktk` Nullable(String),
+
     `etsng_order_base_cargo` Nullable(String),
 
     `etsng_operation_cargo` Nullable(String),
 
     `is_border_crossing_point` Nullable(Bool),
+
+    `service` Nullable(String),
 
     `client_uid` Nullable(String),
 
