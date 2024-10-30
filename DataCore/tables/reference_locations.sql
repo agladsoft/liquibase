@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS DataCore.reference_locations
 
     `postcode` Nullable(String),
 
-    `lat_port` Nullable(String),
+    `lat_port` Nullable(Decimal128(12)),
 
-    `long_port` Nullable(String),
+    `long_port` Nullable(Decimal128(12)),
 
     `country` Nullable(String),
 

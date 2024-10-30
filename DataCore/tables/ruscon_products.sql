@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS DataCore.ruscon_products
 
     `department` Nullable(String),
 
+    `key` Nullable(String),
+
     `manager_division` Nullable(String),
 
     `manager` Nullable(String),
@@ -20,11 +22,7 @@ CREATE TABLE IF NOT EXISTS DataCore.ruscon_products
 
     `kp_date` Nullable(Date32),
 
-    `stepname` Nullable(String),
-
     `direction` Nullable(String),
-
-    `product` Nullable(String),
 
     `container_count_40` Nullable(Int32),
 
