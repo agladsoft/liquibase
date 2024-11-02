@@ -126,6 +126,7 @@ CREATE TABLE IF NOT EXISTS rzhd.rzhd_ktk
     `wagon_subtype_according_to_co29` Nullable(String),
     `wagon_type` Nullable(String),
     `teu` Nullable(Decimal128(19)),
+    `is_obsolete` Nullable(Bool),
     `original_file_name` Nullable(String),
     `original_file_parsed_on` Nullable(String),
     `original_file_index` Nullable(Bigint)

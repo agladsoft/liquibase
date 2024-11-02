@@ -175,7 +175,6 @@ SELECT
      toString(long_port),
      ']') AS geopoint
 FROM default.export_enriched
-WHERE export_enriched.order_status = 'Выпущен' or export_enriched.order_status is NULL
 UNION ALL
 SELECT
     export_nw_enriched.month AS month,
