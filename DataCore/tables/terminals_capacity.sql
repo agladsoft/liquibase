@@ -14,15 +14,9 @@ CREATE TABLE IF NOT EXISTS DataCore.terminals_capacity
 
     `container_size` Nullable(Int32),
 
+    `container_count` Nullable(Int32),
+
     `teu` Nullable(Int32),
-
-    `start_period` Nullable(Bool),
-
-    `end_period` Nullable(Bool),
-
-    `arrival` Nullable(Bool),
-
-    `expenditure` Nullable(Bool),
 
     `original_file_parsed_on` Nullable(String),
 

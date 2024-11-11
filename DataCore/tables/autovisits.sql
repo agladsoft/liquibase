@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS DataCore.autovisits
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `processing_place` Nullable(String),
+
     `is_manual_select` Nullable(Bool),
 
     `rejection_reason` Nullable(String),
@@ -29,6 +31,8 @@ CREATE TABLE IF NOT EXISTS DataCore.autovisits
     `purpose` Nullable(String),
 
     `registration_datetime` Nullable(DateTime64),
+
+    `repacking_place` Nullable(String),
 
     `terminal` Nullable(String),
 
