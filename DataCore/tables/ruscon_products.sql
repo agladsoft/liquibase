@@ -4,6 +4,10 @@ CREATE TABLE IF NOT EXISTS DataCore.ruscon_products
 
     `uuid` DEFAULT generateUUIDv4(),
 
+    `product` Nullable(String),
+
+    `stepname` Nullable(String),
+
     `department` Nullable(String),
 
     `key` Nullable(String),
