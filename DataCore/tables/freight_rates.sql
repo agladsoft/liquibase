@@ -38,6 +38,8 @@ CREATE TABLE IF NOT EXISTS DataCore.freight_rates
 
     `forwarder` Nullable(String),
 
+    `guideline` Nullable(Bool),
+
     `through_service` Nullable(String),
 
     `rate_owner` Nullable(String),
