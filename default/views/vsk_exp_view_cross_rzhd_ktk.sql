@@ -73,4 +73,6 @@ GROUP BY
     ktk.destination_region,
     road,
     mcv.manager,
-    mcv.department;
+    mcv.department
+SETTINGS
+allow_experimental_live_view = 1

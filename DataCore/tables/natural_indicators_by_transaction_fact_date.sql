@@ -1,41 +1,46 @@
 CREATE TABLE IF NOT EXISTS DataCore.natural_indicators_by_transaction_fact_date
 (
+    `key_id` String,
 
-    uuid UUID DEFAULT generateUUIDv4(),
+    `uuid` UUID DEFAULT generateUUIDv4(),
 
-    operationDate Nullable(Date32),
+    `container_size` Nullable(Int32),
 
-    containerCount_20 Nullable(Int32),
+    `operation_date` Nullable(Date32),
 
-    operationMonth Nullable(Int32),
+    `is_full` Nullable(Bool),
 
-    containerCount Nullable(Int32),
+    `original_operation_date_string` Nullable(String),
 
-    containerTEU Nullable(Int32),
+    `operation_month` Nullable(Int32),
 
-    manager Nullable(String),
+    `container_count` Nullable(Int32),
 
-    operationYear Nullable(Int32),
+    `teu` Nullable(Int32),
 
-    containerCount_40 Nullable(Int32),
+    `manager` Nullable(String),
 
-    orderNumber Nullable(String),
+    `container_type` Nullable(String),
 
-    direction Nullable(String),
+    `operation_year` Nullable(Int32),
 
-    client Nullable(String),
+    `order_number` Nullable(String),
 
-    orderDate Nullable(Date32),
+    `direction` Nullable(String),
 
-    clientUID Nullable(String),
+    `client` Nullable(String),
 
-    department Nullable(String),
+    `order_date` Nullable(Date32),
 
-    original_file_parsed_on Nullable(String),
+    `client_uid` Nullable(String),
 
-    is_obsolete Nullable(Bool),
+    `department` Nullable(String),
 
-    is_obsolete_date Nullable(String)
+    `original_file_parsed_on` Nullable(String),
+
+    `sign` Int8,
+
+    `is_obsolete_date` Nullable(String)
 )
-ENGINE = MergeTree
-ORDER BY uuid
+ENGINE = CollapsingMergeTree(sign)
+ORDER BY (key_id, uuid)

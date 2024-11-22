@@ -41,7 +41,22 @@ AS SELECT
     rg.region AS region,
     rgeo.lat_port AS lat_port,
     rgeo.long_port AS long_port,
-    export.gtd_number AS gtd_number
+    export.gtd_number AS gtd_number,
+    shipped AS shipped,
+    order_number_full AS order_number_full,
+    booking AS booking,
+    mopog AS mopog,
+    tare_weight AS tare_weight,
+    date_order AS date_order,
+    net AS net,
+    gross AS gross,
+    arrived AS arrived,
+    port_of_destination AS port_of_destination,
+    no_doc AS no_doc,
+    doc_type AS doc_type,
+    date_doc AS date_doc,
+    order_type AS order_type,
+    order_status AS order_status
    FROM default.export
      LEFT JOIN (SELECT * FROM default.reference_inn FINAL) ri ON export.shipper_name = ri.company_name
      LEFT JOIN (SELECT * FROM default.reference_is_empty FINAL) re ON export.goods_name = re.is_empty
@@ -49,5 +64,5 @@ AS SELECT
      LEFT JOIN (SELECT * FROM default.reference_ship FINAL) rs ON export.ship_name = rs.ship_name
      LEFT JOIN (SELECT * FROM default.reference_container_type FINAL) rct ON export.container_type = rct.container_type
      LEFT JOIN (SELECT * FROM default.reference_region FINAL) rg ON export.tracking_seaport = rg.seaport
-     LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON export.tnved = rt.group_tnved
+     LEFT JOIN (SELECT * FROM default.reference_tnved2_actual) rt ON toInt64OrNull(substr(export.tnved, 1, 2)) = toInt64(rt.group_tnved)
      LEFT JOIN (SELECT * FROM default.reference_geo FINAL) rgeo ON export.tracking_seaport = rgeo.seaport;

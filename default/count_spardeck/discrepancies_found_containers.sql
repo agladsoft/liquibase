@@ -3,6 +3,7 @@ AS
 WITH exist_data_by_date AS
 (
     SELECT
+        stividor,
         direction,
         operator,
         line_unified,
@@ -12,8 +13,8 @@ WITH exist_data_by_date AS
         shipment_date,
         month,
         year,
-        total_volume_in,
-        total_volume_out,
+        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume_in,
+        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume_out,
         count_container,
         if(direction = 'import', toInt32(total_volume_in) - count_container, toInt32(total_volume_out) - count_container) as delta_count
     FROM reference_spardeck_unified
@@ -24,6 +25,7 @@ WITH exist_data_by_date AS
 no_data_by_date_but_in_month AS
 (
     SELECT
+        stividor,
         'import' AS direction,
         operator,
         line_unified,
@@ -33,16 +35,17 @@ no_data_by_date_but_in_month AS
         shipment_date,
         month,
         year,
-        total_volume_in,
-        total_volume_out,
+        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume_in,
+        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume_out,
         count_container,
         toInt32(total_volume_in) - count_container as delta_count
     FROM reference_spardeck_unified
-    LEFT JOIN nle_spardeck AS ins ON
+    LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'import') AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND atb_moor_pier = ins.shipment_date
     UNION ALL
     SELECT
+        stividor,
         'export' AS direction,
         operator,
         line_unified,
@@ -52,12 +55,12 @@ no_data_by_date_but_in_month AS
         shipment_date,
         month,
         year,
-        total_volume_in,
-        total_volume_out,
+        if(total_volume_in is NULL, 0, total_volume_in) AS total_volume_in,
+        if(total_volume_out is NULL, 0, total_volume_out) AS total_volume_out,
         count_container,
         toInt32(total_volume_out) - count_container as delta_count
     FROM reference_spardeck_unified
-    LEFT JOIN nle_spardeck AS ins ON
+    LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'export') AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND atb_moor_pier = ins.shipment_date
     WHERE ins.count_container = 0
@@ -65,13 +68,14 @@ no_data_by_date_but_in_month AS
 SELECT * FROM exist_data_by_date
 UNION ALL
 SELECT * FROM no_data_by_date_but_in_month
-WHERE NOT (operator, vessel, atb_moor_pier) IN (
-    SELECT operator, vessel, atb_moor_pier
+WHERE NOT (direction, operator, vessel, atb_moor_pier) IN (
+    SELECT direction, operator, vessel, atb_moor_pier
     FROM exist_data_by_date
-    GROUP BY operator, vessel, atb_moor_pier
+    GROUP BY direction, operator, vessel, atb_moor_pier
 )
-AND NOT (vessel, atb_moor_pier) IN (
-    SELECT vessel, atb_moor_pier
+AND NOT (direction, vessel, atb_moor_pier) IN (
+    SELECT direction, vessel, atb_moor_pier
     FROM not_found_containers
-    GROUP BY vessel, atb_moor_pier
+    GROUP BY direction, vessel, atb_moor_pier
 )
+AND (total_volume_in != 0 OR total_volume_out != 0)

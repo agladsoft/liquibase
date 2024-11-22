@@ -13,3 +13,5 @@ AS SELECT DISTINCT
   FROM import, reference_region
   WHERE import.goods_name = 'порожний контейнер' 
   AND import.shipper_name ILIKE '% ' || reference_region.seaport || ' %'
+SETTINGS
+allow_experimental_live_view = 1

@@ -1,31 +1,32 @@
 CREATE TABLE IF NOT EXISTS DataCore.sales_plan
 (
+    `key_id` String,
 
-    uuid UUID DEFAULT generateUUIDv4(),
+    `uuid` UUID DEFAULT generateUUIDv4(),
 
-    containerTEU Nullable(Int32),
+    `teu` Nullable(Int32),
 
-    containerCount Nullable(Int32),
+    `container_count` Nullable(Int32),
 
-    section Nullable(Int32),
+    `container_size` Nullable(Int32),
 
-    direction Nullable(String),
+    `direction` Nullable(String),
 
-    client Nullable(String),
+    `client` Nullable(String),
 
-    year Nullable(Int32),
+    `year` Nullable(Int32),
 
-    month Nullable(Int32),
+    `month` Nullable(Int32),
 
-    clientUID Nullable(String),
+    `client_uid` Nullable(String),
 
-    department Nullable(String),
+    `department` Nullable(String),
 
-    original_file_parsed_on Nullable(String),
+    `original_file_parsed_on` Nullable(String),
 
-    is_obsolete Nullable(Bool),
+    `sign` Int8,
 
-    is_obsolete_date Nullable(String)
+    `is_obsolete_date` Nullable(String)
 )
-ENGINE = MergeTree
-ORDER BY uuid
+ENGINE = CollapsingMergeTree(sign)
+ORDER BY (key_id, uuid)

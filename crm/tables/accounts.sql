@@ -147,6 +147,7 @@ CREATE TABLE IF NOT EXISTS crm.accounts
     `_createdonbehalfby_value` Nullable(String),
     `kc_productdescription` Nullable(String),
     `_createdbyexternalparty_value` Nullable(String),
+    `rn_datetransfersupport` Nullable(Date),
     `kc_inn` Nullable(String),
     `kc_guiduktclient` Nullable(String),
     `overriddencreatedon` Nullable(String),

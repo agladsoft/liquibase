@@ -4,8 +4,8 @@ AS SELECT
     rzhd_ktk.container_no AS container_no,
     rzhd_ktk.document_no AS document_no,
     rzhd_ktk.departure_date AS departure_date,
-    toMonth(departure_date) AS departure_month,
-    toYear(departure_date) AS departure_year,
+    departure_month_from_date AS departure_month,
+    departure_year_from_date AS departure_year,
     rzhd_ktk.park_type AS park_type,
     rzhd_ktk.type_of_transportation AS type_of_transportation,
     rzhd_ktk.type_of_communication_between_countries_by_rail AS type_of_communication_between_countries_by_rail,
@@ -27,7 +27,7 @@ AS SELECT
     rzhd_ktk.cis_departure_station AS cis_departure_station,
     rzhd_ktk.shipper_according_to_egrpo AS shipper_according_to_egrpo,
     rzhd_ktk.shipper_by_puzt AS shipper_by_puzt,
-    swap_values(shipper_by_puzt, shipper_according_to_egrpo, 'неизвестен') AS common_shipper,
+    common_shipper AS common_shipper,
     rzhd_ktk.shipper_okpo AS shipper_okpo,
     rzhd_ktk.state_of_destination AS state_of_destination,
     rzhd_ktk.destination_subject_of_the_rf AS destination_subject_of_the_rf,
@@ -39,21 +39,21 @@ AS SELECT
     rzhd_ktk.cis_destination_station AS cis_destination_station,
     rzhd_ktk.consignee_according_to_egrpo AS consignee_according_to_egrpo,
     rzhd_ktk.consignee_by_puzt AS consignee_by_puzt,
-    swap_values(consignee_by_puzt, consignee_according_to_egrpo, 'неизвестен') AS common_consignee,
+    common_consignee AS common_consignee,
     rzhd_ktk.consignee_okpo AS consignee_okpo,
     rzhd_ktk.container_tonnage AS container_tonnage,
-    rt.container_tonnage_unified AS container_tonnage_unified,
+    container_tonnage_unified AS container_tonnage_unified,
     multiIf
     (
         quantity_of_containers <= 0,
         0,
-        rt.container_tonnage_unified is null,
+        container_tonnage_unified is null,
         null,
-        round(divide(rt.container_tonnage_unified, 20), 1)
+        round(divide(container_tonnage_unified, 20), 1)
     ) AS teu,
     rzhd_ktk.container_prefix AS container_prefix,
     rzhd_ktk.type_of_special_container AS type_of_special_container,
-    if(rct.container_type_unified is null, 'нет данных', rct.container_type_unified) AS container_type_unified,
+    if(container_type_unified is null, 'нет данных', container_type_unified) AS container_type_unified,
     rzhd_ktk.wagon_subgenus AS wagon_subgenus,
     rzhd_ktk.load_capacity AS load_capacity,
     rzhd_ktk.code_of_conditional_type_of_wagon AS code_of_conditional_type_of_wagon,
@@ -64,8 +64,12 @@ AS SELECT
     rzhd_ktk.leaseholder AS leaseholder,
     rzhd_ktk.the_owner_of_the_wagon_according_to_the_internal_directory AS the_owner_of_the_wagon_according_to_the_internal_directory,
     rzhd_ktk.carriage_fee AS carriage_fee,
-    replace_stock_company(replace_double_spaces(replace_organization_form(replace_symbols(payer_of_the_railway_tariff)))) AS payer_of_the_railway_tariff,
-    if(rrcn.company_name_unified is not null, rrcn.company_name_unified, payer_of_the_railway_tariff) AS payer_of_the_railway_tariff_unified,
+    if(
+        payer_of_the_railway_tariff is not null,
+        payer_of_the_railway_tariff,
+        '0'
+    ) AS payer_of_the_railway_tariff,
+    payer_of_the_railway_tariff_unified AS payer_of_the_railway_tariff_unified,
     rzhd_ktk.quantity_of_containers AS quantity_of_containers,
     rzhd_ktk.quantity_of_wagons AS quantity_of_wagons,
     rzhd_ktk.name_of_cargo AS name_of_cargo,
@@ -106,6 +110,3 @@ AS SELECT
     rzhd_ktk.original_file_parsed_on AS original_file_parsed_on,
     rzhd_ktk.original_file_index AS original_file_index
    FROM rzhd.rzhd_ktk
-     LEFT JOIN rzhd.reference_tonnage AS rt ON rzhd_ktk.container_tonnage = rt.container_tonnage
-     LEFT JOIN rzhd.reference_container_type AS rct ON rzhd_ktk.type_of_special_container = rct.type_of_special_container
-     LEFT JOIN rzhd.reference_replace_company_name AS rrcn ON payer_of_the_railway_tariff = rrcn.company_name;

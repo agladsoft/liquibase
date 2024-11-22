@@ -2,12 +2,14 @@ CREATE OR REPLACE VIEW default.export_nle_total
 AS SELECT
     tmp2.month AS month,
     tmp2.year AS year,
+    tmp2.terminal AS terminal,
     tmp2.direction AS direction,
     tmp2.is_empty AS is_empty,
     tmp2.is_ref AS is_ref,
     sum(tmp2.teu) AS teu_total
    FROM ( SELECT export_enriched.month_parsed_on AS month,
             export_enriched.year_parsed_on AS year,
+            export_enriched.terminal AS terminal,
             export_enriched.direction AS direction,
             export_enriched.is_empty AS is_empty,
             export_enriched.teu AS teu,
@@ -19,6 +21,7 @@ AS SELECT
           SELECT
               toMonth(date) AS shipment_month,
               toYear(date) AS shipment_year,
+              terminal AS terminal,
               direction AS direction,
               is_empty AS is_empty,
               intDiv(container_size, 20) AS teu,
@@ -31,4 +34,4 @@ AS SELECT
                 WHERE direction = 'export'
                 )
           ) tmp2
-  GROUP BY tmp2.month, tmp2.year, tmp2.direction, tmp2.is_empty, tmp2.is_ref;
+  GROUP BY tmp2.month, tmp2.year, tmp2.terminal, tmp2.direction, tmp2.is_empty, tmp2.is_ref;

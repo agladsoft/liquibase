@@ -85,4 +85,6 @@ GROUP BY
     nvrs.destination_region,
     nvrs.type_of_special_container,
     nvrs.state_of_departure,
-    nvrs.type_of_transportation;
+    nvrs.type_of_transportation
+SETTINGS
+allow_experimental_live_view = 1
