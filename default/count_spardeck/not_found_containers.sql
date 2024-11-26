@@ -16,10 +16,11 @@ FROM (
         toInt32(total_volume) - count_container as delta_count
     FROM reference_spardeck_unified
     LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'import') AS ins ON
-        reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
+        reference_spardeck_unified.stividor = ins.terminal
+        AND reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
         AND reference_spardeck_unified.year = ins.year_parsed_on
-    WHERE ins.count_container = 0 AND total_volume != 0
+    WHERE ins.count_container = 0
         UNION ALL
     SELECT
         if(stividor = 'NCSP', 'NMTP', stividor) AS stividor,
@@ -36,8 +37,9 @@ FROM (
         total_volume - count_container as delta_count
     FROM reference_spardeck_unified
     LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'export') AS ins ON
-        reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
+        reference_spardeck_unified.stividor = ins.terminal
+        AND reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
         AND reference_spardeck_unified.month = ins.month_parsed_on
         AND reference_spardeck_unified.year = ins.year_parsed_on
-    WHERE ins.count_container = 0 AND total_volume != 0
+    WHERE ins.count_container = 0
     );

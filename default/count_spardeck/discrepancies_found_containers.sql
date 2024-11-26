@@ -20,7 +20,7 @@ WITH exist_data_by_date AS
     FROM reference_spardeck_unified
     LEFT JOIN nle_spardeck AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
-    WHERE shipment_date BETWEEN atb_moor_pier - 4 and atb_moor_pier + 4
+    WHERE shipment_date BETWEEN atb_moor_pier - 4 and atb_moor_pier + 4 AND stividor = 'NLE'
 ),
 no_data_by_date_but_in_month AS
 (
@@ -42,7 +42,7 @@ no_data_by_date_but_in_month AS
     FROM reference_spardeck_unified
     LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'import') AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
-        AND atb_moor_pier = ins.shipment_date
+        AND atb_moor_pier = ins.shipment_date AND stividor = 'NLE'
     UNION ALL
     SELECT
         stividor,
@@ -62,18 +62,18 @@ no_data_by_date_but_in_month AS
     FROM reference_spardeck_unified
     LEFT JOIN (SELECT * FROM nle_spardeck WHERE direction = 'export') AS ins ON
         reference_spardeck_unified.ship_name_unified = ins.ship_name_unified
-        AND atb_moor_pier = ins.shipment_date
+        AND atb_moor_pier = ins.shipment_date AND stividor = 'NLE'
     WHERE ins.count_container = 0
 )
 SELECT * FROM exist_data_by_date
 UNION ALL
 SELECT * FROM no_data_by_date_but_in_month
-WHERE NOT (direction, operator, vessel, atb_moor_pier) IN (
+WHERE (direction, operator, vessel, atb_moor_pier) NOT IN (
     SELECT direction, operator, vessel, atb_moor_pier
     FROM exist_data_by_date
     GROUP BY direction, operator, vessel, atb_moor_pier
 )
-AND NOT (direction, vessel, atb_moor_pier) IN (
+AND (direction, vessel, atb_moor_pier) NOT IN (
     SELECT direction, vessel, atb_moor_pier
     FROM not_found_containers
     GROUP BY direction, vessel, atb_moor_pier

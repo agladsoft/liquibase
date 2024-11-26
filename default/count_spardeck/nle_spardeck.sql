@@ -3,24 +3,27 @@ AS
 SELECT *, count(*) AS count_container
 FROM
     (SELECT
+        if(terminal = 'НЛЭ', 'NLE', terminal) AS terminal,
         direction,
         ship_name_unified,
         shipment_date,
         month_parsed_on,
         year_parsed_on
     FROM import_enriched
-    WHERE terminal = 'НЛЭ'
+    WHERE terminal = 'NLE'
     UNION ALL
     SELECT
+        if(terminal = 'НЛЭ', 'NLE', terminal) AS terminal,
         direction,
         ship_name_unified,
         shipment_date,
         month_parsed_on,
         year_parsed_on
     FROM export_enriched
-    WHERE terminal = 'НЛЭ'
+    WHERE terminal = 'NLE'
     UNION ALL
     SELECT
+        terminal,
         direction,
         ship_name_unified AS ship_name_unified,
         shipment_date AS shipment_date,
@@ -28,6 +31,7 @@ FROM
         year_parsed_on AS year_parsed_on
     FROM (
         SELECT
+            terminal AS terminal,
             direction AS direction,
             ship AS ship_name_unified,
             date AS shipment_date,
@@ -37,4 +41,4 @@ FROM
         FROM default.extrapolate
         )
     )
-GROUP BY direction, ship_name_unified, shipment_date, month_parsed_on, year_parsed_on
+GROUP BY terminal, direction, ship_name_unified, shipment_date, month_parsed_on, year_parsed_on
